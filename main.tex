@@ -1,0 +1,184 @@
+\documentclass[linenumbers,twocolumn]{aastex62}
+\usepackage{enumitem}
+%\usepackage{courier}
+%\graphicspath{{./}{figures/}}
+\usepackage[T1]{fontenc}
+\usepackage{epsfig}
+\usepackage{epstopdf}
+\epstopdfsetup{update}
+\usepackage{natbib}
+\usepackage{amssymb}
+\usepackage{amsbsy}
+\usepackage{natbib}
+\usepackage{subfigure}
+\usepackage[mathcal]{euscript}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{tabularx}
+\usepackage{xspace}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\newcommand{\blu}{\textcolor{blue} }
+\newcommand{\red}{\textcolor{red} }
+\newcommand{\grn}{\textcolor{green} }
+\newcommand{\cya}{\textcolor{cyan} }
+\newcommand{\pink}{\textcolor{magenta} }
+
+
+\usepackage{ulem,xspace}
+\newcommand{\paul}[1]{\textbf{\textcolor{blue}{#1}}}
+
+\newcommand{\crossed}[1]{\red{\xout{#1}}} %querdurchgestrichen
+\newcommand{\comment}[1]{{\red{[#1]}}}
+\newcommand{\change}[2]{\crossed{#1} \paul{#2}} %crosses out old text and adds text suggested as replacement
+\newcommand{\changeC}[3]{\crossed{#1} \paul{#2} \textit{\red{[#3]}}}
+\newcommand{\commentR}[2]{\textbf{\textcolor{blue}{#1}} \textit{\red{[#2]}}}
+\newcommand{\commentU}[2]{\pink{\uwave{#1}} \textit{\red{[#2]}}}
+
+
+%\newcommand{\paul}[1]{{\blu{#1}}}
+\newcommand{\DP}{$\Delta P$\xspace}
+\newcommand{\DPi}{$\Delta \Pi_1$\xspace}
+\newcommand{\kms}{km~s$^{-1}$}
+\newcommand{\vsini}{\ensuremath{v \sin{i}}}
+%\newcommand{\msun}{M$_\sun$}
+\newcommand{\tess}{{\it TESS}}
+\newcommand{\corot}{{\it CoRoT}}
+\newcommand{\jwst}{{\it JWST}}
+\newcommand{\kepler}{{\it Kepler}}
+\newcommand{\ktwo}{{\it K2}}
+\newcommand{\hst}{{\it HST}}
+\newcommand{\msun}{$M_{\odot}$}
+\newcommand{\rsun}{$R_{\odot}$}
+\newcommand{\lsun}{$L_{\odot}$}
+\newcommand{\re}{$R_{\oplus}$}
+\newcommand{\me}{$M_{\oplus}$}
+\newcommand{\rj}{$R_{\textrm{\scriptsize Jup}}$}
+\newcommand{\mj}{$M_{\textrm{\scriptsize Jup}}$}
+\newcommand{\ms}{m~s$^{-1}$}
+\newcommand{\gaia}{\textit{Gaia}}
+\newcommand{\spherex}{\textit{SPHEREx}}
+
+\newcommand{\teff}{\mbox{$T_{\rm eff}$}}
+\newcommand{\logg}{\mbox{$\log g$}}
+\newcommand{\feh}{\mbox{$\rm{[Fe/H]}$}}
+\newcommand{\fbol}{\mbox{$f_{\rm bol}$}}
+
+%\newcommand{\kiauhoku}{K$\bar{\rm i}$auh$\bar{\rm o}$k$\bar{\rm u}$}
+\newcommand{\kiauhoku}{\texttt{kiauhoku}} % I've adopted DFM's practice of using \texttt for software names - zach
+
+
+\citestyle{aa}
+\bibpunct{(}{)}{;}{a}{}{,}
+
+\begin{document}
+\title{Empirical Constraints on the Efficiency of Magnetized Thermohaline Mixing}
+
+\author{Adrian, Matteo, Marc, Meridith, etc}
+
+\author[0000-0002-4818-7885]{Jamie Tayar}
+\altaffiliation{NASA Hubble Fellow}
+\affiliation{Institute for Astronomy, University of Hawai‘i at Mānoa, 2680 Woodlawn Drive, Honolulu, HI 96822, USA}
+\affiliation{Department of Astronomy, University of Florida, Bryant Space Science Center, Stadium Road, Gainesville, FL 32611, USA }
+
+
+\begin{abstract}
+The existence of enhanced extra mixing in low-mass upper giant branch stars has been well documented for decades. It was suggested that their extra mixing might be due to thermohaline convection, which relies on ( mean molecular weight inversions in otherwise stably stratified zones). However, previous attempts to match the observed pattern quantitatively have usually required some sort of ad hoc increase in the efficacy of the thermohaline mixing. Recent simulations have suggested that even moderate magnetic fields could greatly enhance the efficiency of thermhaline mixing, but questions have arisen about the reilability of those predictions given (some simulation limitations). We therefore use the data from the SDSS-IV APOGEE survey of stars covering a range of masses and metallicities to put empirical constraints on the efficiency of mixing as a function of (R0- define) in order to constrain future theoretical investigations. We find that (stuff) and show that this would suggest (cool things).  
+\end{abstract}
+
+\keywords{stars: evolution, stars: mixing}
+
+\section{Introduction}
+\setcounter{footnote}{0}
+
+Standard models of stellar evolution predict that once the envelope of low-mass stars has reached its deepest extent on the red giant branch and homogenized the surface convection zone, the so called `first dredge up', the surface chemistry of that giant should remain relatively constant through the rest of the shell hydrogen burning phase. In contrast, observations of globular cluster (citecite) as well as low-metallicity field stars \citep{Gratton2000} noticed significant changes in the abundance ratios of elements known to be sensitive to mixing, including \c12c13, lithium, and [C/N]. These changes seemed to happen only above the red giant branch bump, where the hydrogen burning shell reaches the region where a mean molecular weight gradient was left behind by the deepest evolution of the surface convection zone. These mixing related changes seemed to be largest in the lowest metallicity stars (citecite) and many mechanisms were hard pressed to explain them (cite a bunch of things or maybe a review?). 
+
+\textbf{Adrian:} (enter the theory of thermohaline mixing. mumble mumble ocean. describe how it works. should happen in stars. Helium 3 stuff. maybe not enough citation. maybe magnets? scaling weird. Fraser et al. simulation stuff.  suggest maybe not as efficient? But size and even slope direction of trend unclear analytically/ from simulations. 
+
+One promising mechanism was identified by \citet{charbonnel_thermohaline_2007}: fingering convection, also known as thermohaline mixing. As the hydrogen-burning shell expands into the region that the recent dredge up has rendered chemically homogeneous, the $^3$He($^3$He, 2p)$^4$He reaction creates an inversion of the mean molecular weight $\mu$. While this inverse $\mu$ gradient is not enough to generate a Ledoux-unstable region, it does drive fingering convection. \textcolor{gray}{[OK here's an outline of some stuff that could be said here, but it's probably too much: Briefly summarize instability mechanism but refer readers to Garaud 2018 review. Then talk about Ulrich's model and Kippenhahn's model, which are the most widely used in stellar evolution models but can't be right, especially at large $R_0$ where they predict nontrivial mixing despite the instability shutting off. Mention Denissenkov's fix for this, then the successful Brown 2013 model, both of which have the very physically-reasonable implication that mixing $\to 0$ at large $R_0$. One consequence of these improved models is that thermohaline mixing appears totally insufficient for explaining observations. Bummer. Then \citet{harrington} (hereafter HG19) added magnetic fields to simulations at $R_0 = 1.45$ and $\mathrm{Pm} = 1$ and found dramatic increases in mixing. This is exciting because RGB stars only need magnetic fields on the order of a hundred Gauss to explain observations. Also exciting because (maybe only include this part if I end up publishing this in my in-prep paper) Harrington's model implies these $\mu$ gradients form fully convective layers for certain magnetic field strengths, which can have observational consequences in the AGB stage. Sadly, Fraser \& Garaud have shown that the HG19 model significantly over-predicts mixing when compared to simulations for $\mathrm{Pm} < 1$ -- a ubiquitous feature of these plasmas -- and \textit{especially so for large $R_0$}. While simulations show mixing decreases with decreased $\mathrm{Pm}$ or increased $R_0$, the HG19 model (which does not included $\mathrm{Pm}$ as a parameter but it is readily added) predicts mixing is essentially unaffected by decreased $\mathrm{Pm}$ and can stay constant or even increase as $R_0$ increases. (Maybe also say that it predicts mixing $\to \infty$ as $B_0 \to \infty$ which is unphysical.) However, by necessity due to limitations of computing resources, these simulations only explored $\mathrm{Pr} \sim 10^{-1}$, whereas these regions of RGB stars feature $\mathrm{Pr} \sim 10^{-6}$. Thus, it is unclear if the disagreements between the HG19 model and simulations, especially at large $R_0$, are due to failings of the HG19 model, or due to aspects of thermohaline mixing at $\mathrm{Pr} \sim 10^{-1}$, and thus perhaps the realistic scenario does in fact feature these strange trends in mixing vs $R_0$, but you can only see those trends at really really low $\mathrm{Pr}$. Let's see if we can get an idea via observational constraints!]}
+
+\textbf{Adrian/Meridith:} Models predict efficiency should scale with R0 (define) (explain why). This can be calculated in 1D simulations (cite Matteo?). in order to compare to theoretical sims. it depends on both He3 abundance and (the other thing). 
+
+In this paper, we therefore show the possible/proposed dependencies of magnetic thermohaline mixing as a function of R0 in simulations. We use one dimensional stellar evolution models to estimate the range of R0s present in real stars as a function of stellar mass and metallicity, and we use measurements of the amount of mixing in these stars from observations to compare to the predictions of the simulations. 
+
+
+\section{Parameterized Thermohaline Models}
+\label{sec:parameterizations}
+\input{parameterizations}
+
+https://www.overleaf.com/project/617b3cb8a0b9ee4a8f5db5fb
+\section{1D calculations of stellar R0:Meridith}\label{sec:1D}
+How is this done. math. any tricks related to extracting these things from MESA. averaging etc. cite previous work.
+
+make plot of mass versus metallicity color coded by R0 at the RGB bump.
+
+
+To make Adrian happy: run models and extract the fluid parameters at various time steps (onset of thermohaline, when thermohaline touches scz for the first time, all timesteps in between). How do the fluid parameters and change at these various timesteps. how do the ratios between different models depend on which timesteps you choose (hopefully not at all). Also run at different thermohaline proscriptions. Does that matter? Assuming it isn't grossly awful, proceed to the next step.
+
+
+\section{Observed Mixing Signatures} \label{sec:obs}
+On the upper giant branch, near the location of the red giant branch bump, there is an observed episode of mixing whose efficiency is observed to depend on the inital massa nd metallicity of the star \citep[e.g.][]{Gratton2000}. This has been assumed to related to thermohaline mixing (see citecite) but this has been disputed for both theoretical (citecite) and observational reasons \citep{TayarJoyce2022} (citecite). Recently, modern spectroscopic surveys have started collecting measurements of mixing diagnostics for large samples of stars whose masses are also well constrained, making it possible to compare the observed trends of mixing to the predictions of the variety of theoretical models discussed above (Section \ref{sec:parameterizations}), using one dimensional stellar evolution models to estimate the relevant fluid parameters of these stars given their masses and metallicities (Section \ref{sec:1D}). 
+
+We choose for this work to use the carbon-to-nitrogen ratios measured from the Apache Point Galactic Evolution Experiment \citep[APOGEE, ][]{}. APOGEE is a Sloan Digital Sky Survey III and IV \citep{Blanton2017} project using the 2.5 meter Sloan Telescope \citep{Gunn2006} and the APOGEE spectrograph \citep{Wilson2019} to obtain medium resolution (R $\sim$ 22,500) spectra of large numbers of stars across the galaxy \citep{Zasowski2017, Beaton2021,?}. These spectra are homogeneously reduced and analyzed using the ASPCAP pipeline \citep{Nidever2015, Zamora2015, GarciaPerez2016} and then the resulting stellar parameters are then calibrated using asteroseismic, cluster, and field data \citep{Holtzman2015,Holtzman2018, Jonsson2020}. We choose to use the APOGEE data because this calibration work has already been done and asteroseismology has been used to estimate stellar masses in a way that has been translated across the survey, although we acknowledge that similar work could likely be done with, for example, the lithium abundances measured by the GALAH survey \citep{buder2019} or the \ctwelvecthirteed data estimated from the APOGEE data using the BACCHUS (citecite) pipeline (citecite). 
+
+To estimate the amount of mixing in these stars from thermohaline effects, which should trace the Neussel number (Nu) described above, we follow the work of \citet{Shetrone2019} to estimate the drop in [C/N] just above the red giant branch bump. 
+
+
+Using the observed data from DR16 APOKASC (or cite Shetrone 2019 if that's enough) describe pre-bump ID, bump ID, post bump range. 
+
+make same plot of mass versus metallicity, color code by amount of mixing (delta [C/N] ) 
+
+make plot of delta [C/N] versus R0(1D), color code observed binned points by mass of the star
+
+note that the scatter is also important here- if the mixing actually depends on B field, and that depends randomly on the star (or on the stellar M/Z combo on average), then stars of the same R0 should have a range of mixi-ness. If R0 is the only parameter that matters, then mixing should strongly correlate with R0 with only minimal/ observational measurement scatter. 
+
+\section{Discussion}
+
+Thermohaline mixing has long been though to be a good candidate to explain the evolution of the surface chemistry of low-mass upper red giant branch stars. We show here that
+
+\begin{itemize}
+    \item mixing rates should strongly depend on the balance of (R0- redefine)
+    
+    \item stellar evolution models suggest that R0 should vary as a function of mass and metallicity. The real range covered in low-mass upper RGB stars is (a lot/ a little) compared to the range of simulations that have been done. These stellar evolution models suggest that R0 should depend strongly on composition and only weakly on stellar mass
+    
+    \item observations suggest that the amound of mixing is/is not strongly correlated with R0 as predicted in 3D. Observations indicate that as R0 increases, the mixing rate (increases/decreases) consistent with (cite simulations) but not (cite other simulations)
+    
+    \item this suggests that (things about 3D models)
+    
+    \item magnetized thermohaline is/is not a good predictive theory for mixing in low-mass upper RGB stars
+\end{itemize}
+    
+    If this is the case, should use this theory to predict cool stuff for lithium rich star production, mass transfer systems, etc. 
+
+
+
+
+
+%FIGURE omgcomp---------------------------------------------------
+\begin{figure}[!htb]
+\begin{center}
+\includegraphics[width=9cm,clip=true, trim=0.5in 0in 0in 0in]{./Figs/protversusloggmodelpmmPYboth.eps}%[width=9cm, clip=true, trim=1in 1in 1in 1in]{./Figs/omgcomp.eps}
+\caption{The measured core rotation rates for the stars in our sample as a function of gravity compared to the predictions of our solid body model (blue) and our model with a moderately differentially convection zone (pink), showing that these models provide limits on the allowable amount of radial differential rotation in the surface convection zone.}
+%There seems to be some moderate evidence of core-envelope recoupling as the stars evolve on the secondary clump, although more measurements of evolved stars with slowly rotating surfaces would strengthen this conclusion.} %\textbf{mark a line for the selection effect?} }
+\label{Fig:bothmodels}
+\end{center}
+\end{figure}
+%FIGURE omgcomp---------------------------------------------------
+
+
+\begin{acknowledgements}
+
+ Support for this work was provided by NASA through the NASA Hubble Fellowship grant No.51424 awarded by the Space Telescope Science Institute, which is operated by the Association of Universities for Research in Astronomy, Inc., for NASA, under contract NAS5-26555.
+
+
+\end{acknowledgements}
+
+\software{Astropy \citep{Astropy,Astropy_2018}, Matplotlib \citep{Matplotlib}, NumPy \citep{numpy}, SciPy \citep{2020SciPy-NMeth}}
+
+\facilities{Du Pont (APOGEE), Sloan (APOGEE)} 
+
+
+\bibliographystyle{aasjournal}
+\bibliography{ms, library, library2, thermohaline}
+
+\end{document}
