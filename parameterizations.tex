@@ -1,10 +1,37 @@
-\textbf{Evan}: Fill this in better.
+\textbf{TODO:} Clean up text and symbols throughout. Make everything a Nu or a D consistently.
 
-The model in mesa \citep{mesa2} is \citet{ulrich_1972, kippenhahn_etal_1980}.
+The density ratio is defined \citep{ulrich_1972}
+\begin{equation}
+    R_\rho = \frac{\nabla_T - \nabla_{\rm{ad}}}{{\nabla_\mu}},
+\end{equation}
+where $\nabla_T$ is the logarithmic temperature gradient, $\nabla_{\rm{ad}}$ is its adiabatic value, and $\nabla_\mu$ is the Ledoux composition gradient term.
 
-An empirical fit to simulations comes from \citet{traxler_etal_2011}.
+The default thermohaline mixing model in the MESA software instrument \citep{mesa2} was originally derived by \citet{ulrich_1972, kippenhahn_etal_1980}.
+Thermohaline mixing is treated as a diffusion process, with a diffusion coefficient
+\begin{equation}
+    D_{\rm{th}} = \alpha_{\rm{th}} \frac{3 K}{2\rho C_P}R_{\rho}^{-1}.
+    \label{eqn:kipp_model}
+\end{equation}
+Here, $\alpha_{\rm{th}}$ is a dimensionless efficiency parameter, $K$ is the radiative conductivity, $\rho$ is the density, and $C_P$ is the specific heat at constant pressure. 
 
-A semi-analytical model that can be derived from first principles with free parameters that are fit to data from simulations \citet{brown_etal_2013}.
+\citet{traxler_etal_2011} derive a mixing law by fitting a function to a large set of simulations.
+They define the reduce density ratio, $r \equiv (R_0 - 1)/(\tau^{-1} - 1)$, where $\tau = \kappa_\mu/\kappa_T$ is the ratio of compositional to thermal diffusivity.
+They find that
+\begin{equation}
+    \mathrm{Nu}_{\rm{th}} - 1 = \sqrt{\frac{\mathrm{Pr}}{\tau}}\left(a e^{-br}[1 - r]^c\right),
+    \label{eqn:trax_model}
+\end{equation}
+where $\mathrm{Pr} = \nu / \kappa_T$ with $\nu$ the viscosity, and they find $a = 101 \pm 1$, $b = 3.6 \pm 0.3$, and $c = 1.1 \pm 0.1$.
+The turbulent compositional diffusivity is $D_{\rm{th}} = (\mathrm{Nu}_{\rm{th}} - 1)\kappa_\mu$.
+
+
+\citet{brown_etal_2013} note that the model in Eqn.~\ref{eqn:trax_model} performs well at high $R_\rho$, but underestimates mixing at low $R_\rho$, particularly in the stellar regime of low Pr and $\tau$.
+They develop a semi-analytical model for thermohaline mixing,
+\begin{equation}
+    \mathrm{Nu}_{\rm{th}} - 1 = C^2\frac{\lambda^2}{\tau l^2(\lambda + \tau l^2)},
+\end{equation}
+where $\lambda$ is the growth rate of the fastest growing linearly unstable mode, $l$ is its horizontal wavenumber, and $C \approx 7$ is a universal constant which they fit to simulation data.
+Obtaining $\lambda$ and $l$ requires solving a cubic and quadratic equation (their Eqns.~19 and 20).
 
 These new implementations are used in \citep{bauer_bildsten_2019} and other works.
 
