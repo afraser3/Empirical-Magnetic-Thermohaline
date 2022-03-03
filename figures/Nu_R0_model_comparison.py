@@ -4,6 +4,10 @@ from matplotlib import pyplot as plt
 
 
 def rfromR(R0, tau):
+    """
+    Calculates the "reduced density ratio" r from the actual density ratio R0.
+    See Brown et al. 2013 Eq. 11
+    """
     return (R0 - 1.0) / (-1.0 + 1.0 / tau)
 
 
@@ -23,6 +27,9 @@ def lamguess(pr, tau, R0):
 
 
 def k2guess(pr, tau, R0):
+    """
+    Guesses the wavenumber (squared) of the fastest-growing mode, see the docstring for lamguess above
+    """
     r = rfromR(R0, tau)
     if r < tau:
         return (1.0 + tau / pr) ** (-0.5) - np.sqrt(pr) * (1.0 + (tau / pr) * (1.0 + tau / pr) ** (-2.0))
@@ -34,6 +41,10 @@ def k2guess(pr, tau, R0):
 
 
 def eq1(lam, k2, pr, tau, R0):
+    """
+    This function, as well as the next three functions (eq2, fun, and jac) are needed by gaml2max for calculating the
+    fastest-growing mode's growth rate and wavenumber according to Sec. 4.1 of Brown et al. 2013
+    """
     b2 = k2 * (1.0 + pr + tau)
     b1 = k2 ** 2.0 * (tau * pr + pr + tau) + pr * (1.0 - 1.0 / R0)
     b0 = k2 ** 3.0 * tau * pr + k2 * pr * (tau - 1.0 / R0)
