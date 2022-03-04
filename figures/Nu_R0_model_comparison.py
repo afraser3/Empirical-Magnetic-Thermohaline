@@ -223,18 +223,27 @@ def NuC_Traxler_model(pr, tau, R0):
     return 1 + np.sqrt(pr/tau)*g_Traxler
 
 
+def NuC_Kippenhahn_model(tau, R0, cp):
+    return 1.0 + cp/(tau*R0)
+
+
+
 Pr = 1e-6
 tau = 1e-6
 # Do we want to plot Nu vs R0 or r?
 R0s = np.linspace(10.0, 1.0/tau, endpoint=False)
 NuC_Traxler = [NuC_Traxler_model(Pr, tau, r0) for r0 in R0s]
 NuC_Brown = [NuC_Brown_model(Pr, tau, r0) for r0 in R0s]
+NuC_Kippenhahn_Cp1 = [NuC_Kippenhahn_model(tau, r0, 12.0) for r0 in R0s]
+NuC_Kippenhahn_Cp2 = [NuC_Kippenhahn_model(tau, r0, 1000.0) for r0 in R0s]
 
 plt.semilogy(R0s, NuC_Traxler, label='Traxler model')
 plt.semilogy(R0s, NuC_Brown, label='Brown model')
+plt.semilogy(R0s, NuC_Kippenhahn_Cp1, label=r'Kippenhahn model, $C_p = 12$')
+plt.semilogy(R0s, NuC_Kippenhahn_Cp2, label=r'Kippenhahn model, $C_p = 1000$')
 plt.xlabel(r'$R_0$')
 plt.ylabel(r'$\mathrm{Nu}_\mu$')
 plt.xlim((10.0, 1.0/tau))
 plt.legend()
-plt.savefig('Traxler_brown_comparison.pdf')
+plt.savefig('Nu_models_comparison.pdf')
 plt.show()
