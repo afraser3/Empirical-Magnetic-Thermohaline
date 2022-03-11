@@ -238,6 +238,17 @@ NuC_Brown = np.array([NuC_Brown_model(Pr, tau, r0) for r0 in R0s])
 NuC_Kippenhahn_Cp1 = NuC_Kippenhahn_model(tau, R0s, 8.0)
 NuC_Kippenhahn_Cp2 = NuC_Kippenhahn_model(tau, R0s, 700)
 
+HB1 = 1e-11
+HB2 = 1.0
+wfs_HG19_HB1 = [w_f_HG19(Pr, tau, r0, HB1).root for r0 in R0s]
+NuCs_HG19_HB1 = np.zeros_like(wfs_HG19_HB1)
+#wfs_HG19_HB2 = [w_f_HG19(Pr, tau, r0, HB2).root for r0 in R0s]
+#NuCs_HG19_HB2 = np.zeros_like(wfs_HG19_HB2)
+for i in range(len(wfs_HG19_HB1)):
+    lamhat, l2hat = gaml2max(Pr, tau, R0s[i])
+    NuCs_HG19_HB1[i] = NuC_from_w(tau, wfs_HG19_HB1[i], lamhat, l2hat)
+    #NuCs_HG19_HB2[i] = NuC_from_w(tau, wfs_HG19_HB2[i], lamhat, l2hat)
+
 golden_ratio = (1+np.sqrt(5))/2
 figure = plt.figure(figsize=(3.25, 3.25/golden_ratio))
 
@@ -251,11 +262,13 @@ plt.semilogy(rs, NuC_Traxler-1, label='Traxler model')
 plt.semilogy(rs, NuC_Brown-1, label='Brown model')
 plt.semilogy(rs, NuC_Kippenhahn_Cp1-1, label=r'Kippenhahn model, $\alpha_{\rm{th}} = 8$')
 plt.semilogy(rs, NuC_Kippenhahn_Cp2-1, label=r'Kippenhahn model, $\alpha_{\rm{th}} = 700$')
+plt.semilogy(rs, NuCs_HG19_HB1-1, label=r'HG19 model, $H_B = 10^{-11}$')
+#plt.semilogy(rs, NuCs_HG19_HB2-1, label=r'HG19 model, $H_B = 1$')
 plt.xlim(0, 1)
 plt.xlabel(r'$r$')
 plt.ylabel(r'$D_{\rm{th}}/\kappa_\mu$')
-plt.ylim(1e-4, 1e6)
-plt.legend(fontsize=8, frameon=False)
+#plt.ylim(1e-4, 1e6)
+plt.legend(fontsize=6, frameon=False)
 plt.savefig('Nu_models_comparison.pdf', bbox_inches='tight', dpi=400)
 plt.savefig('Nu_models_comparison.png', bbox_inches='tight', dpi=400)
 #plt.show()
