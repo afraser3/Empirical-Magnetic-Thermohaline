@@ -1,6 +1,7 @@
 import numpy as np
 from scipy import optimize as opt
 from matplotlib import pyplot as plt
+plt.style.use('apj.mplstyle')
 
 
 def rfromR(R0, tau):
@@ -223,27 +224,38 @@ def NuC_Traxler_model(pr, tau, R0):
     return 1 + np.sqrt(pr/tau)*g_Traxler
 
 
-def NuC_Kippenhahn_model(tau, R0, cp):
-    return 1.0 + cp/(tau*R0)
+def NuC_Kippenhahn_model(tau, R0, alpha_th):
+    return 1.0 + (3/2)*alpha_th/(tau*R0)
 
 
 
 Pr = 1e-6
 tau = 1e-6
 # Do we want to plot Nu vs R0 or r?
-R0s = np.linspace(10.0, 1.0/tau, endpoint=False)
-NuC_Traxler = [NuC_Traxler_model(Pr, tau, r0) for r0 in R0s]
-NuC_Brown = [NuC_Brown_model(Pr, tau, r0) for r0 in R0s]
-NuC_Kippenhahn_Cp1 = [NuC_Kippenhahn_model(tau, r0, 12.0) for r0 in R0s]
-NuC_Kippenhahn_Cp2 = [NuC_Kippenhahn_model(tau, r0, 1000.0) for r0 in R0s]
+R0s = np.concatenate((np.logspace(-5, np.log10(0.1/tau), 100), np.linspace(0.1/tau, 1/tau, 1000, endpoint=False)))
+NuC_Traxler = NuC_Traxler_model(Pr, tau, R0s)
+NuC_Brown = np.array([NuC_Brown_model(Pr, tau, r0) for r0 in R0s])
+NuC_Kippenhahn_Cp1 = NuC_Kippenhahn_model(tau, R0s, 8.0)
+NuC_Kippenhahn_Cp2 = NuC_Kippenhahn_model(tau, R0s, 700)
 
-plt.semilogy(R0s, NuC_Traxler, label='Traxler model')
-plt.semilogy(R0s, NuC_Brown, label='Brown model')
-plt.semilogy(R0s, NuC_Kippenhahn_Cp1, label=r'Kippenhahn model, $C_p = 12$')
-plt.semilogy(R0s, NuC_Kippenhahn_Cp2, label=r'Kippenhahn model, $C_p = 1000$')
-plt.xlabel(r'$R_0$')
-plt.ylabel(r'$\mathrm{Nu}_\mu$')
-plt.xlim((10.0, 1.0/tau))
-plt.legend()
-plt.savefig('Nu_models_comparison.pdf')
-plt.show()
+golden_ratio = (1+np.sqrt(5))/2
+figure = plt.figure(figsize=(3.25, 3.25/golden_ratio))
+
+rs = rfromR(R0s, tau)
+#plt.semilogy(R0s, NuC_Traxler-1, label='Traxler model')
+#plt.semilogy(R0s, NuC_Brown-1, label='Brown model')
+#plt.semilogy(R0s, NuC_Kippenhahn_Cp1-1, label=r'Kippenhahn model, $\alpha_{\rm{th}} = 8$')
+#plt.semilogy(R0s, NuC_Kippenhahn_Cp2-1, label=r'Kippenhahn model, $\alpha_{\rm{th}} = 700$')
+#plt.xlim((10.0, 1.0/tau))
+plt.semilogy(rs, NuC_Traxler-1, label='Traxler model')
+plt.semilogy(rs, NuC_Brown-1, label='Brown model')
+plt.semilogy(rs, NuC_Kippenhahn_Cp1-1, label=r'Kippenhahn model, $\alpha_{\rm{th}} = 8$')
+plt.semilogy(rs, NuC_Kippenhahn_Cp2-1, label=r'Kippenhahn model, $\alpha_{\rm{th}} = 700$')
+plt.xlim(0, 1)
+plt.xlabel(r'$r$')
+plt.ylabel(r'$D_{\rm{th}}/\kappa_\mu$')
+plt.ylim(1e-4, 1e6)
+plt.legend(fontsize=8, frameon=False)
+plt.savefig('Nu_models_comparison.pdf', bbox_inches='tight', dpi=400)
+plt.savefig('Nu_models_comparison.png', bbox_inches='tight', dpi=400)
+#plt.show()
