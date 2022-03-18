@@ -1,0 +1,138 @@
+! inlist_thermohaline
+
+&star_job
+      show_log_description_at_start = .false.
+
+      profile_columns_file = 'profile_columns_thermohaline.list'
+      history_columns_file = 'history_columns_thermohaline.list'
+
+      load_saved_model = .false.
+      save_model_when_terminate = .true.
+      save_model_filename  = 'thermohaline_Brown_Garaud_Stellmach_13_coeff1.0e+00_alpha1.6000_Z0.01051793_M1.1_no-rot-minDmix.mod'
+
+      create_pre_main_sequence_model = .true.
+      pre_ms_relax_to_start_radiative_core = .false.
+      pre_ms_T_c = 5d5
+
+      write_profile_when_terminate = .true.
+      filename_for_profile_when_terminate  = 'thermohaline_Brown_Garaud_Stellmach_13_coeff1.0e+00_alpha1.6000_Z0.01051793_M1.1_no-rot-minDmix.profile.data'
+
+
+!! !! MJoyce physics additions
+      change_net = .true.
+      new_net_name= 'pp_extras.net' 
+!! ------------------------------------
+
+      set_initial_cumulative_energy_error = .true.
+      new_cumulative_energy_error = 0d0
+
+   !ABUNDANCES
+      initial_zfracs = 3 
+/ ! end of star_job namelist
+
+&eos
+
+/ ! end of eos namelist
+
+&kap
+      Zbase  = 0.01051793
+
+      kap_file_prefix = 'gs98'
+
+/ ! end of kap namelist
+
+&controls
+      
+         x_logical_ctrl(2) = .false. !.false.
+
+         star_history_name  = 'history_Brown_Garaud_Stellmach_13_coeff1.0e+00_alpha1.6000_Z0.01051793_M1.1_no-rot-minDmix.data'
+         profile_data_prefix  = 'thermohaline_Brown_Garaud_Stellmach_13_coeff1.0e+00_alpha1.6000_Z0.01051793_M1.1_no-rot-minDmix.profile'
+         profiles_index_name  = 'thermohaline_Brown_Garaud_Stellmach_13_coeff1.0e+00_alpha1.6000_Z0.01051793_M1.1_no-rot-minDmix.profiles.index'
+
+         num_trace_history_values = 2
+         trace_history_value_name(1) = 'rel_E_err'
+         trace_history_value_name(2) = 'log_rel_run_E_err'
+
+         initial_mass  = 1.1
+         initial_z  = 0.01051793
+         initial_y  = 0.26262137
+
+         mixing_D_limit_for_log = 1d4
+      
+         use_Ledoux_criterion = .true.
+         alpha_semiconvection = 4d-2
+                  
+         thermohaline_coeff  = 1.0000000000
+         thermohaline_option  = 'Brown_Garaud_Stellmach_13'
+
+         varcontrol_target = 1d-4 !Can change to 1d-3 if getting convergence issues
+         dX_mix_dist_limit = 1d-4 
+         
+         omega_function_weight = 20
+
+         am_nu_visc_factor = 0
+         am_D_mix_factor = 0.0333333333333333d00
+         D_DSI_factor = 0
+         D_SH_factor = 1
+         D_SSI_factor = 1
+         D_ES_factor = 1
+         D_GSF_factor = 1
+         D_ST_factor = 1
+         
+         mdot_omega_power = 0.43
+
+         clip_D_limit = 10 ! zero mixing diffusion coeffs that are smaller than this
+         
+         xa_scale = 1d-5
+         
+         mass_change_full_on_dt = 1d7 ! (seconds)
+         mass_change_full_off_dt = 1d6 ! (seconds)
+
+         mixing_length_alpha = 1.6
+
+         T_mix_limit = 1d4
+
+         photo_interval = 100
+         profile_interval = 1 !100
+         history_interval = 1
+         terminal_interval = 10
+         write_header_frequency = 5
+         max_num_profile_models = -1 !2000
+
+         num_trace_history_values = 1 
+         trace_history_value_name(1) = 'log_g'
+
+         min_timestep_limit = -1 !1d-6
+         max_allowed_nz = 100000000 !800
+
+         mesh_delta_coeff = 0.8
+         time_delta_coeff = 0.5
+
+
+         !!! New parameters that Matteo thinks fix everything
+         !!! Need to set min_D_mix small or else main-sequence blows up
+         set_min_D_mix = .true.
+         min_D_mix = 1d-5
+
+         !!! stop based on log g value
+         x_ctrl(12) = 2.00 !log_g termination value
+         x_ctrl(13) = 3.00 !log_g value to start outputs
+
+        !!! meshdeltacoeff (15) and timedeltacoeff (16) and varcontroltarget (17) for post-MS
+        x_ctrl(15)  = 0.5
+        x_ctrl(16)  = 0.1
+        x_ctrl(17)  = 1d-3
+
+        !!! optional start and end times for output 
+        x_ctrl(20) = 0
+        x_ctrl(21) = 1d99
+
+
+
+/ ! end of controls namelist
+
+
+&pgstar
+             
+      
+/ ! end of pgstar namelist
