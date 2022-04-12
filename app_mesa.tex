@@ -1,0 +1,53 @@
+The MESA EOS is a blend of the OPAL \citep{Rogers2002}, SCVH
+\citep{Saumon1995}, FreeEOS \citep{Irwin2004}, HELM \citep{Timmes2000},
+PC \citep{Potekhin2010}, and Skye \citep{Jermyn2021} EOSes.
+
+Radiative opacities are primarily from OPAL \citep{Iglesias1993,
+Iglesias1996}, with low-temperature data from \citet{Ferguson2005}
+and the high-temperature, Compton-scattering dominated regime by
+\citet{Poutanen2017}.  Electron conduction opacities are from
+\citet{Cassisi2007}.
+
+Nuclear reaction rates are from JINA REACLIB \citep{Cyburt2010}, NACRE \citep{Angulo1999} and
+additional tabulated weak reaction rates \citet{Fuller1985, Oda1994,
+Langanke2000}.  Screening is included via the prescription of \citet{Chugunov2007}.
+Thermal neutrino loss rates are from \citet{Itoh1996}.
+
+We create 1D stellar models and evolve them from the pre-main sequence until roughly the end of hydrogen shell burning.
+We study stellar masses between 0.9 and 1.7 $M_{\odot}$ in steps of $0.2 M_{\odot}$.
+We study metallicities [Fe/H] ranging from -1.4 to 0.4 in steps of 0.2.
+To convert from metallicity units to MESA input $Y$ and $Z$ units, we assume a linear helium enrichment law \citep[per e.g.,][sec 3.1]{choi2016} where we assume a big-bang $Y_p = 0.2485$ and $\Delta Y / \Delta Z = 1.3426$ according to table 1 of \citet{tayar_etal_2022}.
+The algorithm we use to calculate $X$, $Y$, and $Z$ from these values is identical to the one used in \url{https://github.com/aarondotter/initial_xa_calculator}; we use the opacity tables of \citet{GrevesseSauval1998} and [$\alpha$/Fe].
+The specific [Fe/H] to ($X$, $Y$, $Z$) conversions used here are shown in table~\ref{table:feh_to_z}.
+
+\begin{deluxetable}{c c c c}
+\tablehead{
+\colhead{[Fe/H]} & \colhead{$X$} & \colhead{$Y$} & \colhead{$Z$}
+}
+\decimals
+\startdata
+      0.400 & 0.66214302 & 0.29971262 & 0.03814436 \\
+      0.200 & 0.69253197 & 0.28229599 & 0.02517204 \\
+      0.000 & 0.71318414 & 0.27045974 & 0.01635613 \\
+     -0.200 & 0.72686070 & 0.26262137 & 0.01051793 \\
+     -0.400 & 0.73576323 & 0.25751912 & 0.00671765 \\
+     -0.600 & 0.74149343 & 0.25423501 & 0.00427157 \\
+     -0.800 & 0.74515509 & 0.25213642 & 0.00270849 \\
+     -1.000 & 0.74748410 & 0.25080161 & 0.00171429 \\
+     -1.200 & 0.74896112 & 0.24995509 & 0.00108379 \\
+     -1.400 & 0.74989606 & 0.24941926 & 0.00068468
+\enddata
+\begin{caption}
+    Mappings between $[$Fe/H$]$ values and MESA input values of $(X, Y, Z)$.
+    \label{table:feh_to_z}
+\end{caption}
+\end{deluxetable}
+
+
+{\color{red} Describe lines from inlist}
+
+\subsection{Resolution testing}
+We studied how varying the temporal and spatial resolution modifies the behavior of the thermohaline zone that develops between the burning shell and the convective envelop, and the results of these tests are summarized in TODO.
+For the suite of simulations presented in this paper, we increased the spatial and temporal resolution of our simulations by using a mesh delta coefficient of 0.8 and time delta coefficient of 0.5 for most of the star's evolution.
+After the main sequence once we measured $log g < 3$, we decreased the mesh delta coefficient to 0.5 and the time delta coefficient to 0.1; we found that this combination of temporal and spatial resolution produced high accuracy at reasonable computational cost.
+
