@@ -248,16 +248,16 @@ NuC_Kippenhahn_Cp2 = NuC_Kippenhahn_model(tau, R0s, 2.0)
 # NuC_Kippenhahn_Cp3 = NuC_Kippenhahn_model(tau, R0s, 80.0)
 NuC_Kippenhahn_Cp4 = NuC_Kippenhahn_model(tau, R0s, 700.0)
 
-HB1 = 1e-11
-HB2 = 1.0
+HB1 = 1e-7
+HB2 = 1e-6
 wfs_HG19_HB1 = [w_f_HG19(Pr, tau, r0, HB1).root for r0 in R0s]
 NuCs_HG19_HB1 = np.zeros_like(wfs_HG19_HB1)
-#wfs_HG19_HB2 = [w_f_HG19(Pr, tau, r0, HB2).root for r0 in R0s]
-#NuCs_HG19_HB2 = np.zeros_like(wfs_HG19_HB2)
+wfs_HG19_HB2 = [w_f_HG19(Pr, tau, r0, HB2).root for r0 in R0s]
+NuCs_HG19_HB2 = np.zeros_like(wfs_HG19_HB2)
 for i in range(len(wfs_HG19_HB1)):
     lamhat, l2hat = gaml2max(Pr, tau, R0s[i])
     NuCs_HG19_HB1[i] = NuC_from_w(tau, wfs_HG19_HB1[i], lamhat, l2hat)
-    #NuCs_HG19_HB2[i] = NuC_from_w(tau, wfs_HG19_HB2[i], lamhat, l2hat)
+    NuCs_HG19_HB2[i] = NuC_from_w(tau, wfs_HG19_HB2[i], lamhat, l2hat)
 
 golden_ratio = (1+np.sqrt(5))/2
 figure = plt.figure(figsize=(3.25, 3.25/golden_ratio))
@@ -274,8 +274,8 @@ plt.loglog(rs, NuC_Kippenhahn_Cp1-1, c=Dark2_4.mpl_colors[3], label=r'Kippenhahn
 plt.loglog(rs, NuC_Kippenhahn_Cp2-1, c=Dark2_4.mpl_colors[3])
 # plt.semilogy(rs, NuC_Kippenhahn_Cp3-1, c=Dark2_4.mpl_colors[3])
 plt.loglog(rs, NuC_Kippenhahn_Cp4-1, c=Dark2_4.mpl_colors[3])
-plt.loglog(rs, NuCs_HG19_HB1-1, c=Dark2_4.mpl_colors[2], label=r'HG19 ($H_B = 10^{-11}$)', lw=3, zorder=1)
-#plt.semilogy(rs, NuCs_HG19_HB2-1, label=r'HG19 model, $H_B = 1$')
+plt.loglog(rs, NuCs_HG19_HB1-1, c=Dark2_4.mpl_colors[2], label=r'HG19 ($H_B = 10^{-7}$)', lw=3, zorder=1)
+plt.loglog(rs, NuCs_HG19_HB2-1, c=Dark2_4.mpl_colors[3], label=r'HG19 ($H_B = 10^{-6}$)', lw=3, zorder=1)
 plt.xlim(1e-5, 1)
 plt.xlabel(r'$r$')
 plt.ylabel(r'$D_{\rm{th}}/\kappa_\mu$')
