@@ -76,12 +76,18 @@ Based on previous theoretical arguments in the literature, \citet{mesa2} suggest
 
 \textcolor{red}{[Adrian says please don't read past here]}
 
-\textcolor{red}{[Need to pick either $C_t$ or $\alpha_\rm{th}$ and just stick with it from here on out rather than bouncing back and forth]}
+\textcolor{red}{[Need to pick either $C_t$ or $\alpha_\mathrm{th}$ and just stick with it from here on out rather than bouncing back and forth]}
 
-While 1D stellar evolution models from \citet{charbonnel_thermohaline_2007} using $C_t = 1000$ \citep[consistent with the efficiency argued by][]{ulrich_1972}, reproduced trends that are consistent with observational data from \citet{Gratton2000}, these values were orders of magnitude larger than the efficiency of thermohaline mixing put forth by, e.g., \citet{kippenhahn_etal_1980}. This broad range of plausible efficiency parameters motivated the use of multidimensional simulations as a form of numerical experiment to more precisely estimate mixing efficiency. 
-While \citet{charbonnel_thermohaline_2007} found 
-\textcolor{red}{[Probably fine to drop all mention of Traxler since we don't engage with it at all. At this point it's just here for historical reasons.]} 
-\citet{traxler_etal_2011} derive a mixing law by fitting a function to a large set of simulations.
+\textcolor{red}{[Don't forget to note that Kippenhahn model sucks for not capturing $\Dth \to 0$ as $r \to 1$!]}
+
+\textcolor{red}{[Consider mentioning Denissenkov 2010 model]}
+
+While 1D stellar evolution models from \citet{charbonnel_thermohaline_2007} using $C_t = 1000$ \citep[consistent with the efficiency argued by][]{ulrich_1972} reproduced trends that are consistent with observational data from \citet{Gratton2000}, these values were orders of magnitude larger than the efficiency of thermohaline mixing put forth by, e.g., \citet{kippenhahn_etal_1980}. 
+As reviewed by [cite Garaud 2018], this broad range of plausible efficiency parameters motivated the use of multidimensional simulations by multiple groups as a form of numerical experiment to more precisely estimate mixing efficiency [cite Dennisenkov; Traxler a or b I forget]. 
+%\citet{traxler_etal_2011} and \citet{brown_etal_2013} performed 3D hydrodynamic simulations across a broad range of parameters and broadly found that the mixing efficiency parameter required in \citet{charbonnel_thermohaline_2007} to find agreement with observations was orders of magnitude larger than what is found in simulations, suggesting thermohaline mixing may be unable to explain observations of extra mixing.
+\citet{traxler_etal_2011} and \citet{brown_etal_2013} performed 3D hydrodynamic simulations across a broad range of parameters and developed mixing prescriptions that fit their simulations. 
+They found that mixing efficiency is most easily discussed in terms of $r$.
+\citet{traxler_etal_2011} derived a mixing law by fitting an analytic function to their simulations.
 They define the reduce density ratio, $r \equiv (R_0 - 1)/(\tau^{-1} - 1)$, where $\tau = \kappa_\mu/\kappa_T$ is the ratio of compositional to thermal diffusivity.
 They find that
 \begin{equation} \label{eqn:trax_model}
@@ -120,7 +126,7 @@ In this paper, we will determine if observations are capable of probing the diff
 \begin{figure}
     \centering
     \includegraphics[width=\columnwidth]{Nu_models_comparison.pdf}
-    \caption{\textcolor{red}{[Todo: We call this $\alpha_\rm{th}$, but I definitely used Eq.~\eqref{eq:Dth-kipp} and these are actually values of $C_t$ oops. The only difference is a factor of $2/3$. Will fix this.]}}
+    \caption{\textcolor{red}{[Todo: Write caption.]}}
     \label{fig:parameterization_compare}
 \end{figure}
 

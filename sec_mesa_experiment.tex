@@ -1,0 +1,14 @@
+We use MESA stable release version 21.12.21 to conduct numerical experiments of thermohaline mixing for metallicities ranging from [Fe/H] $= -1.4 to 0.4$ \textbf{(Z= blah to blah)} and masses from 0.9 to 1.7 $M_{\odot}$. We adopt the solar abundance scale of \citet{GrevesseSauval1998} and the corresponding opacities of \citet{IglesiasRogers1996}. We use an Eddington T-$\tau$ relation for the atmospheric surface boundary conditions.
+We adopt the mixing length theory (MLT) prescription of \citet{Cox1980} with a fixed value of $\alpha_{\text{MLT}}= 1.6$.  We use the Ledoux criterion for stability and neglect the effects of convective overshoot \citep{Ledoux}. We use the\verb|pp_extras.net| nuclear reaction network, which contains 12 isotopes 
+
+
+
+{\color{red} Evan describe the algorithm for going from mesa model to r value}.
+
+To measure r in mesa models we do the following:
+\begin{enumerate}
+    \item Include models where thermohaline mixing is identified within $m > 1.1 m_{\rm max}$, where $m_{\rm mas}$ is the mass coordinate where nuclear burning peaks.
+    \item Measure the radial extent of the zone which experiences thermohaline mixing $\Delta m = \mathrm{max}m_{\rm th} - \mathrm{min}m_{\rm th}$.
+    \item Measure the profile of $r = (R_0 - 1)/(\tau^{-1} - 1)$ within the thermohaline zone.
+    \item Take the volume average of $r$ over a subset of the thermohaline zone. We choose to take the measure of 1/3 of the zone by mass, offset by the bottom boundary by $0.1\Delta m$, such that we include the points where $\mathrm{min}m_{\rm th} + 0.1\Delta m < m \leq \mathrm{min}m_{\rm th} + (0.1 + 1/3)\Delta m$. We take the volume average to be $\sum_i r_i dV_i / \sum_i dV_i$ with $dV_i = 4\pi r_i^2 dr_i$.
+\end{enumerate}
