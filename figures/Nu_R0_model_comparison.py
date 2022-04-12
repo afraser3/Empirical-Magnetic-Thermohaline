@@ -13,6 +13,10 @@ def rfromR(R0, tau):
     return (R0 - 1.0) / (-1.0 + 1.0 / tau)
 
 
+def Rfromr(r, tau):
+    return 1.0 + r * (-1.0 + 1.0 / tau)
+
+
 def lamguess(pr, tau, R0):
     """
     Guesses lamda_FGM (growth rate of the fastest-growing mode) according to Brown et al. 2013 Appendix B
@@ -233,11 +237,16 @@ def NuC_Kippenhahn_model(tau, R0, alpha_th):
 Pr = 1e-6
 tau = 1e-6
 # Do we want to plot Nu vs R0 or r?
-R0s = np.concatenate((np.logspace(-5, np.log10(0.1/tau), 100), np.linspace(0.1/tau, 1/tau, 1000, endpoint=False)))
+# R0s = np.concatenate((np.logspace(-5, np.log10(0.1/tau), 100), np.linspace(0.1/tau, 1/tau, 1000, endpoint=False)))
+rs = np.logspace(-5, 0)
+R0s = Rfromr(rs, tau)
+
 NuC_Traxler = NuC_Traxler_model(Pr, tau, R0s)
 NuC_Brown = np.array([NuC_Brown_model(Pr, tau, r0) for r0 in R0s])
-NuC_Kippenhahn_Cp1 = NuC_Kippenhahn_model(tau, R0s, 8.0)
-NuC_Kippenhahn_Cp2 = NuC_Kippenhahn_model(tau, R0s, 700)
+NuC_Kippenhahn_Cp1 = NuC_Kippenhahn_model(tau, R0s, 0.1)
+NuC_Kippenhahn_Cp2 = NuC_Kippenhahn_model(tau, R0s, 2.0)
+# NuC_Kippenhahn_Cp3 = NuC_Kippenhahn_model(tau, R0s, 80.0)
+NuC_Kippenhahn_Cp4 = NuC_Kippenhahn_model(tau, R0s, 700.0)
 
 HB1 = 1e-11
 HB2 = 1.0
@@ -253,25 +262,29 @@ for i in range(len(wfs_HG19_HB1)):
 golden_ratio = (1+np.sqrt(5))/2
 figure = plt.figure(figsize=(3.25, 3.25/golden_ratio))
 
-rs = rfromR(R0s, tau)
+#rs = rfromR(R0s, tau)
 #plt.semilogy(R0s, NuC_Traxler-1, label='Traxler model')
 #plt.semilogy(R0s, NuC_Brown-1, label='Brown model')
 #plt.semilogy(R0s, NuC_Kippenhahn_Cp1-1, label=r'Kippenhahn model, $\alpha_{\rm{th}} = 8$')
 #plt.semilogy(R0s, NuC_Kippenhahn_Cp2-1, label=r'Kippenhahn model, $\alpha_{\rm{th}} = 700$')
 #plt.xlim((10.0, 1.0/tau))
-plt.semilogy(rs, NuC_Traxler-1, c=Dark2_4.mpl_colors[0], label='Traxler')
-plt.semilogy(rs, NuC_Brown-1,  c=Dark2_4.mpl_colors[1], label='Brown')
-plt.semilogy(rs, NuC_Kippenhahn_Cp1-1, c=Dark2_4.mpl_colors[3], label=r'Kippenhahn')
-plt.semilogy(rs, NuC_Kippenhahn_Cp2-1, c=Dark2_4.mpl_colors[3])
-plt.semilogy(rs, NuCs_HG19_HB1-1, c=Dark2_4.mpl_colors[2], label=r'HG19 ($H_B = 10^{-11}$)', lw=3, zorder=1)
+plt.loglog(rs, NuC_Traxler-1, c=Dark2_4.mpl_colors[0], label='Traxler')
+plt.loglog(rs, NuC_Brown-1,  c=Dark2_4.mpl_colors[1], label='Brown')
+plt.loglog(rs, NuC_Kippenhahn_Cp1-1, c=Dark2_4.mpl_colors[3], label=r'Kippenhahn')
+plt.loglog(rs, NuC_Kippenhahn_Cp2-1, c=Dark2_4.mpl_colors[3])
+# plt.semilogy(rs, NuC_Kippenhahn_Cp3-1, c=Dark2_4.mpl_colors[3])
+plt.loglog(rs, NuC_Kippenhahn_Cp4-1, c=Dark2_4.mpl_colors[3])
+plt.loglog(rs, NuCs_HG19_HB1-1, c=Dark2_4.mpl_colors[2], label=r'HG19 ($H_B = 10^{-11}$)', lw=3, zorder=1)
 #plt.semilogy(rs, NuCs_HG19_HB2-1, label=r'HG19 model, $H_B = 1$')
-plt.xlim(0, 1)
+plt.xlim(1e-5, 1)
 plt.xlabel(r'$r$')
 plt.ylabel(r'$D_{\rm{th}}/\kappa_\mu$')
 plt.ylim(1e-4, 1e8)
 plt.legend(fontsize=8, frameon=False, ncol=2)
-plt.text(x=0.99, y=NuC_Kippenhahn_Cp2[-1]*3, s=r'$\alpha_{\rm{th}} = 700$', color=Dark2_4.mpl_colors[3], fontsize=8, ha='right')
-plt.text(x=0.99, y=NuC_Kippenhahn_Cp1[-1]/8, s=r'$\alpha_{\rm{th}} = 8$', color=Dark2_4.mpl_colors[3], fontsize=8, ha='right')
+plt.text(x=0.99, y=NuC_Kippenhahn_Cp4[-1]*3, s=r'$\alpha_{\rm{th}} = 700$', color=Dark2_4.mpl_colors[3], fontsize=8, ha='right')
+# plt.text(x=0.99, y=NuC_Kippenhahn_Cp3[-1]*3, s=r'$\alpha_{\rm{th}} = 80$', color=Dark2_4.mpl_colors[3], fontsize=8, ha='right')
+plt.text(x=0.99, y=NuC_Kippenhahn_Cp2[-1]*3, s=r'$\alpha_{\rm{th}} = 2$', color=Dark2_4.mpl_colors[3], fontsize=8, ha='right')
+plt.text(x=0.99, y=NuC_Kippenhahn_Cp1[-1]/8, s=r'$\alpha_{\rm{th}} = 0.1$', color=Dark2_4.mpl_colors[3], fontsize=8, ha='right')
 plt.savefig('Nu_models_comparison.pdf', bbox_inches='tight', dpi=400)
 plt.savefig('Nu_models_comparison.png', bbox_inches='tight', dpi=400)
-#plt.show()
+plt.show()
