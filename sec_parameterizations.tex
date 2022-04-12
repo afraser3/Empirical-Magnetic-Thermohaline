@@ -63,7 +63,8 @@ Using arguments based on dimensional grounds and assumptions about the shape and
     \Dth = C_t \kappa_T R_0^{-1},
 \end{equation}
 \citep[see Eq.~(5) of][]{charbonnel_thermohaline_2007}
-where $C_t$ is a free parameter, with plausible values ranging from $C_t = 658$ \citep{ulrich_1972} to $C_t = 12$ \citep{kippenhahn_etal_1980}.
+where $C_t$ is a free parameter, with plausible values ranging from $C_t = 658$ \citep{ulrich_1972} to $C_t = 12$ \citep{kippenhahn_etal_1980}. 
+\citet{charbonnel_thermohaline_2007} used a value of $C_t = 1000$ in stellar evolution models and found chemical mixing trends that were broadly \textcolor{red}{[With some exceptions I think? Double check]} consistent with observational data from \citet{Gratton2000}.
 
 Equation \eqref{eq:Dth-kipp} is implemented in MESA as
 \begin{equation} \label{eq:Dth-kipp-MESA}
@@ -71,11 +72,13 @@ Equation \eqref{eq:Dth-kipp} is implemented in MESA as
 \end{equation}
 \citep[see Eq.~(14) of][]{mesa2}. 
 Here, $\alpha_{\rm{th}}$ is a dimensionless efficiency parameter, $K$ is the radiative conductivity, $\rho$ is the density, and $C_P$ is the specific heat at constant pressure. 
-Based on previous theoretical arguments in the literature, \citet{mesa2} suggested a plausible range of efficiency parameters as $1 \lesssim \alpha_{\rm{th}} \lesssim 667$, with a default value of $2$ \textcolor{red}{[Meridith rephrase the preceding sentence please]}. 
+Based on previous theoretical arguments in the literature, \citet{mesa2} suggested a plausible range of efficiency parameters as $1 \lesssim \alpha_{\rm{th}} \lesssim 667$ \textcolor{red}{[note: Cantiello and Langer claim this 667 value is equivalent to the $C_t = 1000$ value used by \citet{charbonnel_thermohaline_2007}]}, with a default value of $2$ \textcolor{red}{[Meridith rephrase the preceding sentence please]}. 
 
 \textcolor{red}{[Adrian says please don't read past here]}
 
-This broad range of plausible efficiency parameters motivated the use of multidimensional simulations as a form of numerical experiment to more precisely estimate mixing efficiency. 
+\textcolor{red}{[Need to pick either $C_t$ or $\alpha_\rm{th}$ and just stick with it from here on out rather than bouncing back and forth]}
+
+While 1D stellar evolution models from \citet{charbonnel_thermohaline_2007} using $C_t = 1000$ \citep[consistent with the efficiency argued by][]{ulrich_1972}, reproduced trends that are consistent with observational data from \citet{Gratton2000}, these values were orders of magnitude larger than the efficiency of thermohaline mixing put forth by, e.g., \citet{kippenhahn_etal_1980}. This broad range of plausible efficiency parameters motivated the use of multidimensional simulations as a form of numerical experiment to more precisely estimate mixing efficiency. 
 While \citet{charbonnel_thermohaline_2007} found 
 \textcolor{red}{[Probably fine to drop all mention of Traxler since we don't engage with it at all. At this point it's just here for historical reasons.]} 
 \citet{traxler_etal_2011} derive a mixing law by fitting a function to a large set of simulations.
@@ -117,7 +120,7 @@ In this paper, we will determine if observations are capable of probing the diff
 \begin{figure}
     \centering
     \includegraphics[width=\columnwidth]{Nu_models_comparison.pdf}
-    \caption{\textcolor{red}{[Todo: We call this $\alpha_\rm{th}$, but I definitely used Eq.~\eqref{eq:Dth-kipp} and these are actually values of $C_t$ oops.]}}
+    \caption{\textcolor{red}{[Todo: We call this $\alpha_\rm{th}$, but I definitely used Eq.~\eqref{eq:Dth-kipp} and these are actually values of $C_t$ oops. The only difference is a factor of $2/3$. Will fix this.]}}
     \label{fig:parameterization_compare}
 \end{figure}
 
