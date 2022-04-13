@@ -263,6 +263,7 @@ for i in range(len(wfs_HG19_HB1)):
 golden_ratio = (1+np.sqrt(5))/2
 figure = plt.figure(figsize=(3.25, 3.25/golden_ratio))
 
+#Deprecated lines
 #rs = rfromR(R0s, tau)
 #plt.semilogy(R0s, NuC_Traxler-1, label='Traxler model')
 #plt.semilogy(R0s, NuC_Brown-1, label='Brown model')
@@ -275,15 +276,18 @@ figure = plt.figure(figsize=(3.25, 3.25/golden_ratio))
 #plt.loglog(rs, NuC_Kippenhahn_Cp4-1, c=Dark2_4.mpl_colors[3])
 #plt.loglog(rs, NuCs_HG19_HB1-1, c=Dark2_4.mpl_colors[2], label=r'HG19 ($H_B = 10^{-7}$)', lw=3, zorder=1)
 
+#Plot nice background shading
 r_models_min = 1e-4
 r_models_max = 1e-3
-norm = matplotlib.colors.Normalize(vmin=np.log10(r_models_min), vmax=np.log10(r_models_max))
-sm = plt.cm.ScalarMappable(cmap='viridis', norm=norm)
-sm.set_array([])
-N = 100
+N = 1000
 color_spots = np.logspace(np.log10(r_models_min), np.log10(r_models_max), N)
-for i in range(N-1):
-    plt.fill_between([color_spots[i], color_spots[i+1]], [1e-10, 1e10], color=sm.to_rgba(np.log10(color_spots[i])), alpha=0.15, rasterized=True)
+y_spots = np.logspace(-10, 10, 2)
+
+yy, xx = np.meshgrid(y_spots, color_spots)
+color = np.log10(xx)
+plt.pcolormesh(xx, yy, color, vmin=np.log10(r_models_min), vmax=np.log10(r_models_max), cmap='viridis', alpha=0.5)
+
+#Plot lines
 plt.loglog(rs, NuC_Brown-1,  c=Dark2_4.mpl_colors[1], label='Brown 19', lw=2)
 plt.loglog(rs, NuC_Kippenhahn_Cp2-1, c=Dark2_4.mpl_colors[0], label=r'Kippenhahn ($\alpha_{\rm{th}} = 2$)', lw=2)
 plt.loglog(rs, NuCs_HG19_HB2-1, c=Dark2_4.mpl_colors[2], label=r'HG19 ($H_B = 10^{-6}$)', lw=2, zorder=1)
