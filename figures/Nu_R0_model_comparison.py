@@ -288,7 +288,7 @@ color = np.log10(xx)
 plt.pcolormesh(xx, yy, color, vmin=np.log10(r_models_min), vmax=np.log10(r_models_max), cmap='viridis', alpha=0.5)
 
 #Plot lines
-plt.loglog(rs, NuC_Brown-1,  c=Dark2_4.mpl_colors[1], label='Brown 19', lw=2)
+plt.loglog(rs, NuC_Brown-1,  c=Dark2_4.mpl_colors[1], label='Brown 13', lw=2)
 plt.loglog(rs, NuC_Kippenhahn_Cp2-1, c=Dark2_4.mpl_colors[0], label=r'Kippenhahn ($\alpha_{\rm{th}} = 2$)', lw=2)
 plt.loglog(rs, NuCs_HG19_HB2-1, c=Dark2_4.mpl_colors[2], label=r'HG19 ($H_B = 10^{-6}$)', lw=2, zorder=1)
 plt.xlim(1e-5, 1)

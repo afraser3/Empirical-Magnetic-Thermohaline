@@ -49,9 +49,9 @@ for i in range(4):
     kwargs = {'edgecolor' : 'k'}
     for m in range(len(M)):
         #        axs[k][j].scatter(np.log10(r[m]), mixing_shet[m], marker='s', color=sm.to_rgba(feh[m]), label='Shetrone', **kwargs)
-        #        axs[k][j].scatter(np.log10(r[m]), mixing_apk[m], marker='o', color=sm.to_rgba(feh[m]), label='APOGEE', **kwargs)
+        #        axs[k][j].scatter(np.log10(r[m]), mixing_apk[m], marker='o', color=sm.to_rgba(feh[m]), label='APOKASC', **kwargs)
         axs[k][j].scatter(r[m], mixing_shet[m], marker='s', color=sm.to_rgba(feh[m]), label='Shetrone', **kwargs)
-        axs[k][j].scatter(r[m], mixing_apk[m], marker='o', color=sm.to_rgba(feh[m]), label='APOGEE', **kwargs)
+        axs[k][j].scatter(r[m], mixing_apk[m], marker='o', color=sm.to_rgba(feh[m]), label='APOKASC', **kwargs)
         if i == 0 and m == 0:
             axs[k][j].legend(loc='center right', fontsize=8)
     axs[k][j].text(0.98, 0.98, tag, ha='right', va='top', transform=axs[k][j].transAxes, fontsize=9)

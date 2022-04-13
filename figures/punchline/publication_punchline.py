@@ -281,7 +281,7 @@ color = np.log10(xx)
 ax1.pcolormesh(xx, yy, color, vmin=np.log10(r_models_min), vmax=np.log10(r_models_max), cmap='viridis', alpha=0.5)
 
 #Plot lines
-ax1.loglog(rs, NuC_Brown-1,  c=Dark2_4.mpl_colors[1], label='Brown 19', lw=2)
+ax1.loglog(rs, NuC_Brown-1,  c=Dark2_4.mpl_colors[1], label='Brown 13', lw=2)
 ax1.loglog(rs, NuC_Kippenhahn_Cp2-1, c=Dark2_4.mpl_colors[0], label=r'Kippenhahn ($\alpha_{\rm{th}} = 2$)', lw=2)
 ax1.loglog(rs, NuCs_HG19_HB2-1, c=Dark2_4.mpl_colors[2], label=r'HG19 ($H_B = 10^{-6}$)', lw=2, zorder=1)
 ax1.set_xlim(1e-5, 1)
@@ -295,7 +295,7 @@ ax1.legend(fontsize=8, frameon=True)
 kwargs = {'edgecolor' : 'k'}
 for m in range(len(M)):
     ax2.scatter(r[m], mixing_shet[m], marker='s', color=sm.to_rgba(feh[m]), label='Shetrone', **kwargs)
-    ax2.scatter(r[m], mixing_apk[m], marker='o', color=sm.to_rgba(feh[m]), label='APOGEE', **kwargs)
+    ax2.scatter(r[m], mixing_apk[m], marker='o', color=sm.to_rgba(feh[m]), label='APOKASC', **kwargs)
     if m == 0:
         ax2.legend(loc='center right', fontsize=8)
 ax2.text(0.98, 0.98, 'Brown', ha='right', va='top', transform=ax2.transAxes, fontsize=9)
