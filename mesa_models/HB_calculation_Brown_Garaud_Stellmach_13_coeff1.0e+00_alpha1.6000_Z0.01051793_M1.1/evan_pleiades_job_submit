@@ -1,0 +1,40 @@
+#PBS -S /bin/bash
+#PBS -N mesa_thermohaline_Brown_Garaud_Stellmach_13_coeff1.0e+00_alpha1.6000_Z0.01051793_M1.1
+#PBS -l select=1:ncpus=28:mpiprocs=28:model=bro
+#PBS -l walltime=8:00:00
+#PBS -l site=needed=/home1+/nobackupp19+/nobackupp16/swbuild
+#PBS -j oe
+#PBS -q normal
+#PBS -W group_list=s2276
+
+
+export MESASDK_ROOT=/swbuild/eanders/mesasdk
+source "$MESASDK_ROOT/bin/mesasdk_init.sh"
+export MESA_DIR=/swbuild/eanders/mesa-r21.12.1
+export OMP_NUM_THREADS=28
+
+date
+./clean
+./mk
+./rn > run_output.txt.$PBS_JOBID
+date
+
+source /swbuild/eanders/miniconda3/etc/profile.d/conda.sh
+conda activate dedalus
+cd $PBS_O_WORKDIR
+
+python3 mesa_to_hdf5.py > join_hdf5.txt.$PBS_JOBID
+python3 hdf5_to_lite_hdf5.py > join_lite_hdf5.txt.$PBS_JOBID
+python3 get_fluid_parameters.py
+python3 find_r_vs_time.py
+
+date
+
+rm -rvf LOGS/ > remove_logs.txt.$PBS_JOBID
+
+../png2mp4.sh fluid_parameter_plots/ fluid_parameter_plots.mp4 30
+../png2mp4.sh figs_R0/R0_ figs_R0.mp4 30
+
+date
+
+

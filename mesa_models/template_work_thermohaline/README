@@ -1,0 +1,12 @@
+1. new_fluid_parameters.py makes the figures of all the things.
+2. inlist_project_temp is a good template for all inlists.
+   - starting line 152-153 (mesh - structural resolution; time - timestep)
+   - line 157 - min_D_mix parameters there might need to be messed with to achieve convergence.
+   - delete line 81
+   - use line 97 and 98 to iterate over mass and Z.
+   - Z can run from 2e-4 to 0.04.
+   - masses should be ~ 0.7 - 1.2-1.3
+   - There will be convergence problems at low Z and low mass (0.85 - 1.2 should be safe in mass, Z should be ok down to like 2e-3)
+3. MESA defaults are in $MESA_DIR/star/defaults. All those files can be copied locally to use different defaults. Inlist > local defaults > MESA defaults. Best practice to have them on hand.
+4. In &kap section, Zbase needs to be set to same value as initial_z in &controls.
+
