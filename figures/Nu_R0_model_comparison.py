@@ -1,5 +1,6 @@
 import numpy as np
 from scipy import optimize as opt
+import matplotlib
 from matplotlib import pyplot as plt
 from palettable.colorbrewer.qualitative import Dark2_4
 plt.style.use('apj.mplstyle')
@@ -268,23 +269,33 @@ figure = plt.figure(figsize=(3.25, 3.25/golden_ratio))
 #plt.semilogy(R0s, NuC_Kippenhahn_Cp1-1, label=r'Kippenhahn model, $\alpha_{\rm{th}} = 8$')
 #plt.semilogy(R0s, NuC_Kippenhahn_Cp2-1, label=r'Kippenhahn model, $\alpha_{\rm{th}} = 700$')
 #plt.xlim((10.0, 1.0/tau))
-plt.loglog(rs, NuC_Traxler-1, c=Dark2_4.mpl_colors[0], label='Traxler')
-plt.loglog(rs, NuC_Brown-1,  c=Dark2_4.mpl_colors[1], label='Brown')
-plt.loglog(rs, NuC_Kippenhahn_Cp1-1, c=Dark2_4.mpl_colors[3], label=r'Kippenhahn')
-plt.loglog(rs, NuC_Kippenhahn_Cp2-1, c=Dark2_4.mpl_colors[3])
+#plt.loglog(rs, NuC_Traxler-1, c=Dark2_4.mpl_colors[0], label='Traxler')
+#plt.loglog(rs, NuC_Kippenhahn_Cp1-1, c=Dark2_4.mpl_colors[3])
 # plt.semilogy(rs, NuC_Kippenhahn_Cp3-1, c=Dark2_4.mpl_colors[3])
-plt.loglog(rs, NuC_Kippenhahn_Cp4-1, c=Dark2_4.mpl_colors[3])
-plt.loglog(rs, NuCs_HG19_HB1-1, c=Dark2_4.mpl_colors[2], label=r'HG19 ($H_B = 10^{-7}$)', lw=3, zorder=1)
-plt.loglog(rs, NuCs_HG19_HB2-1, c=Dark2_4.mpl_colors[3], label=r'HG19 ($H_B = 10^{-6}$)', lw=3, zorder=1)
+#plt.loglog(rs, NuC_Kippenhahn_Cp4-1, c=Dark2_4.mpl_colors[3])
+#plt.loglog(rs, NuCs_HG19_HB1-1, c=Dark2_4.mpl_colors[2], label=r'HG19 ($H_B = 10^{-7}$)', lw=3, zorder=1)
+
+r_models_min = 1e-4
+r_models_max = 1e-3
+norm = matplotlib.colors.Normalize(vmin=np.log10(r_models_min), vmax=np.log10(r_models_max))
+sm = plt.cm.ScalarMappable(cmap='viridis', norm=norm)
+sm.set_array([])
+N = 100
+color_spots = np.logspace(np.log10(r_models_min), np.log10(r_models_max), N)
+for i in range(N-1):
+    plt.fill_between([color_spots[i], color_spots[i+1]], [1e-10, 1e10], color=sm.to_rgba(np.log10(color_spots[i])), alpha=0.15, rasterized=True)
+plt.loglog(rs, NuC_Brown-1,  c=Dark2_4.mpl_colors[1], label='Brown 19', lw=2)
+plt.loglog(rs, NuC_Kippenhahn_Cp2-1, c=Dark2_4.mpl_colors[0], label=r'Kippenhahn ($\alpha_{\rm{th}} = 2$)', lw=2)
+plt.loglog(rs, NuCs_HG19_HB2-1, c=Dark2_4.mpl_colors[2], label=r'HG19 ($H_B = 10^{-6}$)', lw=2, zorder=1)
 plt.xlim(1e-5, 1)
 plt.xlabel(r'$r$')
 plt.ylabel(r'$D_{\rm{th}}/\kappa_\mu$')
-plt.ylim(1e-4, 1e8)
-plt.legend(fontsize=8, frameon=False, ncol=2)
-plt.text(x=0.99, y=NuC_Kippenhahn_Cp4[-1]*3, s=r'$\alpha_{\rm{th}} = 700$', color=Dark2_4.mpl_colors[3], fontsize=8, ha='right')
+plt.ylim(1e-1, 1e7)
+plt.legend(fontsize=8, frameon=True)
+#plt.text(x=0.99, y=NuC_Kippenhahn_Cp4[-1]*3, s=r'$\alpha_{\rm{th}} = 700$', color=Dark2_4.mpl_colors[3], fontsize=8, ha='right')
 # plt.text(x=0.99, y=NuC_Kippenhahn_Cp3[-1]*3, s=r'$\alpha_{\rm{th}} = 80$', color=Dark2_4.mpl_colors[3], fontsize=8, ha='right')
-plt.text(x=0.99, y=NuC_Kippenhahn_Cp2[-1]*3, s=r'$\alpha_{\rm{th}} = 2$', color=Dark2_4.mpl_colors[3], fontsize=8, ha='right')
-plt.text(x=0.99, y=NuC_Kippenhahn_Cp1[-1]/8, s=r'$\alpha_{\rm{th}} = 0.1$', color=Dark2_4.mpl_colors[3], fontsize=8, ha='right')
+#plt.text(x=0.99, y=NuC_Kippenhahn_Cp2[-1]*3, s=r'$\alpha_{\rm{th}} = 2$', color=Dark2_4.mpl_colors[3], fontsize=8, ha='right')
+#plt.text(x=0.99, y=NuC_Kippenhahn_Cp1[-1]/8, s=r'$\alpha_{\rm{th}} = 0.1$', color=Dark2_4.mpl_colors[3], fontsize=8, ha='right')
 plt.savefig('Nu_models_comparison.pdf', bbox_inches='tight', dpi=400)
 plt.savefig('Nu_models_comparison.png', bbox_inches='tight', dpi=400)
 plt.show()
