@@ -61,21 +61,17 @@ The prescription Eq.~\eqref{eqn:brown_model} has since been used in \citep{bauer
 %\citet{harrington} build on the model of \citet{brown_etal_2013} by including the effects of initially uniform, vertical magnetic fields. 
 \citet{harrington} extended the work of \citet{brown_etal_2013} by performing 3D magnetohydrodynamic (MHD) simulations of thermohaline mixing at $r = 0.05$ with initially uniform, vertical magnetic fields of various strengths to approximate the effects of magnetic fields from external processes, e.g., a global dipole field or a large-scale magnetic field left by a dynamo process from the receding convective envelope \textcolor{red}{[TMI]}. 
 They found that magnetism increases mixing efficiency, sometimes dramatically.
-They developed a mixing prescription that accounts for this effect by building on the model of \citet{brown_etal_2013}, Eq.~\eqref{eqn:brown_model}.
-The strength of the magnetic field is introduced into their model through their parameter $H_B$, which is proportional to the square of the magnetic field strength and depends on other stellar structure variables \citep[see
-\begin{equation} \label{eq:HB}
-    H_B =
-\end{equation}
+They developed a mixing prescription that accounts for this effect by building on the model of \citet{brown_etal_2013}.
+The strength of the magnetic field is introduced into their model through their parameter $H_B$, which is proportional to the square of the magnetic field strength and depends on other stellar structure variables \citep[see Eq.~19 of][]{harrington}.
 Their mixing prescription is of the form
 \begin{equation} \label{eq:harrington_model}
     \Dth = \kappa_{\mu}K_B\frac{w_f^2}{\tau (\lambda + \tau l^2)},
 \end{equation}
-where $w_f$ is obtained by solving a quartic polynomial that includes the magnetic field strength. 
-This model reduces to Eq
-%Their Eqn.~32 provides an expression for $\hat{w}_f^2$ which depends on the magnitude of the magnitude field $B_0^2$.
-This expression has two asymptotic limits, in which $\hat{w}_f^2 \propto B_0^2$ when $B_0$ is large, and which reduces exactly to the model of \citet{brown_etal_2013} when $B_0$ is small.
-(this is a new model that is not yet implemented in MESA).
+where $w_f$ is obtained by solving a quartic polynomial that includes the magnetic field strength through $H_B$, and $K_B \simeq 1.24$ is directly related to the constant $C$ in Eq.~\eqref{eqn:brown_model}. 
 
+%For fixed diffusivities and background gradients, this model reduces to Eq.~\eqref{eqn:brown_model} for sufficiently small $H_B$
+This expression has two asymptotic limits, in which $\hat{w}_f^2 \propto B_0^2$ when $B_0$ is large, and which reduces exactly to the model of \citet{brown_etal_2013} when $B_0$ is small. 
+Note the threshold $B_0$ separating these limits depends on the same stellar structure variables that enter into $r$; thus, a given magnetic field strength might simultaneously be considered ``large" in one region of a star and ``small" in another.
 
 There has been other work regarding multi-D models of thermohaline mixing \citep{denissenkov_2010, denissenkov_merryfield_2011}, but 2D thermohaline behaves very differently from 3D thermohaline \citep{garaud_brummell_2015}, and so we do not consider that set of data in this work.
 
