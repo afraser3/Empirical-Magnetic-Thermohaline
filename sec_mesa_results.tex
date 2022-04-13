@@ -1,13 +1,5 @@
-%\section{1D calculations of stellar R0:Meridith}\label{sec:1D}
-% How is this done. math. any tricks related to extracting these things from MESA. averaging etc. cite previous work.
-
-% make plot of mass versus metallicity color coded by R0 at the RGB bump.
-
-
-% To make Adrian happy: run models and extract the fluid parameters at various time steps (onset of thermohaline, when thermohaline touches scz for the first time, all timesteps in between). How do the fluid parameters and change at these various timesteps. how do the ratios between different models depend on which timesteps you choose (hopefully not at all). Also run at different thermohaline proscriptions. Does that matter? Assuming it isn't grossly awful, proceed to the next step.
-
-
-
+%
+%
 Figure \ref{fig:parameterization_compare} compares results from four physical configurations describing thermohaline mixing in MESA: the upper left panel shows results from the Brown model; the remaining three show results from the Kippenhahn prescription with $\alpha_{\text{th}}$ varying as indicated. The reduced density ratio $\log_{10} r$ is shown as a function of mass and metallicity and indicated on the color bar and grid labels.
 Simulations for which our algorithm does not measure a good thermohline zone are marked colored grey and have no label; this happens at high mass and low metallicity.
 %
@@ -15,11 +7,12 @@ Simulations for which our algorithm does not measure a good thermohline zone are
 In all cases, the most notable trend is that $\log_{10} r$ decreases along the diagonal from high masses and metallicities (upper left) to low masses and metallicities (lower right). 
 There is particularly high qualitative similarity between the Brown model and Kippehahn model with $\alpha_{\text{th}} = 2$. 
 The case with the lowest mixing parameterization is the Kippenhahn $\alpha_{\text{th}} = 0.1$ case, and there the span of $\log_{10} r$ values is smallest; however, there is no clear relationship between the spread of $\log_{10} r$ values observed when using the Kippehnahn prescriptions and the values of $\alpha_{\text{th}}$ adopted in each. 
-We also note that,, unlike in the other three cases, $\log_{10} r$ does not precisely scale monotonically with mass or [Fe/H] in the Kippenhahn $\alpha_{\text{th}} = 700$ case. 
+We also note that, unlike in the other three cases, $\log_{10} r$ does not scale precisely monotonically with mass or [Fe/H] in the Kippenhahn $\alpha_{\text{th}} = 700$ case. 
 However, the behavior of $\log_{10} r$ is broadly consistent regardless of the theoretical assumption adopted.
 
-The robustness of the overall trends of $\log_{10} r$ vs.~[Fe/H] and mass seen here regardless of the 1D thermohaline mixing model assumptions suggests that $r$ may be useful as a mixing diagnostic in physical data sets. 
-We explore its application to observations subsequently.
+The overall trends of $\log_{10} r$ vs.~[Fe/H] and mass are  
+%regardless of the
+robust across 1D thermohaline mixing model assumptions, suggesting that $r$ may be useful as a mixing diagnostic in physical data sets. We explore its application to observations subsequently.
 
 
 \begin{figure*}
