@@ -14,7 +14,7 @@ The stabilizing influence of the temperature gradient relative to the destabiliz
 \begin{equation} \label{eq:R0}
     R_0 \equiv \frac{\grad - \gradad}{\frac{\phi}{\delta} \gradmu},
 \end{equation}
-where $R_0 < 1$ implies the $\mu$ gradient is sufficiently strong to drive convection, and $R_0 > 1$ implies the fluid is stably-stratified (i.e.~no convection). 
+where $R_0 < 1$ implies the $\mu$ gradient is sufficiently strong to drive convection, and $R_0 > 1$ implies the fluid is stably-stratified (i.e.~no convection)\footnote{Note that $R_0>1$ is equivalent to the Ledoux criterion Eq.~\eqref{eq:Ledoux} only if $\grad = \gradrad$. Thermohaline mixing primarily mixes chemicals, but does produce some minimal thermal mixing \citep[see, e.g., Fig.~4 of][]{brown_etal_2013}, thus $\grad \neq \gradrad$.}. 
 As reviewed by \citet{garaud_DDC_review_2018}, fluids with $R_0 > 1$ can be prone to double-diffusive instabilities whenever the thermal diffusivity $\kappa_T$ is greater than the compositional diffusivity $\kappa_\mu$. Specifically, the instability driving thermohaline mixing acts whenever
 \begin{equation} \label{eq:R0_condition}
 1 < R_0 < 1/\tau,
@@ -24,3 +24,13 @@ As reviewed by \citet{garaud_DDC_review_2018}, fluids with $R_0 > 1$ can be pron
     \tau \equiv \kappa_\mu/\kappa_T.
 \end{equation}
 Note that typical values of $\tau$ in stellar radiation zones are $10^{-6}$ or smaller, meaning even very slight inversions of the $\mu$ profile can drive thermohaline mixing, even when the temperature gradient is far from being unstable by the Schwarzschild criterion.
+
+Throughout the remainder of this paper, we express the density ratio $R_0$ in terms of the \textit{reduced density ratio} \citep{traxler_etal_2011,brown_etal_2013},
+\begin{equation} \label{eq:r}
+    r = \frac{R_0 - 1}{\tau^{-1} - 1}.
+\end{equation}
+Written in terms of $r$, the condition for thermohaline instability, Eq.~\eqref{eq:R0_condition}, becomes
+\begin{equation} \label{eq:r_condition}
+    0 < r < 1,
+\end{equation}
+where $r = 0$ is the threshold for convection and $r \geq 1$ corresponds to scnearios where the $\mu$ inversion is too weak to drive thermohaline instability.
