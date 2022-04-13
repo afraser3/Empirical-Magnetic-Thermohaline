@@ -69,20 +69,26 @@ for fname in csvfiles:
 #        rr[(mm == mesh[i])*(tt == time[i])] = r[i]
 
 
+    ax.fill_between([0.8, 1.8], -1.5, 0.5, color='lightgrey')
     ax.pcolormesh(mm, ff, np.log10(rr), vmin=vmin, vmax=vmax, shading='nearest', rasterized=True)
 
     for i in range(len(M)):
         ax.text(M[i], FeH[i], '{:.2f}'.format(np.log10(r[i])), ha='center', va='center', size=9, color=sm_g.to_rgba(np.log10(r[i])))
 
     
-    ax.invert_xaxis()
     ax.set_xticks((0.9, 1.1, 1.3, 1.5, 1.7))
     ax.set_yticks((-1.2, -0.8, -0.4, 0.0, 0.4))
+    ax.set_xlim(0.8, 1.8)
+    ax.set_ylim(-1.5, 0.5)
+    ax.invert_xaxis()
 ax3.set_xlabel('Mass')
-ax3.set_ylabel('Fe/H')
+ax4.set_xlabel('Mass')
+ax1.set_ylabel('[Fe/H]')
+ax3.set_ylabel('[Fe/H]')
+
 
 cbar = matplotlib.colorbar.ColorbarBase(cax, cmap=matplotlib.cm.get_cmap('viridis'), norm=norm, orientation='horizontal', ticklocation='top')
-cbar.set_label('r')
+cbar.set_label(r'$\log_{10}(r)$')
 
 fig.savefig('mesa_r_spread.png', dpi=600, bbox_inches='tight')
 fig.savefig('mesa_r_spread.pdf', dpi=600, bbox_inches='tight')
