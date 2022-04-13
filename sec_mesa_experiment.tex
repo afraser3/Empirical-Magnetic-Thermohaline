@@ -9,25 +9,17 @@ Simulations are evolved at $1.25\times$ the default mesh (i.e. structural) resol
 We study four grids of stellar evolution simulations with different thermohaline mixing prescriptions. One grid employs the \citet{brown_etal_2013} prescription with the recommended coefficient of 1, while the other three employ the \citet{kippenhahn_etal_1980} prescription with coefficients $\alpha_{\rm th} \in [0.1, 2, 700]$. \textbf{[motivations for these choices?]}
 %dimensionless 
 
-\subsection{Method for Extracting $r$ \textbf{(RTR for Evan)}}
-To measure $r$ in our MESA simulations, we first \textbf{restrict to the appropriate evolutionary phase.}
-%check the stage of evolution of the star.
-We rule out all models in which MESA does not detect thermohaline mixing within $m_{\rm max} \leq m_i < 1.1 m_{\rm max}$, where $m_i$ is the mass coordinate of the $i$th \sout{bin} \textbf{mass shell?}
-and $m_{\rm max}$ is the mass coordinate \textbf{at which nuclear energy generation peaks. [nuclear generation of what?]}
-%of the
-%peak of nuclear burning.
-The thermohaline zone extends
-%spans 
-from a maximum mass coordinate $m_{\rm heavy}$ to a minimum mass coordinate $m_{\rm light}$ with stratification $\Delta m = m_{\rm heavy} - m_{\rm light}$.
-We exclude the first 21 models in which the thermohaline zone spans at least 10 \textbf{mass shells} %bins 
-while we \textbf{build up statistics [awkward phrasing/don't know what this means]} on the evolution of $\Delta m$.
+\subsection{Method for Extracting $r$ \textbf{(RTR for Meridith)}}
+To measure $r$ in our MESA simulations, we first restrict to the appropriate evolutionary phase.
+We rule out all models in which MESA does not detect thermohaline mixing within $m_{\rm max} \leq m_i < 1.1 m_{\rm max}$, where $m_i$ is the mass coordinate of the $i$th mass shell and $m_{\rm max}$ is the mass coordinate coinciding with the instantaneous peak of the nuclear energy generation measured in [erg/g/sec].
+The thermohaline zone extends from a maximum mass coordinate $m_{\rm heavy}$ to a minimum mass coordinate $m_{\rm light}$ with stratification $\Delta m = m_{\rm heavy} - m_{\rm light}$.
+We exclude the first 21 models in which the thermohaline zone spans at least 10 mass shells.
 We then compute the evolution of $\Delta_{m}$ of the $j$th model, $\delta_m^j = \Delta_m^{j} - \Delta_m^{j-1}$ for the current model and the previous 20 models and compute $\langle \delta_m \rangle = (1/20)\sum_{j=-20}^0 \delta_m^j$; we expect $\langle \delta_m \rangle$ to be relatively large while the thermohaline zone is developing and small when it is in a relatively steady state.
-We measure $\epsilon = |\langle \delta_m \rangle / \mathrm{max}(\Delta_m^j)|$; if $\epsilon < 5 \times 10^{-3}$, we %mark a model as ``good'' 
-\textbf{consider the model to have reached a steady state of thermohaline mixing (classified as ``good'' or ``stable''}
-and we compute $r$.
+We measure $\epsilon = |\langle \delta_m \rangle / \mathrm{max}(\Delta_m^j)|$; if $\epsilon < 5 \times 10^{-3}$, we consider the model to have reached a steady state of thermohaline mixing (classified as ``good'' or ``stable'') and we compute $r$.
 
-To compute $r = (R_0 - 1)/(\tau^{-1} - 1)$, we take the volume average $\bar{r} = \sum r_i dV_i / \sum dV_i$ over a subset of \textbf{mass} bins $i$ of the thermohaline zone.
-We volume-average $r$ over the mass range bounded by $m_{\rm{heavy}} + 0.1\Delta  < m_i \leq m_{\rm heavy} + 0.43\Delta m$.
+To compute $r = (R_0 - 1)/(\tau^{-1} - 1)$, we take the volume average $\bar{r} = \sum r_i dV_i / \sum dV_i$ over a subset of mass bins $i$ of the thermohaline zone.
+We volume-average $r$ over the mass range bounded by $m_{\rm{heavy}} + 0.1\Delta m  < m_i \leq m_{\rm heavy} + 0.43\Delta m$.
 In the volume average, we set the volume element $dV_i = 4\pi r_i^2 \Delta r_i$ and perform integration using the composite trapezoidal rule as implemented in \texttt{NumPy}.
 We stop measuring $r$ after we have collected measurements over 1000 models, which captures the behavior of the saturated thermohaline zone and its eventual merging with the convective shell.
-For each stellar evolution simulation, we report the median of the volume-averaged $r$ over all of the \sout{good} \textbf{stable} models in which measurements were taken. \textbf{Results are discussed in as the log of this quantity, $\log_{10} r$.}
+For each stellar evolution simulation, we report the median of the volume-averaged $r$ over all of the stable models in which measurements were taken. 
+Results are discussed in terms of the logarithm of this quantity, $\log_{10} r$.
