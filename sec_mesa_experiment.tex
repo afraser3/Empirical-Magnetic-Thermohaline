@@ -6,7 +6,10 @@ We adopt the mixing length theory (MLT) prescription of \citet{Cox1980} with a f
 
 Simulations are evolved at $1.25\times$ the default mesh (i.e. structural) resolution and $2\times$ the default time resolution on the pre-main sequence and main sequence. Once the models ascend the red giant branch and reach a surface gravity $\log g \le 3$, resolutions are increased to $2\times$ the default spatial resolution and $10\times$ the default temporal resolution, respectively. Optimal resolution values were determined according to the convergence tests detailed in Appendix \ref{app:resolution_test}. 
 
-We study four grids of stellar evolution simulations with different thermohaline mixing prescriptions. One grid employs the \citet{brown_etal_2013} prescription with the recommended \sout{coefficient of \textbf{[COEFFICIENT NAME = ]} 1}\red{\texttt{thermohaline\_coeff = 1}}, while the other three employ the \citet{kippenhahn_etal_1980} prescription with coefficients $\alpha_{\rm th} \in [0.1, 2, 700]$. 
+We study four grids of stellar evolution simulations with different thermohaline mixing prescriptions. One grid employs the \citet{brown_etal_2013} prescription\footnote{\textbf{Although the Brown prescription contains no free parameters in their original conception, a multiplicative factor on $D_{\text{therm}}$ has been introduced in the MESA implementation. Brown's model is reproduced by assigning the quantity \texttt{thermohaline\_coeff = 1}.} }
+%
+%
+while the other three employ the \citet{kippenhahn_etal_1980} prescription with coefficients $\alpha_{\rm th} \in [0.1, 2, 700]$. 
 The Kippenhahn $\alpha_{\rm th} = 0.1$ model has inefficient mixing and represents a regime where thermohaline mixing is present but weak, meaning the timescale for homogenization of the mixing zone is large.
 %provides an estimate of stellar structure with thermohaline mixing turned off.
 %
