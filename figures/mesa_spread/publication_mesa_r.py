@@ -17,8 +17,8 @@ cax = fig.add_axes((0.1, 0.96, 0.80, 0.04))
 
 axs = [ax1, ax2, ax3, ax4]
 
-vmin = -4
-vmax = -3
+vmin = -3.8
+vmax = -2.7
 
 
 csvfiles = glob.glob('*.csv')
