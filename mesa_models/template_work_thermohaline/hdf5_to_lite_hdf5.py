@@ -17,7 +17,9 @@ with h5py.File(dense_hdf, 'r') as in_f:
 
         #radial resolution changes over time so each profile is a different group
         profile_group = out_f.create_group('profiles')
-        for i in [int(k) for k in in_f['profiles'].keys()]:
+        profile_keys = [int(k) for k in in_f['profiles'].keys()]
+        profile_keys = sorted(profile_keys)
+        for i in profile_keys:
             print('checking profile {}'.format(i))
             eps_nuc = in_f['profiles/{}/bulk/eps_nuc'.format(i)][()]
             mixing_type = in_f['profiles/{}/bulk/mixing_type'.format(i)][()]
