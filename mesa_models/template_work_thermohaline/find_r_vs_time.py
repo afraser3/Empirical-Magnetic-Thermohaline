@@ -78,6 +78,10 @@ with h5py.File('hdf5_lite.h5', 'r') as f:
         thermohaline = mixing_type==4
         good_bool = good_mass*thermohaline
         if np.sum(good_bool) >= 10:
+            #remove outliers
+            delta_m = np.gradient(mass[good_bool])
+            good_bool[good_bool] *= np.abs(delta_m) < 3*np.abs(np.median(delta_m))
+
             #volume average of R0 and tau
             radius_th = radius[good_bool]
             mass_th = mass_coord[good_bool]
@@ -89,6 +93,7 @@ with h5py.File('hdf5_lite.h5', 'r') as f:
             mass_extent = xmax_th - xmin_th
             drs.append(radial_extent)
             dms.append(mass_extent)
+
 
             #Only look at 1/3 of the zone, near the bottom
             good_bool *= (mass_coord > mass_th.min() + 0.1*mass_extent)*(mass_coord <= mass_th.min() + 0.433*mass_extent)
