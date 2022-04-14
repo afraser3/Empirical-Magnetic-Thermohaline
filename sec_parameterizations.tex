@@ -13,7 +13,7 @@ We refer to any model that predicts $\Dth$ as a function of stellar structure va
 Such mixing prescriptions have been implemented in a variety of 1D stellar evolution programs \citep[see][and references therein]{lattanzio_etal_2015}, enabling studies of the effects of thermohaline mixing in stars across the HR diagram.
 
 Efforts to develop thermohaline mixing prescriptions for use in models of stellar interiors date back many decades and have ranged in sophistication from arguments based on dimensional analysis to analytical derivations informed by hydrodynamic simulations. 
-The reader is again referred to \citet{garaud_DDC_review_2018} for a comprehensive review of efforts to predict mixing efficiency. Here, we briefly summarize the most commonly used and more recently developed prescriptions.
+The reader is again referred to \citet{garaud_DDC_review_2018} for a comprehensive review. Here, we briefly summarize the most commonly used and more recently developed prescriptions.
 
 %Of the mixing models implemented in MESA, the earliest is due to \citet{ulrich_1972} and \citet{kippenhahn_etal_1980} \textcolor{red}{[check refs]}
 
@@ -29,15 +29,15 @@ where $C_t$ is a free parameter, with plausible values ranging from $C_t = 658$ 
 
 Equation \eqref{eq:Dth-kipp} is implemented in MESA as
 \begin{equation} \label{eq:Dth-kipp-MESA}
-    \Dth = \alpha_{\rm{th}} \frac{3 K}{2\rho C_P}R_0^{-1}
+    \Dth = \frac{3}{2} \alpha_{\rm{th}} \frac{K}{\rho C_P}R_0^{-1}
 \end{equation}
 \citep[see Eq.~(14) of][]{mesa2}. 
 Here, $\alpha_{\rm{th}}$ is a dimensionless efficiency parameter related to $C_t$ by $C_t = 3\alpha_{\rm{th}}/2$, $K$ is the radiative conductivity, $\rho$ is the density, and $C_P$ is the specific heat at constant pressure, with $\kappa_T = K/(\rho C_P)$. 
 The green curve in Fig.~\ref{fig:parameterization_compare} shows $\Dth/\kappa_\mu$ vs.~$r$ calculated according to Eq.~\eqref{eq:Dth-kipp-MESA} for $\tau = 10^{-6}$, which is a representative value for the thermohaline-unstable region of RGB stars, and the same $\alpha_{\rm{th}} = 2$ assumed in \citet{CantielloLanger}.
 
 While 1D stellar evolution models from \citet{charbonnel_thermohaline_2007} using Eq.~\eqref{eq:Dth-kipp} with $C_t = 1000$ produced trends consistent with observational data from \citet{Gratton2000}, this value is orders of magnitude larger than the efficiency of thermohaline mixing suggested by \citet{kippenhahn_etal_1980}. 
-Furthermore, Eq.~\eqref{eq:Dth-kipp} predicts finite mixing for $R_0 \geq 1/\tau$ ($r \geq 1$), even though the instability driving thermohaline mixing is stabilized for these parameters. 
-As reviewed by \citet{garaud_DDC_review_2018}, these concerns motivated numerical experiments with multi-dimensional simulations to estimate mixing efficiency more precisely \citep{Denissenkov2010thermohaline,traxler_etal_2011}. 
+Furthermore, Eq.~\eqref{eq:Dth-kipp} predicts finite mixing for $r \geq 1$ ($R_0 \geq 1/\tau$), even though thermohaline mixing is stabilized for these parameters. 
+These concerns motivated numerical experiments with multi-dimensional simulations to estimate mixing efficiency more precisely \citep{Denissenkov2010thermohaline,traxler_etal_2011}. 
 %\citet{traxler_etal_2011} and \citet{brown_etal_2013} performed 3D hydrodynamic simulations across a broad range of parameters and broadly found that the mixing efficiency parameter required in \citet{charbonnel_thermohaline_2007} to find agreement with observations was orders of magnitude larger than what is found in simulations, suggesting thermohaline mixing may be unable to explain observations of extra mixing.
 For example, \citet{traxler_etal_2011} and \citet{brown_etal_2013} performed 3D hydrodynamic simulations across a broad range of parameters and developed mixing prescriptions that fit their simulations. 
 %They found that mixing efficiency is most easily discussed in terms of $r$.
@@ -73,7 +73,7 @@ where $\lambda$ is the growth rate of the fastest-growing linearly unstable mode
 Both $\lambda$ and $l$ are functions of $\mathrm{Pr}$, $\tau$, and $R_0$, and are obtained by finding the roots of a cubic and quadratic polynomial (their Eqs.~19 and 20).
 The orange curve in Fig.~\ref{fig:parameterization_compare} shows $\Dth/\kappa_\mu$ vs.~$r$ calculated according to Eq.~\eqref{eqn:brown_model} for $\mathrm{Pr} = \tau = 10^{-6}$, representative values for the thermohaline-unstable regions of RGB stars. 
 Note that $\Dth/\kappa_\mu \to 0$ as $r \to 1$ as expected, since the thermohaline instability becomes stable for $r \geq 1$.
-We see that Eq.~\eqref{eq:Dth-kipp-MESA} with $\alpha_{\rm{th}} = 2$ agrees with this prescription for some values of $r$, suggesting that larger values of $\alpha_{\rm{th}}$ are not consistent with 3D hydrodynamic simulations. 
+We see that Eq.~\eqref{eq:Dth-kipp-MESA} with $\alpha_{\rm{th}} = 2$ agrees with this prescription for some values of $r$, suggesting that significantly larger values of $\alpha_{\rm{th}}$ are not consistent with 3D hydrodynamic simulations. 
 While the general dependence of $\Dth/\kappa_\mu$ on $r$ is significantly different between these two models, they do both feature monotonically decreasing values of $\Dth/\kappa_\mu$ versus $r$. 
 This prescription is implemented in MESA and has since been used in \citep{bauer_bildsten_2019} and other works. %\textcolor{red}{[Meridith/Evan: do we put the MESA version where this was first implemented?]}.
 
@@ -89,7 +89,7 @@ Their mixing prescription is of the form
 where $w_f$ is obtained by solving a quartic polynomial that includes the magnetic field strength through $H_B$, and $K_B \simeq 1.24$ is directly related to the constant $C$ in Eq.~\eqref{eqn:brown_model}.
 
 This mixing prescription agreed with their simulations, which were limited to $r = 0.05$ but ranged in magnetic field strength over several orders of magnitude.
-The prescription, which has not yet been implemented in MESA at the time of this writing, has two asymptotic limits, in which $\hat{w}_f^2 \propto B_0^2$ when the magnetic field strength $B_0$ is large, and which reduces to the model of \citet{brown_etal_2013} when $B_0$ is small. 
+The prescription, which has not yet been implemented in MESA at the time of this writing, has two asymptotic limits, one where $\hat{w}_f^2 \propto B_0^2$ when the magnetic field strength $B_0$ is large, and one which reduces to the model of \citet{brown_etal_2013} when $B_0$ is small. 
 Note the threshold $B_0$ separating these limits depends on the same stellar structure variables that enter into $r$; thus, a given magnetic field strength might simultaneously be considered ``large" in one region of a star and ``small" in another. 
 This implies that simplifications of this model may not be simultaneously appropriate for all regions within a single star.
 
@@ -114,7 +114,7 @@ between these models.
     Prescriptions of the compositional diffusivity due to thermohaline mixing $D_{\rm th}$ normalized by the molecular diffusivity $\kappa_{\mu}$ are plotted against the reduced density ratio $r$. For each prescription, we use $\mathrm{Pr} = \tau = 10^{-6}$, consistent with the conditions in these regions of RGB stars.
     We plot two hydrodynamic models, the \citet{brown_etal_2013} model (orange) and the \citet{kippenhahn_etal_1980} model with $\alpha_{\rm th} = 2$ (green). In both cases, the mixing efficiency decreases with $r$.
     The \citet{harrington} model (HG19) is also shown; it includes magnetic fields, which cause mixing efficiency to increase with $r$ for these parameters.
-    The plotted curve for the HG19 model depends on a fluid parameter $H_B$, which depends on the stellar structure and magnetic field strength; the plotted value is characteristic of the structure in the thermohaline zone of a 1.1 $M_\odot$ star at [Fe/H] = -0.2 with a magnetic field whose strength is $\mathcal{O}(100 \,\mathrm{G})$.
+    The plotted curve for the HG19 model depends on $H_B$, which depends on the stellar structure and magnetic field strength; the plotted value is characteristic of the structure in the thermohaline zone of a 1.1 $M_\odot$ star at [Fe/H] = -0.2 with a magnetic field whose strength is $\mathcal{O}(100 \,\mathrm{G})$.
     The purple-to-yellow color gradient plotted in the background denotes the range of $r$ values that we measure in our grid of 1D stellar evolution models, which are displayed in Fig.~\ref{fig:mesa_r_spread} \textcolor{red}{[something to consider as a group: do we add the $\alpha_{\rm{th}} = 700$ curve to drive home the point of how much it disagrees with 3D simulations?]}.
     }
     \label{fig:parameterization_compare}
