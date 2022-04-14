@@ -22,6 +22,8 @@
 %\usepackage{appendix}
 \usepackage{ulem}
 
+\newcommand{\partyparrot}{ \textcolor{green}{pa}\textcolor{red}{rty} \textcolor{blue}{pa}\textcolor{orange}{rr}\textcolor{purple}{ot} }
+
 
 \newcommand{\blu}{\textcolor{blue} }
 \newcommand{\red}{\textcolor{red} }
@@ -91,10 +93,16 @@
 \bibpunct{(}{)}{;}{a}{}{,}
 
 \begin{document}
-\title{Thermohaline }
+%\title{Empirical Constraints on Thermohaline Mixing in Low-mass Red Giant Stars from the Reduced Density Ratio}
 %\title{Empirical Constraints on the Efficiency of Magnetized Thermohaline Mixing}
 %{Comparing observations of extra mixing to the predictions of three dimensional simulations of the thermohaline instability}
+%\title{Thermohaline Mixing in Red Giants can be Directly Compared to the Reduced Density Ratio From Fluid Simulations}
+\title{\sout{Observed Thermohaline Mixing in Red Giants is Strongly Correlated with Stability Ratios from Fluid Simulations}Observed Extra Mixing in Red Giants is Strongly Correlated with Stability Ratios from Fluid Simulations of Thermohaline Mixing}
 
+%MC I suggest the following title (you don't observe Thermohaline Mixing)
+%\title{Observed Extra Mixing in Red Giants Correlates with Predictions from Fluid Simulations of Magnetized Thermohaline Mixing}
+
+%% Is Extra Mixing in Red Giants Thermohaline Mixing? Observations consistent with stability ratios from Fluid Dynamics
 
 \author[0000-0003-4323-2082]{Adrian E. Fraser}
 \affiliation{Department of Applied Mathematics, Baskin School of Engineering, University of California, Santa Cruz, CA 95064, USA}
@@ -105,7 +113,7 @@
 3700 San Martin Drive,
 Baltimore, MD 21218, USA}
 \altaffiliation{Lasker Fellow}
-\affiliation{Kavli Institute for Theoretical Physics, University of Santa Barbara, California, 93106, USA}
+\affiliation{Kavli Institute for Theoretical Physics, University of California, Santa Barbara, CA 93106, USA}
 
 \author[0000-0002-3433-4733]{Evan H. Anders}
 \affiliation{CIERA, Northwestern University, Evanston IL 60201, USA}
@@ -117,25 +125,28 @@ Baltimore, MD 21218, USA}
 \affiliation{Institute for Astronomy, University of Hawai‘i at Mānoa, 2680 Woodlawn Drive, Honolulu, HI 96822, USA}
 \affiliation{Kavli Institute for Theoretical Physics, University of California, Santa Barbara, CA 93106, USA}
 
-\author{Matteo}
+\author[0000-0001-5048-9973]{Matteo Cantiello}
+\affiliation{Center for Computational Astrophysics, Flatiron Institute, New York, NY 10010, USA}
+\affiliation{Department of Astrophysical Sciences, Princeton University, Princeton, NJ 08544, USA}
 
 \begin{abstract}
+\textbf{[NOT DONE]}
 The existence of enhanced extra mixing in low-mass upper giant branch stars has been well documented for decades. It has been widely assumed that this extra mixing is related to the thermohaline instability present in fluid simulations with mean molecular weight inversions in otherwise stably stratified zones, but direct comparison to these numerical simulations has been challenging. %It was suggested that their extra mixing might be due to thermohaline convection, which relies on ( mean molecular weight inversions in otherwise stably stratified zones). However, previous attempts to match the observed pattern quantitatively using one dimensional stellar evolution models have usually required some sort of ad hoc increase in the efficacy of the thermohaline mixing, and recent three dimensional simulations  have suggested contradictory results on how the amount of mixing should depend on the fluid parameters of the star in question. 
 With MESA, we show here that we are able to compute the necessary fluid parameters, including the reduced density ratios, for stars at a range of masses and metallicities. Combining these modeling results with carbon to nitrogen measurements from the SDSS-IV APOGEE survey, \textbf{we provide a framework to qualitatively compare these three dimensional fluid simulations to the amount of extra mixing on the upper giant branch.} We show that the amount of extra mixing is indeed strongly correlated with the reduced density ratio, which suggests that this is a valid framework for exploring the physics of this mixing. We also show that there is increased mixing at low reduced density values, which is inconsistent with current strongly magnetic three dimensional implementations of the thermohaline instability. Finally, we show that stars with available mixing data tend on average to be at relatively low inverse density ratios, which informs the regime which might be interesting to probe with future simulations. %have suggested that even moderate magnetic fields could greatly enhance the efficiency of thermhaline mixing, but questions have arisen about the reliability of those predictions given (some simulation limitations). We therefore use the data from the SDSS-IV APOGEE survey of stars covering a range of masses and metallicities to put empirical constraints on the efficiency of mixing as a function of (R0- define) in order to constrain future theoretical investigations. We find that (stuff) and show that this would suggest (cool things).  
 \end{abstract}
 
-\keywords{stars: evolution, stars: mixing}
+\keywords{stellar evolution, stellar abundances, abundance ratios, stellar interiors, red giant branch, red giant bump, Dredge-up}
 
-\section{Introduction \textbf{RTR}}
+\section{Introduction \textbf{(RTR)} }
 \label{sec:intro}
 \setcounter{footnote}{0}
 \input{sec_intro.tex}
 
-\section{Thermohaline formalism \textbf{(RTR)}}
+\section{Thermohaline formalism \textbf{(Adrian has changes he wants to implement, then DONE)}}
 \label{sec:formalism}
 \input{sec_formalism}
 
-\section{Parameterized Thermohaline Models}
+\section{Parameterized Thermohaline Models \textbf{(RTR back to Adrian)}}
 \label{sec:parameterizations}
 \input{sec_parameterizations}
 
@@ -144,20 +155,19 @@ With MESA, we show here that we are able to compute the necessary fluid paramete
 \label{sec:mesa_experiment}
 \input{sec_mesa_experiment}
 
-\section{Results from Numerical Experiments \textbf{(DONE)}}
-%previously called ``1D calculations of stellar R0:Meridith"
+\section{Results from Numerical Experiments \textbf{(Done -- but now Adrian has comments he's about to put in)}}
 \label{sec:mesa_results}
 \input{sec_mesa_results}
 
-\section{Observed Mixing Signatures \bf({RTR})}
+\section{Observed Mixing Signatures \bf({Done -- but now Adrian has comments he's about to put in})}
 \label{sec:obs}
 \input{sec_observations}
 
-\section{Results \bf{(RTR)}} 
+\section{Results \bf{(Done -- but now Adrian has comments he's about to put in)}} 
 \label{sec:punchline}
 \input{sec_punchline}
 
-\section{Conclusions}
+\section{Conclusions \textbf{(Not RTR -- Adrian still wants to take from rough sketch to draft)}}
 \label{sec:conclusions}
 \input{sec_conclusions}
 
@@ -176,11 +186,10 @@ With MESA, we show here that we are able to compute the necessary fluid paramete
 \end{comment}
 
 \begin{acknowledgements}
-The first four authors of this manuscript contributed equally to this work. A. Fraser did X; M. Joyce did Y; E. Anders did Z, J. Tayar was responsible for all analysis related to observations as well as the construction of the intial manuscript template. Author order within this set was decided according to height in heels, descending.   
-
+The first four authors of this manuscript contributed equally to this work. A. Fraser did X; M. Joyce did Y; E.H. Anders computed stellar structure models and created Figs.~2 and 4-6, J. Tayar was responsible for all analysis related to observations as well as the construction of the intial manuscript template. Author order within this set was decided according to height in heels, descending.   
 We thank C. Hayes, A. Jermyn, and M. Pinsonneault for helpful discussions that contributed to this work.  
 We thank T. White for his past work which helped create the script which translates between [Fe/H] and Z.
-{\color{red}Adrian thank Pascale for discussions on thermohaline mixing that helped improve your understanding.}
+AF thanks Pascale Garaud for many discussions of thermohaline mixing which helped improve his understanding of the theory of that field.
 EHA thanks MJ for her mentorship in teaching him how to run and interact with MESA models.
 %
 Support for this work was provided by NASA through the NASA Hubble Fellowship grant No.51424 awarded by the Space Telescope Science Institute, which is operated by the Association of Universities for Research in Astronomy, Inc., for NASA, under contract NAS5-26555. JT also acknowledges support from 80NSSC20K0056. 
