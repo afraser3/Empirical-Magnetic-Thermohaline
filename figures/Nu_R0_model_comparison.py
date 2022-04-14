@@ -5,6 +5,7 @@ from matplotlib import pyplot as plt
 from palettable.colorbrewer.qualitative import Dark2_4
 plt.style.use('apj.mplstyle')
 
+golden_ratio = (1+np.sqrt(5))/2
 
 def rfromR(R0, tau):
     """
@@ -233,73 +234,62 @@ def NuC_Traxler_model(pr, tau, R0):
 def NuC_Kippenhahn_model(tau, R0, alpha_th):
     return 1.0 + (3/2)*alpha_th/(tau*R0)
 
+def plot_parameterizations(ax, r_models_min=10**(-3.8), r_models_max=10**(-2.7)):
+    Pr = 1e-6
+    tau = 1e-6
+    rs = np.logspace(-5, 0)
+    R0s = Rfromr(rs, tau)
+
+    NuC_Traxler = NuC_Traxler_model(Pr, tau, R0s)
+    NuC_Brown = np.array([NuC_Brown_model(Pr, tau, r0) for r0 in R0s])
+    NuC_Kippenhahn_Cp2 = NuC_Kippenhahn_model(tau, R0s, 2.0)
+
+    HB1 = 1e-7
+    HB2 = 1e-6
+    wfs_HG19_HB1 = [w_f_HG19(Pr, tau, r0, HB1).root for r0 in R0s]
+    NuCs_HG19_HB1 = np.zeros_like(wfs_HG19_HB1)
+    wfs_HG19_HB2 = [w_f_HG19(Pr, tau, r0, HB2).root for r0 in R0s]
+    NuCs_HG19_HB2 = np.zeros_like(wfs_HG19_HB2)
+    for i in range(len(wfs_HG19_HB1)):
+        lamhat, l2hat = gaml2max(Pr, tau, R0s[i])
+        NuCs_HG19_HB1[i] = NuC_from_w(tau, wfs_HG19_HB1[i], lamhat, l2hat)
+        NuCs_HG19_HB2[i] = NuC_from_w(tau, wfs_HG19_HB2[i], lamhat, l2hat)
+
+    #Plot nice background shading
+    N = 100
+    vmin, vmax = np.log10(r_models_min), np.log10(r_models_max)
+    color_spots = np.linspace(vmin, vmax, N)
+    y_spots = np.linspace(-1, 7, 2)
+    xx, yy = np.meshgrid(color_spots, y_spots)
+    color = xx
+    ax.imshow(color, extent=(vmin, vmax, -1, 7, ),\
+              cmap='viridis', vmin=vmin, vmax=vmax,\
+              alpha=0.5, interpolation='bicubic', aspect=0.7/golden_ratio)
+
+    #Plot lines
+    ax.plot(np.log10(rs), np.log10(NuC_Brown-1),  c=Dark2_4.mpl_colors[1], label='Brown 13', lw=2)
+    ax.plot(np.log10(rs), np.log10(NuC_Kippenhahn_Cp2-1), c=Dark2_4.mpl_colors[0], label=r'Kippenhahn ($\alpha_{\rm{th}} = 2$)', lw=2)
+    ax.plot(np.log10(rs), np.log10(NuCs_HG19_HB2-1), c=Dark2_4.mpl_colors[2], label=r'HG19 ($H_B = 10^{-6}$)', lw=2, zorder=1)
+    yticks = [-1, 1, 3, 5, 7]
+    xticks = [-5, -3, -1]
+    ax.set_xticks(xticks)
+    ax.set_yticks(yticks)
+    ax.set_xticklabels([r'$10^{{{}}}$'.format(t) for t in xticks])
+    ax.set_yticklabels([r'$10^{{{}}}$'.format(t) for t in yticks])
+    ax.set_xlim(-5, 0)
+    ax.set_ylim(-1, 7)
+    ax.set_xlabel(r'$r$')
+    ax.set_ylabel(r'$D_{\rm{th}}/\kappa_\mu$')
+    ax.legend(fontsize=7.5, frameon=True)
 
 
-Pr = 1e-6
-tau = 1e-6
-# Do we want to plot Nu vs R0 or r?
-# R0s = np.concatenate((np.logspace(-5, np.log10(0.1/tau), 100), np.linspace(0.1/tau, 1/tau, 1000, endpoint=False)))
-rs = np.logspace(-5, 0)
-R0s = Rfromr(rs, tau)
+if __name__ == "__main__":
+    figsize=(3.25, 3.25/golden_ratio)
+    figure = plt.figure(figsize=figsize)
+    ax = figure.add_subplot(1,1,1)
 
-NuC_Traxler = NuC_Traxler_model(Pr, tau, R0s)
-NuC_Brown = np.array([NuC_Brown_model(Pr, tau, r0) for r0 in R0s])
-NuC_Kippenhahn_Cp1 = NuC_Kippenhahn_model(tau, R0s, 0.1)
-NuC_Kippenhahn_Cp2 = NuC_Kippenhahn_model(tau, R0s, 2.0)
-# NuC_Kippenhahn_Cp3 = NuC_Kippenhahn_model(tau, R0s, 80.0)
-NuC_Kippenhahn_Cp4 = NuC_Kippenhahn_model(tau, R0s, 700.0)
+    ax = plot_parameterizations(ax)
 
-HB1 = 1e-7
-HB2 = 1e-6
-wfs_HG19_HB1 = [w_f_HG19(Pr, tau, r0, HB1).root for r0 in R0s]
-NuCs_HG19_HB1 = np.zeros_like(wfs_HG19_HB1)
-wfs_HG19_HB2 = [w_f_HG19(Pr, tau, r0, HB2).root for r0 in R0s]
-NuCs_HG19_HB2 = np.zeros_like(wfs_HG19_HB2)
-for i in range(len(wfs_HG19_HB1)):
-    lamhat, l2hat = gaml2max(Pr, tau, R0s[i])
-    NuCs_HG19_HB1[i] = NuC_from_w(tau, wfs_HG19_HB1[i], lamhat, l2hat)
-    NuCs_HG19_HB2[i] = NuC_from_w(tau, wfs_HG19_HB2[i], lamhat, l2hat)
-
-golden_ratio = (1+np.sqrt(5))/2
-figure = plt.figure(figsize=(3.25, 3.25/golden_ratio))
-
-#Deprecated lines
-#rs = rfromR(R0s, tau)
-#plt.semilogy(R0s, NuC_Traxler-1, label='Traxler model')
-#plt.semilogy(R0s, NuC_Brown-1, label='Brown model')
-#plt.semilogy(R0s, NuC_Kippenhahn_Cp1-1, label=r'Kippenhahn model, $\alpha_{\rm{th}} = 8$')
-#plt.semilogy(R0s, NuC_Kippenhahn_Cp2-1, label=r'Kippenhahn model, $\alpha_{\rm{th}} = 700$')
-#plt.xlim((10.0, 1.0/tau))
-#plt.loglog(rs, NuC_Traxler-1, c=Dark2_4.mpl_colors[0], label='Traxler')
-#plt.loglog(rs, NuC_Kippenhahn_Cp1-1, c=Dark2_4.mpl_colors[3])
-# plt.semilogy(rs, NuC_Kippenhahn_Cp3-1, c=Dark2_4.mpl_colors[3])
-#plt.loglog(rs, NuC_Kippenhahn_Cp4-1, c=Dark2_4.mpl_colors[3])
-#plt.loglog(rs, NuCs_HG19_HB1-1, c=Dark2_4.mpl_colors[2], label=r'HG19 ($H_B = 10^{-7}$)', lw=3, zorder=1)
-
-#Plot nice background shading
-r_models_min = 1e-4
-r_models_max = 1e-3
-N = 1000
-color_spots = np.logspace(np.log10(r_models_min), np.log10(r_models_max), N)
-y_spots = np.logspace(-10, 10, 2)
-
-yy, xx = np.meshgrid(y_spots, color_spots)
-color = np.log10(xx)
-plt.pcolormesh(xx, yy, color, vmin=np.log10(r_models_min), vmax=np.log10(r_models_max), cmap='viridis', alpha=0.5)
-
-#Plot lines
-plt.loglog(rs, NuC_Brown-1,  c=Dark2_4.mpl_colors[1], label='Brown 13', lw=2)
-plt.loglog(rs, NuC_Kippenhahn_Cp2-1, c=Dark2_4.mpl_colors[0], label=r'Kippenhahn ($\alpha_{\rm{th}} = 2$)', lw=2)
-plt.loglog(rs, NuCs_HG19_HB2-1, c=Dark2_4.mpl_colors[2], label=r'HG19 ($H_B = 10^{-6}$)', lw=2, zorder=1)
-plt.xlim(1e-5, 1)
-plt.xlabel(r'$r$')
-plt.ylabel(r'$D_{\rm{th}}/\kappa_\mu$')
-plt.ylim(1e-1, 1e7)
-plt.legend(fontsize=8, frameon=True)
-#plt.text(x=0.99, y=NuC_Kippenhahn_Cp4[-1]*3, s=r'$\alpha_{\rm{th}} = 700$', color=Dark2_4.mpl_colors[3], fontsize=8, ha='right')
-# plt.text(x=0.99, y=NuC_Kippenhahn_Cp3[-1]*3, s=r'$\alpha_{\rm{th}} = 80$', color=Dark2_4.mpl_colors[3], fontsize=8, ha='right')
-#plt.text(x=0.99, y=NuC_Kippenhahn_Cp2[-1]*3, s=r'$\alpha_{\rm{th}} = 2$', color=Dark2_4.mpl_colors[3], fontsize=8, ha='right')
-#plt.text(x=0.99, y=NuC_Kippenhahn_Cp1[-1]/8, s=r'$\alpha_{\rm{th}} = 0.1$', color=Dark2_4.mpl_colors[3], fontsize=8, ha='right')
-plt.savefig('Nu_models_comparison.pdf', bbox_inches='tight', dpi=400)
-plt.savefig('Nu_models_comparison.png', bbox_inches='tight', dpi=400)
-plt.show()
+    figure.savefig('Nu_models_comparison.pdf', bbox_inches='tight', dpi=600, figsize=figsize)
+    figure.savefig('Nu_models_comparison.png', bbox_inches='tight', dpi=600, figsize=figsize)
+#    plt.show()
