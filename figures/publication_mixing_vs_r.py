@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from palettable.colorbrewer.qualitative import Dark2_3
 plt.style.use('./apj.mplstyle')
 
-data = np.genfromtxt("./mixing_vs_r/scratchtableforEvan_figD.txt", skip_header=4)
+data = np.genfromtxt("./mixing_vs_r/observed_mixing_and_r.csv", skip_header=1, delimiter=',')
 
 M = data[:,0]
 feh = data[:,1]
@@ -18,9 +18,6 @@ r_kip_hi  = data[:,7]
 norm = matplotlib.colors.Normalize(vmin=feh.min(), vmax=feh.max())
 sm = plt.cm.ScalarMappable(cmap='plasma', norm=norm)
 sm.set_array([])
-
-
-
 
 fig = plt.figure(figsize=(6.5, 4))
 ax1 = fig.add_axes((0.00, 0.53, 0.45, 0.4))
@@ -55,11 +52,9 @@ for i in range(4):
         if i == 0 and m == 0:
             axs[k][j].legend(loc='center right', fontsize=8)
     axs[k][j].text(0.98, 0.98, tag, ha='right', va='top', transform=axs[k][j].transAxes, fontsize=9)
-    axs[k][j].set_xlim(10**(-4.25), 10**(-2.75))
+    axs[k][j].set_xlim(10**(-3.9), 10**(-2.45))
     axs[k][j].set_ylim(-0.05, 0.7)
-#    axs[k][j].set_xticks((1e-4, 3e-4, 1e-3))
     axs[k][j].set_xscale('log')
-#    axs[k][j].set_xticks((-4.2, -3.8, -3.4, -3.0))
 
 
 cbar = matplotlib.colorbar.ColorbarBase(cax, cmap=matplotlib.cm.get_cmap('plasma'), norm=norm, orientation='horizontal', ticklocation='top')
@@ -67,10 +62,8 @@ cbar.set_label(r'[Fe/H]')
 
 axs[1][1].set_xlabel(r'$r$')
 axs[1][0].set_xlabel(r'$r$')
-axs[0][0].set_ylabel(r'$\Delta$ [C/N]')
-axs[1][0].set_ylabel(r'$\Delta$ [C/N]')
-
-
+axs[0][0].set_ylabel(r'$\Delta$ [C/N]$_{\rm corr}$')
+axs[1][0].set_ylabel(r'$\Delta$ [C/N]$_{\rm corr}$')
 
 fig.savefig('mixing_vs_r.png', dpi=300, bbox_inches='tight')
 fig.savefig('mixing_vs_r.pdf', dpi=300, bbox_inches='tight')
