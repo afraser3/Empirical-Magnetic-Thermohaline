@@ -1,25 +1,34 @@
 %
 %
 %
-We use MESA stable release version 21.12.21 to conduct 1D numerical simulations of thermohaline mixing for metallicities ranging from [Fe/H] $= -1.4$ to $0.4$ ($Z = 0.00068$ to $0.038$) and masses from 0.9 to 1.7 $M_{\odot}$ \textbf{(at resolutions of XX, YY?)}. We adopt the solar abundance scale of \citet{GrevesseSauval1998} and the corresponding opacities of \citet{IglesiasRogers1996}. We use an Eddington T-$\tau$ relation for the atmospheric surface boundary conditions.
-We adopt the mixing length theory (MLT) prescription of \citet{Cox1980} with a fixed value of $\alpha_{\text{MLT}}= 1.6$ times the pressure scale height ($H_p$). We use the Ledoux criterion for convective stability and neglect the effects of convective overshoot \citep{Ledoux}. We use the \verb|pp_extras.net| nuclear reaction network, which contains 12 isotopes. Full details of our physical and numerical parameter choices are available on Zenodo\footnote{MESA inlists will be made available upon publication}. 
+We use MESA stable release version 21.12.21 to conduct 1D numerical simulations of \textbf{stars incorporating the effects of thermohaline mixing} for metallicities ranging from [Fe/H] $= -1.4$ to $0.4$ ($Z = 0.00068$ to $0.038$) and masses from 0.9 to 1.7 $M_{\odot}$ at resolutions of 0.2 dex and 0.2 $M_{\odot}$, respectively. We adopt the solar abundance scale of \citet{GrevesseSauval1998} and the corresponding opacities of \citet{IglesiasRogers1996}. We use an Eddington T-$\tau$ relation for the atmospheric surface boundary conditions.
+We adopt the mixing length theory (MLT) prescription of \citet{Cox1980} with a fixed value of $\alpha_{\text{MLT}}= 1.6$ times the pressure scale height ($H_p$). We use the Ledoux criterion for convective stability and neglect the effects of convective overshoot \citep{Ledoux1947}. We use the \verb|pp_extras.net| nuclear reaction network, which contains 12 isotopes. Full details of our physical and numerical parameter choices are available on Zenodo\footnote{MESA inlists will be made available upon publication}. 
 
 Simulations are evolved at $1.25\times$ the default mesh (i.e. structural) resolution and $2\times$ the default time resolution on the pre-main sequence and main sequence. Once the models ascend the red giant branch and reach a surface gravity $\log g \le 3$, resolutions are increased to $2\times$ the default spatial resolution and $10\times$ the default temporal resolution, respectively. Optimal resolution values were determined according to the convergence tests detailed in Appendix A.1. 
 
-We study four grids of stellar evolution simulations with different thermohaline mixing prescriptions. One grid employs the \citet{brown_etal_2013} prescription with the recommended coefficient of 1, while the other three employ the \citet{kippenhahn_etal_1980} prescription with coefficients $\alpha_{\rm th} \in [0.1, 2, 700]$. \textbf{[motivations for these choices?]}
-%dimensionless 
+We study four grids of stellar evolution simulations with different thermohaline mixing prescriptions. One grid employs the \citet{brown_etal_2013} prescription with the recommended coefficient of \textbf{[COEFFICIENT NAME = ]} 1, while the other three employ the \citet{kippenhahn_etal_1980} prescription with coefficients $\alpha_{\rm th} \in [0.1, 2, 700]$. 
+The Kippenhahn $\alpha_{\rm th} = 0.1$ model has inefficient mixing and \textbf{represents a regime where thermohaline mixing is present but weak, meaning the timescale for homogenization of the mixing zone is large.}
+%provides an estimate of stellar structure with thermohaline mixing turned off.
+%
+%
+We study $\alpha_{\rm th} = 2$ because (1) it is consistent with the \textbf{default implementation in} MESA \textbf{and discussion in the} instrument paper \citep{paxton2013}; (2) it is used in previous work \citep{CantielloLanger2010, TayarJoyce22}; and (3) it \sout{provides a good fit to} \textbf{is consistent with findings from 2D and} 3D hydrodynamical simulations in stellar regimes \textbf{(see Figure \ref{fig:mesa_r_spread} [to AF: How does referencing this figure support the previous statement? -MJ])} \citep{Denissenkov2010, Traxler2011, brown_etal_2013}. 
+We also study a more traditional $\alpha_{\rm th} = 700$, which is calibrated to thermohaline mixing in salty water in terrestrial contexts \citep{lattanzio_etal_2015, charbonnel_thermohaline_2007}. \red{someone has to double check that this comes from oceans and not calibrations to stars}
 
-\subsection{Method for Extracting $r$ \textbf{(RTR for Meridith)}}
+
+\subsection{Method for Extracting $r$ \textbf{(RTR:Evan -- but now Adrian has comments he's about to put in)}}
+We want to extract the instability of the mean molecular weight gradient to mixing in the thermohaline region above the burning shell as measured by the reduced density ratio $r$.
+We define selection criterion which average both over many mass shells and over many models in time to ensure that our measured values are representative of thermohaline mixing during the relevant evolutionary phase.
+
 To measure $r$ in our MESA simulations, we first restrict to the appropriate evolutionary phase.
 We rule out all models in which MESA does not detect thermohaline mixing within $m_{\rm max} \leq m_i < 1.1 m_{\rm max}$, where $m_i$ is the mass coordinate of the $i$th mass shell and $m_{\rm max}$ is the mass coordinate coinciding with the instantaneous peak of the nuclear energy generation measured in [erg/g/sec].
 The thermohaline zone extends from a maximum mass coordinate $m_{\rm heavy}$ to a minimum mass coordinate $m_{\rm light}$ with stratification $\Delta m = m_{\rm heavy} - m_{\rm light}$.
 We exclude the first 21 models in which the thermohaline zone spans at least 10 mass shells.
-We then compute the evolution of $\Delta_{m}$ of the $j$th model, $\delta_m^j = \Delta_m^{j} - \Delta_m^{j-1}$ for the current model and the previous 20 models and compute $\langle \delta_m \rangle = (1/20)\sum_{j=-20}^0 \delta_m^j$; we expect $\langle \delta_m \rangle$ to be relatively large while the thermohaline zone is developing and small when it is in a relatively steady state.
+We then compute the evolution of $\Delta_{m}$ of the $j$th model, $\delta_m^j = \Delta_m^{j} - \Delta_m^{j-1}$ for the current model and the previous 20 models and compute $\langle \delta_m \rangle = (1/20)\sum_{j=-20}^0 \delta_m^j$ to determine whether the mass of the thermohaline region has evolved appreciably over the past few models. We expect $\langle \delta_m \rangle$ to be relatively large while the thermohaline zone is developing and small when it is in a relatively steady state.
 We measure $\epsilon = |\langle \delta_m \rangle / \mathrm{max}(\Delta_m^j)|$; if $\epsilon < 5 \times 10^{-3}$, we consider the model to have reached a steady state of thermohaline mixing (classified as ``good'' or ``stable'') and we compute $r$.
 
-To compute $r = (R_0 - 1)/(\tau^{-1} - 1)$, we take the volume average $\bar{r} = \sum r_i dV_i / \sum dV_i$ over a subset of mass bins $i$ of the thermohaline zone.
-We volume-average $r$ over the mass range bounded by $m_{\rm{heavy}} + 0.1\Delta m  < m_i \leq m_{\rm heavy} + 0.43\Delta m$.
+To compute the reduced density ratio $r = (R_0 - 1)/(\tau^{-1} - 1)$, we take the volume average $\bar{r} = \sum r_i dV_i / \sum dV_i$ over a subset of mass bins $i$ of the thermohaline zone.
+We volume-average $r$ over the mass range bounded by $m_{\rm{heavy}} + 0.1\Delta m  < m_i \leq m_{\rm heavy} + (0.1 + 1/3)\Delta m$.
 In the volume average, we set the volume element $dV_i = 4\pi r_i^2 \Delta r_i$ and perform integration using the composite trapezoidal rule as implemented in \texttt{NumPy}.
-We stop measuring $r$ after we have collected measurements over 1000 models, which captures the behavior of the saturated thermohaline zone and its eventual merging with the convective shell.
+We stop measuring $r$ after we have collected measurements over 1000 models, which captures the behavior of the saturated thermohaline zone and its eventual merging with the convective envelope.
 For each stellar evolution simulation, we report the median of the volume-averaged $r$ over all of the stable models in which measurements were taken. 
 Results are discussed in terms of the logarithm of this quantity, $\log_{10} r$.
