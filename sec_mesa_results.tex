@@ -1,18 +1,19 @@
 %
 %
 Figure \ref{fig:mesa_r_spread} compares results from four physical configurations describing thermohaline mixing in MESA: the upper left panel shows results from the Brown model; the remaining three show results from the Kippenhahn prescription with $\alpha_{\text{th}}$ varying as indicated. The reduced density ratio $\log_{10} r$ is shown as a function of mass and metallicity and indicated on the color bar and grid labels.
-Simulations for which our algorithm could not measure a stable thermohaline zone are blocked out in grey and have no label; this happens at high mass and low metallicity.
+\sout{Simulations for which our algorithm could not measure a stable thermohaline zone are blocked out in grey and have no label; this happens at high mass and low metallicity.} \red{I think all models will have thermohaline with fixed algorithms; TBD}.
 %
 
 In all cases, the most notable trend is that $\log_{10} r$ decreases along the diagonal from high masses and metallicities (upper left) to low masses and metallicities (lower right). 
-There is particularly high qualitative similarity between the Brown model and Kippenhahn model with $\alpha_{\text{th}} = 2$\red{, which represent the default stellar calibrations of each theory}. 
-The case with the lowest mixing parameterization is the Kippenhahn $\alpha_{\text{th}} = 0.1$ case, and there the span of $\log_{10} r$ values is smallest. There is, however, no clear relationship between the spread of $\log_{10} r$ values observed when using the Kippenhahn prescriptions and the values of $\alpha_{\text{th}}$ adopted in each. 
-We also note that, unlike in the other three cases, $\log_{10} r$ does not scale precisely monotonically with either mass or [Fe/H] in the Kippenhahn $\alpha_{\text{th}} = 700$ case. 
-However, the behavior of $\log_{10} r$ is broadly consistent regardless of the theoretical assumption adopted.
+There is particularly high qualitative similarity between the Brown model and Kippenhahn model with $\alpha_{\text{th}} = 2$, \textbf{which correspond to similar thermohaline mixing timescales.} \sout{which represent the default stellar calibrations of each theory}. 
+The case with the lowest mixing parameterization is the Kippenhahn $\alpha_{\text{th}} = 0.1$ case, and there the span of $\log_{10} r$ values is smallest. We also note that, unlike in the other three cases, $\log_{10} r$ does not scale precisely monotonically with either mass or [Fe/H] in the Kippenhahn $\alpha_{\text{th}} = 700$ case. \textbf{While} there is no clear relationship between the spread of $\log_{10} r$ values observed when using the Kippenhahn prescriptions and the values of $\alpha_{\text{th}}$ adopted in each, \textbf{there is a clear relationship between the median values of $\log_{10} r$ and $\alpha_{\text{th}}$: the reduced density ratios are \sout{smaller}\red{larger ($\log_{10} r$ is less negative)} when mixing is highly efficient (i.e. the mixing timescale is short)}. 
+%
 
-The overall trends of $\log_{10} r$ vs.~[Fe/H] and mass are  
+\textbf{Most importantly, the overall} \sout{the} behavior of $\log_{10} r$ \textbf{as a function of mass and [Fe/H]} is consistent regardless of the theoretical assumption adopted.
+%
+%The overall trends of $\log_{10} r$ vs.~[Fe/H] and mass are  
 %regardless of the
-robust across 1D thermohaline mixing model assumptions, suggesting that $r$ may be useful as a mixing diagnostic in physical data sets. We explore its application to observations subsequently.
+\textbf{This robustness across} 1D thermohaline mixing model assumptions suggests that $r$ may be useful as a mixing diagnostic in physical data sets. We explore its application to observations subsequently.
 
 
 \begin{figure*}
