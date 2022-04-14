@@ -61,6 +61,10 @@ def read_dirs(model_name, coeff):
                 plt.plot(good_model, good_r)
                 plt.ylim(1e-4, 1)
                 plt.yscale('log')
+#                N = int(np.sum(good_range))
+#                rval = np.median(r[good_range][N//2:])
+#                R0val = np.median(R0[good_range][N//2:])
+#                tauval = np.median(tau[good_range][N//2:])
                 rval = np.median(r[good_range])
                 R0val = np.median(R0[good_range])
                 tauval = np.median(tau[good_range])
@@ -83,7 +87,7 @@ def read_dirs(model_name, coeff):
 
 
 
-read_dirs('Brown', 1)
-read_dirs('Kipp', 0.1)
+#read_dirs('Brown', 1)
+#read_dirs('Kipp', 0.1)
 read_dirs('Kipp', 2)
 read_dirs('Kipp', 700)
