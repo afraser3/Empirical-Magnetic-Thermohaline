@@ -20,7 +20,7 @@ def natural_sort(iterable, reverse=False):
 
     return sorted(iterable, key=key, reverse=reverse)
 
-plt.style.use('../apj.mplstyle')
+plt.style.use('./apj.mplstyle')
 
 fig = plt.figure(figsize=(6.5, 6.5))
 ax1  = fig.add_axes((0.00, 0.64, 0.28, 0.25))
@@ -36,14 +36,14 @@ cax = fig.add_axes((0, 0.96, 1, 0.04))
 
 axs = [ax3, ax2, ax1, ax6, ax5, ax4, ax9, ax8, ax7]
 
-ref_file = '../mesa_spread/mesa_Brown_coeff1.0e+00_values.csv'
+ref_file = './mesa_spread/mesa_Brown_coeff1.0e+00_values.csv'
 ref_data = np.genfromtxt(ref_file, delimiter=',', skip_header=1)
 ref_FeH = ref_data[:,1]
 ref_Z = ref_data[:,2]
 ref_M = ref_data[:,0]
 ref_r = ref_data[:,3]
 
-csvfiles = natural_sort(glob.glob('mesa*.csv'))
+csvfiles = natural_sort(glob.glob('resolution_test/mesa*.csv'))
 err_cmap = 'PiYG_r'
 vmin = 0
 vmax = 2

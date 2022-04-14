@@ -21,7 +21,7 @@ vmin = -3.8
 vmax = -2.7
 
 
-csvfiles = glob.glob('*.csv')
+csvfiles = glob.glob('mesa_spread/*.csv')
 norm = matplotlib.colors.Normalize(vmin=vmin, vmax=vmax)
 sm = plt.cm.ScalarMappable(cmap='viridis', norm=norm)
 sm.set_array([])
@@ -45,7 +45,6 @@ for fname in csvfiles:
         tag = r'Kipp, $\alpha_{\rm{th}} = 700$'
 
     ax= axs[i]
-    name = fname.split('.csv')[0]
 
     data = np.genfromtxt(fname, delimiter=',', skip_header=1)
     M = data[:,0]

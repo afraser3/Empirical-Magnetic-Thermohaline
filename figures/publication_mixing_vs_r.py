@@ -2,9 +2,9 @@ import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
 from palettable.colorbrewer.qualitative import Dark2_3
-plt.style.use('../apj.mplstyle')
+plt.style.use('./apj.mplstyle')
 
-data = np.genfromtxt("scratchtableforEvan_figD.txt", skip_header=4)
+data = np.genfromtxt("./mixing_vs_r/scratchtableforEvan_figD.txt", skip_header=4)
 
 M = data[:,0]
 feh = data[:,1]
