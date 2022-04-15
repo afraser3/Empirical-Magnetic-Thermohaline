@@ -1,10 +1,9 @@
 %
 %That condition is so dang easy to evaluate, that you can readily evaluate it in any radial location of any
 %Equation 7 is straightforward to evaluate at any radial location in a star
-Equation \eqref{eq:r_condition} is straightforward to evaluate at any radial location in a model star generated with a 1D stellar structure and evolution software instrument. 
-However, predicting the efficiency of thermohaline mixing is much more challenging. 
-A diffusive approximation is commonly taken for the turbulent mixing of chemicals, so that the total mixing of chemical species is given by the sum of the molecular diffusivity and a turbulent mixing coefficient $\Dth$. 
-This quantity can be converted to the compositional Nusselt number, $\Numu$, discussed in the fluid dynamics literature using the formula
+Equation \eqref{eq:r_condition} 
+%is \red{straightforward - too close to trivial, could we find a different less gatekeepy word? JT} to 
+can be readily evaluated at any radial location in a model star generated with a 1D stellar structure and evolution program. However, predicting the efficiency of thermohaline mixing is much more challenging. A diffusive approximation is commonly taken for the turbulent mixing of chemicals, so that the total mixing of chemical species is given by the sum of the molecular diffusivity and a turbulent mixing coefficient $\Dth$. This quantity can be converted to the compositional Nusselt number, $\Numu$, discussed in the fluid dynamics literature using the formula
 \begin{equation} \label{eq:Dth_from_Nu}
     \Dth = (\Numu - 1)\kappa_\mu.
 \end{equation}
@@ -12,8 +11,8 @@ This quantity can be converted to the compositional Nusselt number, $\Numu$, dis
 We refer to any model that predicts $\Dth$ as a function of stellar structure variables (e.g.~gradients and molecular diffusivities of chemicals and heat) as a parameterized mixing model or mixing prescription. 
 Such mixing prescriptions have been implemented in a variety of 1D stellar evolution programs \citep[see][and references therein]{lattanzio_etal_2015}, enabling studies of the effects of thermohaline mixing in stars across the HR diagram.
 
-Efforts to develop thermohaline mixing prescriptions for use in models of stellar interiors date back many decades \sout{and have ranged in sophistication from arguments based on dimensional analysis to analytical derivations informed by hydrodynamic simulations.} 
-The reader is again referred to \citet{garaud_DDC_review_2018} for a comprehensive review. Here, we briefly summarize the most commonly used and more recently developed prescriptions.
+    Efforts to develop thermohaline mixing prescriptions for use in models of stellar interiors date back many decades \sout{and have ranged in sophistication from arguments based on dimensional analysis to analytical derivations informed by hydrodynamic simulations \red{JT: see e.g. \citet{garaud_DDC_review_2018} for a full review } } 
+\sout{The reader is again referred to \citet{garaud_DDC_review_2018} for a comprehensive review. } \red{Here, we briefly summarize the most commonly used and more recently developed prescriptions.}
 
 %Of the mixing models implemented in MESA, the earliest is due to \citet{ulrich_1972} and \citet{kippenhahn_etal_1980} \textcolor{red}{[check refs]}
 
@@ -34,6 +33,8 @@ Equation \eqref{eq:Dth-kipp} is implemented in MESA as
 \citep[see Eq.~(14) of][]{mesa2}. 
 Here, $\alpha_{\rm{th}}$ is a dimensionless efficiency parameter related to $C_t$ by $C_t = 3\alpha_{\rm{th}}/2$, $K$ is the radiative conductivity, $\rho$ is the density, and $C_P$ is the specific heat at constant pressure, with $\kappa_T = K/(\rho C_P)$. 
 The green curve in Fig.~\ref{fig:parameterization_compare} shows $\Dth/\kappa_\mu$ vs.~$r$ calculated according to Eq.~\eqref{eq:Dth-kipp-MESA} for $\tau = 10^{-6}$, which is a representative value for the thermohaline-unstable region of RGB stars, and the same $\alpha_{\rm{th}} = 2$ assumed in \citet{CantielloLanger}.
+
+\red{you talk about c=1000, then a=2 then back to c=1000 which is a bit jarring. is all of that necessary/on purpose?}
 
 \textcolor{red}{[This paragraph is a good time to tie back to the motivation of this paper]} 
 While 1D stellar evolution models from \citet{charbonnel_thermohaline_2007} using Eq.~\eqref{eq:Dth-kipp} with $C_t = 1000$ produced trends consistent with observational data from \citet{Gratton2000}, this value is orders of magnitude larger than the efficiency of thermohaline mixing suggested by \citet{kippenhahn_etal_1980}. 
@@ -77,10 +78,10 @@ The orange curve in Fig.~\ref{fig:parameterization_compare} shows $\Dth/\kappa_\
 Note that $\Dth/\kappa_\mu \to 0$ as $r \to 1$ as expected, since the thermohaline instability becomes stable for $r \geq 1$.
 We see that Eq.~\eqref{eq:Dth-kipp-MESA} with $\alpha_{\rm{th}} = 2$ agrees with this prescription for some values of $r$, suggesting that significantly larger values of $\alpha_{\rm{th}}$ are not consistent with 3D hydrodynamic simulations. 
 While the general dependence of $\Dth/\kappa_\mu$ on $r$ is significantly different between these two models, they do both feature monotonically decreasing values of $\Dth/\kappa_\mu$ versus $r$. 
-This prescription is implemented in MESA and has since been used in \citep{bauer_bildsten_2019} and other works. %\textcolor{red}{[Meridith/Evan: do we put the MESA version where this was first implemented?]}.
+This prescription is implemented in MESA and has since been used in \citet{bauer_bildsten_2019} and other works. %\textcolor{red}{[Meridith/Evan: do we put the MESA version where this was first implemented?]}.
 
 %\citet{harrington} build on the model of \citet{brown_etal_2013} by including the effects of initially uniform, vertical magnetic fields. 
-\citet{harrington} extended the work of \citet{brown_etal_2013} by performing 3D magnetohydrodynamic (MHD) simulations of thermohaline mixing with initially uniform, vertical magnetic fields of various strengths to approximate the effects of magnetic fields from external processes (for instance, a global dipole field or a large-scale magnetic field left by a dynamo acting in the receding convective envelope). 
+\citet{harrington} extended the work of \citet{brown_etal_2013} by performing 3D magnetohydrodynamic (MHD) simulations of thermohaline mixing with initially uniform, vertical magnetic fields of various strengths to approximate the effects of magnetic fields from external processes \red{including,} for instance, a global dipole field or a large-scale magnetic field left by a dynamo acting in the receding convective envelope. 
 They found that magnetism strictly increases mixing efficiency, sometimes dramatically.
 They developed a mixing prescription that accounts for this effect by building on the model of \citet{brown_etal_2013}.
 The strength of the magnetic field is introduced into their model through their parameter $H_B$, which is proportional to the square of the magnetic field strength and depends on other stellar structure variables \citep[see Eq.~19 of][]{harrington}.
@@ -106,6 +107,7 @@ For larger values of $r$, the dependence of $\Dth/\kappa_\mu$ on $r$ is profound
 %\citet{lattanzio_etal_2015} tested one or multiple of these models in a bunch of different codes on the RGB and found X.
 In this analysis, we will explore the question of whether stellar observations %\textbf{are sufficiently discerning to}
 are capable of discerning between these models. 
+\red{ the preceding sentence is likely not true and therefore needs to be revised but I like a sentence of this sort existing here JT}
 %are not.
 
 \begin{figure}

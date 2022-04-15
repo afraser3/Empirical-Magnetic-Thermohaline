@@ -1,52 +1,5 @@
-% \begin{comment}
-% [Begin outline]
 
-% \begin{itemize}
-%     \item In RGB stars there is a first dredge up and then a luminosity bump
-%     \item Standard models predict no change in surface chemistry after the first dredge up
-%     \item But observations show extra mixing after the luminosity bump! Explain that, science! [Briefly summarize which observations, which stars, which log g, etc.]
-%     \item \citet{charbonnel_thermohaline_2007} pointed out it could be thermohaline mixing, this dumb thing that is well-studied in the oceanographic context and had been considered in various other astrophysical settings (see [cite Garaud 2018])
-%     \item Go into explanation of thermohaline mixing (the stuff that I had previously been writing in the first half of old-section-3, except more of the literature review stuff and less of the mathy/formalism stuff):
-%     \begin{itemize}
-%         \item Thermohaline mixing is the mixing of chemicals (heat too but it's a comparably negligible amount) by small-scale turbulent motions that are driven by a double-diffusive instability
-%         \item Requires a Schwarzschild-stable temperature gradient and an inversion of the $\mu$ profile that is weak enough to still be Ledoux-stable
-%         \item Also requires thermal diffusion to be larger than chemical diffusion, but this is always the case in stars -- the degree of discrepancy between these diffusion coefficients sets how minimal of a $\mu$ inversion is necessary to trigger thermohaline instability, and in stars this discrepancy is so vast that just about any $\mu$ inversion is immediately unstable
-        
-%         \item The criteria for instability are easy to express in terms of stellar structure variables (see Sec.~\ref{sec:formalism}), making it pretty straightforward to use 1D stellar evolution models to identify where thermohaline mixing could plausibly occur in stars across the HR diagram [list examples]
-        
-%         Because the quantities grad-ad, grad-rad are known at every radial position in a 1D stellar structure model, it is possible to know <values of quantities that are functions of these quantities ($R0$)> at every position. 
-        
-%         \item 
-%         %But it's much harder to predict what thermohaline mixing actually does to these stars, because 
-%         historically it's been much more challenging to estimate the efficiency of thermohaline mixing -- just because thermohaline mixing happens doesn't mean it is efficient enough to matter, where matter means?? manifests in surface-observable ways?
-        
-%         \item Summarize efforts to get at efficiency of thermohaline mixing in stellar interiors via analytical theory and multi-dimensional simulations
-%     \end{itemize}
-
-%     \item Arrive at current state of things: a broad range of mixing prescriptions available to MESA users, with 
-%     %no real clarity
-%     ongoing literature debate
-%     as to which model to use, and what values to set for the free parameters
-%     \item To make matters worse, HG19 shows that magnetic fields of very moderate strengths (plausibly present in majority of these stars) give massively different mixing efficiencies than predictions from hydro theory/3D sims
-%     \item APOGEE data includes a boat-load of RGB observations -- can we use them to rule out or constrain various thermohaline mixing prescriptions?
-%     \item Similarly: can observations be used to identify which regions of parameter space simulations should aim to clarify mixing efficiency? (I.e., if two mixing prescriptions agree everywhere except for a certain corner of parameter space, can we use observations to identify whether any stars even live in that parameter space and so whether we should even care?)
-%     \item In this paper, we present a framework that combines observations and theory to probe the fluid parameters that actually happen in stars
-% \end{itemize}
-
-% [End outline]
-% \end{comment}
-
-%\textbf{[This paper should open with a ]}
-
-Observations of globular clusters and low-metallicity field stars show significant changes in the abundance ratios of elements known to be sensitive to mixing, including \ctwelvecthirteen, lithium, and [C/N], as a star evolves up the red giant branch \citep{Carbon1982, Pilachowski1986, Kraft1994, Shetrone2019}. 
-These changes occur around the Red Giant Branch Bump (RGBB) %luminosity bump 
-%on the red giant branch,
-%, where the hydrogen burning shell reaches the region where a mean molecular weight gradient was left behind by the deepest evolution of the surface convection zone.
-%These mixing related changes 
-and are largest in the most metal--poor stars \citep[e.g.][]{Gratton2000}. Large samples of stars that can be used to trace this mixing are now available from a variety of spectroscopic surveys, including \citep[GALAH,][]{buder2019}, \citep[APOGEE,][]{DR17}, \citep[GAIA-ESO,][]{Magrini2021b}, and others \textbf{[What's going on with parenthesis here?]}. 
-\textbf{However, observed surface abundance trends
-%there is an established
-are in tension with standard theoretical stellar evolution models, which predict that the surface chemistry should not evolve in this regime}.
+Observations of globular clusters and low-metallicity field stars show significant changes in the abundance ratios of elements known to be sensitive to mixing, including \ctwelvecthirteen, lithium, and [C/N], as a star evolves up the red giant branch \citep{Carbon1982, Pilachowski1986, Kraft1994, Shetrone2019}. These changes occur around the Red Giant Branch Bump (RGBB) and are largest in the most metal--poor stars \citep[e.g.][]{Gratton2000}. Large samples of stars that can be used to trace this mixing are now available from a variety of spectroscopic surveys, including GALAH \citep{buder2019}, APOGEE \citep{DR17}, GAIA-ESO \citep{Magrini2021b}, and others. \textbf{However, observed surface abundance trends are in tension with standard theoretical stellar evolution models, which predict that the surface chemistry should not evolve in this regime}.
 %and observations of low--mass red giants, which show clear changes surface chemistry as a function of time.}
 
 %In contrast, standard theoretical models of stellar evolution predict that the surface chemistry should not evolve in this regime. %In standard models,
@@ -54,27 +7,18 @@ are in tension with standard theoretical stellar evolution models, which predict
 
 As low--mass stars ascend the red giant branch, they undergo a series of mixing and homogenizing events as their interior burning and energy transport zones interact. Near the base of the red giant branch, the surface convection zone reaches its deepest level of penetration into the stellar interior, leaving behind a chemical discontinuity from which it recedes in subsequent evolution. This inflection in the convection zone's movement is known as the ``first dredge up.'' The red giant branch bump occurs when the outward--propagating hydrogen burning shell encounters this chemical discontinuity, triggering a structural realignment in which the star's core contracts and the luminosity drops, causing a disruption to the otherwise monotonic increase in luminosity along the red giant branch. In one dimensional (1D) stellar models, the sensitivity of the RGBB to physical assumptions makes it a powerful diagnostic of interior mixing processes \citep[e.g.][]{Christensen-Dalsgaard:2015, Joyce2015, Khan2018}. 
 %
-However, in standard models, \textbf{these interior mixing events} are not reflected in the abundances at the surface of the star because there is no process by which to mix heavier elements from the interior burning \textbf{region(s?)} to the surface convection zone.  %\textbf{[more citations here]}.
+However, in standard models, \textbf{the post dredge--up 
+%\red{JT says make clear the 'these' does not include the first dredge up} 
+interior mixing events} are not reflected in the abundances at the surface of the star because there is no process by which to mix heavier elements from the interior burning regions to the surface convection zone. 
+%\red{i suppose li is burned in a different place than H, but super pendantic}  %\textbf{[more citations here]}.
 
-%[``according to the Ledoux criterion" or is that too much jargon too soon?].
-%As the hydrogen-burning shell expands into the region chemically homogenized by the recent first dredge up, the $^3$He($^3$He, 2p)$^4$He reaction creates an inversion of the mean molecular weight $\mu$. While this $\mu$ inversion is insufficient to generate a Ledoux-unstable convective region (i.e.~the fluid remains stably-stratified), it can \sout{drive} initiate thermohaline mixing. 
-
-% [AF: I think the preceding paragraph is missing a brief (perhaps too obvious?) statement saying that we are so interested in this region because we need a mixing mechanism to act here in order to explain observations]
-
-%As the star ``hovers'' in this luminosity bin for a longer period of evolutionary time relative to the rest of the branch, this feature manifests as an over-density of stars identified as the red giant branch bump (RGBB) in stellar populations. In one dimensional (1D) stellar models, the sensitivity of the RGBB to physical assumptions
-%, particularly the convective mixing length and overshooting parameters, 
-%makes it a powerful diagnostic of interior mixing processes \citep[e.g.][]{Joyce2015, Khan2018}. %\textbf{[more citations here]}.
-
-%\textbf{ [Jamie] (citecite)}; \textbf{known physical mechanisms have struggled to explain them \citep{TayarJoyce22}
-%and many mechanisms were hard pressed to explain them 
-%(cite a bunch of things or maybe a review?)- JT disagree's I think we say 'people have assumed this is thermohaline mixing' and then say 'but actually we doubt it.'} 
 
 \textbf{The most widely studied mechanism for possibly rectifying this discrepancy is thermohaline mixing, first identified in this context by \citet{charbonnel_thermohaline_2007}.
 As the hydrogen-burning shell expands into the region chemically homogenized by the recent first dredge up, the $^3$He($^3$He, 2p)$^4$He reaction creates an inversion of the mean molecular weight $\mu$. While this $\mu$ inversion is insufficient to generate a convective region, 
 %it can initiate thermohaline mixing. 
 these conditions give rise to the 
 %\textbf{The thermodynamic and chemical conditions}, while not formally unstable to convection the mean molecular weight inversion set up by the stellar evolution gives rise to a
-\textit{thermohaline instability}, a phenomenon perhaps best known in the context of salt water in Earth's oceans \citep{CharbonnelZahn2007,CantielloLanger2010}.} 
+\textit{thermohaline instability}, a phenomenon perhaps best known in the context of salt water in Earth's oceans \citep{Stern1960,baines_gill_1969}.} 
 %\textbf{The most widely studied mechanism for possibly explaining these discrepancies is thermohaline mixing, first identified in this context by \citet{charbonnel_thermohaline_2007} }
 %\sout{identified one promising mechanism for possibly explaining these discrepancies: thermohaline mixing. }
 %%
@@ -82,82 +26,27 @@ these conditions give rise to the
 %Thermohaline mixing \textbf{is a phenomenon present in some stellar radiation zones.} \sout{is a phenomenon that drives chemical mixing in some stellar radiation zones.} 
 %This instability drives \textit{thermohaline mixing}, a candidate source of extra mixing in these regions. 
 
-Thermohaline mixing is a double-diffusive phenomenon present in fluids that have different \sout{diffusion coefficients} \textbf{diffusivities (?)} for heat and chemical composition which in turn make opposing contributions to the vertical density gradient \citep{Turner:1974}. Thermohaline mixing then occurs in Ledoux-stable regions whose temperature gradients are stably stratified but which have an unstable mean molecular weight stratification \citep[see][for a full review]{garaud_DDC_review_2018}. This process may then, in theory, facilitate the mixing of heavy elements from the interior of the star into the surface regions, thus allowing measurable changes in the surface mixing diagnostics.
+Thermohaline mixing is a double-diffusive phenomenon present in fluids that have different diffusivities for heat and chemical composition which in turn make opposing contributions to the vertical density gradient \citep{Turner:1974}. Thermohaline mixing then occurs in Ledoux-stable regions whose temperature gradients are stably stratified but which have an unstable mean molecular weight stratification \citep[see][for a full review]{garaud_DDC_review_2018}. This process may then, in theory, facilitate the mixing of heavy elements from the interior of the star into the surface regions, thus producing measurable changes in the surface mixing diagnostics significantly after the first dredge--up.
 
-%Thermohaline mixing is a form of double-diffusive convection, i.e., mixing due to small-scale, turbulent motions in regions where disparate molecular diffusion coefficients for heat and chemical composition render 
-%\sout{background temperature and composition gradients}
-%the system linearly unstable despite %\sout{being stable}\red
-%convective stability according to the Ledoux criterion. 
-%For a comprehensive review of the two forms of double-diffusive convection relevant to stellar and planetary interiors (the other form, which is distinct from thermohaline mixing, is sometimes referred to as ``semiconvection"), %\sout{(including the mixing phenomenon sometimes referred to as ``semiconvection", which is distinct from thermohaline mixing)}, 
-%we refer the reader to \citet{garaud_DDC_review_2018}. 
-%\sout{This mixing} \textbf
-
- %\sout{that have Schwarzschild-stable temperature gradients and inversions in the mean molecular weight that are sufficiently weak to maintain stability according to the Ledoux criterion (i.e.~the fluid remains stably-stratified), but stronger than some minimum threshold} \textbf
-%\textbf{To achieve these conditions,} 
-%MC: We don't need next sentence
-%\sout{In order for thermohaline mixing to occur, the mean molecular weight gradient must be sufficiently unstable as to overcome an instability threshold determined by the ratio of molecular diffusion coefficients for heat and chemical composition. 
-%In stellar interiors, this ratio is so small that even very slight inversions of the mean molecular weight can drive thermohaline mixing.}
-%In stellar interiors, these diffusivities are different by many orders of magnitude, which renders even extremely slight inversions of the mean molecular weight linearly unstable to thermohaline instability.
-
-%The necessary and sufficient conditions for thermohaline instability are simply specified using gradients and molecular diffusivities (see Sec.~\ref{sec:formalism}), which are known at every radial position in a 1D stellar structure model. 
-%Therefore, it is straightforward to use 1D models to assess which stars across the HR diagram might have thermohaline mixing. [go over the different stars and recent papers, e.g., Ylva, Evan Bauer, etc. I think there's a planetary in-fall paper by Melinda too?]
-
-%While these instability criteria are readily assessed, they do not provide the rate at which chemicals are mixed by thermohaline mixing. 
-%This presents a challenge when determining if surface observations can be attributed to thermohaline mixing: while the occurrence of thermohaline mixing in 1D stellar evolution models is coincident with stars where extra mixing is inferred, one cannot rule out the possibility that thermohaline mixing is too inefficient to explain the inferred extra mixing. 
-
-
-%[Following is a dumb sentence that can probably be deleted? idk] Instability criteria and 1D stellar evolution models can be used to establish correlation between extra mixing and thermohaline mixing, but establishing causation requires more systematic study.
-%JT- someone insert a paragraph here or elsewhere that 
-
-%\textbf{[Bad/weird transition here...-MJ]}
-
-Given that the physical conditions required to trigger the thermohaline instability are in place at around the same time that extra mixing has been observed in red giant stars, 
+Given that the physical conditions required to trigger the thermohaline instability are in place at around the same time that extra mixing has been observed in red giant stars \citep[e.g.][]{Lagarde2015}, 
 %\textbf{[have we adequately established that mysterious extra mixing does occur in stars by this point? -MJ]} [In the first paragraph, right? -AF], 
 most authors have assumed that all of the observed extra mixing can be attributed to the thermohaline instability \citep[e.g.][]{Kirby2016, Charbonnel2020, Magrini2021a}. However, this connection has also been questioned for a variety of reasons. 
 
 %On the observational side, 
-\textbf{First, reproducing the observed amounts of mixing in this regime with 1D models requires the adoption of much} higher efficiency parameters than most fluid simulations would suggest are reasonable or physical \citep{Denissenkov2010thermohaline, denissenkov_merryfield_2011, traxler_etal_2011, brown_etal_2013}. There have also been questions about the interactions of the thermohaline instability with other stellar processes including rotation \citep{Lagarde2011}, magnetism \citep{harrington}, and
-dynamical shear \citep{CantielloLanger2010}, both in combination and through direct interactions \citep{Maeder2013, SenguptaGaraud2018,harrington}. 
+\textbf{First, reproducing the observed amounts of mixing in this regime with 1D models requires the adoption of much} higher efficiency parameters than most fluid simulations would suggest are reasonable or physical \citep{Denissenkov2010thermohaline, denissenkov_merryfield_2011, traxler_etal_2011, brown_etal_2013}. \sout{There have also been questions about \textbf{whether observations can shed light on} the interactions of the thermohaline instability with other stellar processes including rotation \citep{Lagarde2011}, magnetism \citep{harrington}, and
+dynamical shear \citep{CantielloLanger2010}, both in combination and through direct interactions 
+\citep{Maeder2013, SenguptaGaraud2018, harrington}.}
 %\textbf{MC: Not exactly sure what next sentence mean}
 Questions have likewise been raised about whether the location of the observed extra mixing is truly consistent with thermohaline models \citep[see e.g.][]{Angelou2015, Henkel2017, TayarJoyce22}.
 
-In addition to these primarily observational concerns, there has also been \sout{significant explorations} \textbf{vigorous debate} about how the fluid instability should be parameterized in one dimension. \textbf{Authors have proposed a variety of different prescriptions informed by simulations \citep[e.g.~][]{traxler_etal_2011,brown_etal_2013}.} However, 
-%\sout{Finally, there have also been questions about exactly how the thermohaline mixing should be parameterized theoretically. 
-%[This last sentence is redundant with the sentence I highlighted earlier in this paragraph about ``much higher efficiency parameters". I think leaving the sentence here is better because it transitions into the next paragraph. -AF]}
-%
-% Additionally, questions have been raised about whether the observed location of the mixing  
-%
-%This has driven several efforts dating back to the 1970's to derive predictive models of thermohaline mixing, i.e., prescriptions for the efficiency at which chemicals are mixed as a function of molecular diffusivities and background gradients that can be implemented in 1D stellar evolution models. 
-%Much progress has been made on this front in recent years \citep[see review by][and Sec.~\ref{sec:parameterizations} of this paper]{garaud_DDC_review_2018}, leading to a range of mixing prescriptions that are implemented in 1D stellar evolution models. 
-%However, many of these prescriptions yield conflicting predictions for efficiency of chemical mixing. 
-%
-%\textbf{[Insert sentences about how:
-%3D parameter regimes are not maybe actually useful for real stars because the fluid qualities are so different; ergo, it is better to study qualitative, directional trends in fluid parameters with well-constrained fundamental stellar parameters (mass, metallicity) than to read anything into exact numbers. A major difference between this work and previous works is that we explore trends rather than try to calibrate rando parameters. Put this near: there are many objections to assuming that extra mixing is thermohaline mixing specifically, and 3D's inability to probe actual stellar regimes falls in this category. Much better to look at \textit{trends} in fluid parameters that we believe are well simulated]}
-%\textbf{[A novel use of observations (from the fluids perspective) is the following: 
-stars have Prandtl numbers of the order $P_r \sim 10^{-6}$, whereas modern fluid simulations can only probe as low as $10^{-2} - 10^{-3}$. This has generated justifiable skepticism about whether we should trust 1D formalisms that are informed by simulations only in the distinctly non-stellar $P_r = 10^{-2}$ regime. 
-%\textbf{when such formalisms are being applied to stars}. 
-%Therefore, showing that signatures from true stellar conditions (observations, $P_r = 10.^{-6}$) are qualitatively consistent with 1D models is not only novel, but opens doors to \sout{resolving this tension} alleviating this concern. ]}
-%
-%While the most recent 1D thermohaline prescriptions \citep[e.g.~][]{traxler_etal_2011,brown_etal_2013} have been validated against 3D hydrodynamic simulations, these prescriptions predict orders of magnitude less chemical mixing than the models used by \citet{charbonnel_thermohaline_2007} to explain the RGB surface chemical abundance observations of \citet{Gratton2000} \citep[see Sec.~3.1 of][]{traxler_etal_2011}. 
-Likewise, models of thermohaline instability that include the presence of a relatively low-amplitude magnetic field can result in much larger diffusivities \citep{harrington}. %, possibly accounting for the observed mixing. Magnetic fields are possibly very common in red giant interiors \citep{Fuller2015,Stello:2016}. 
+%In addition to these primarily observational concerns, 
+There has also been some debate about how the fluid instability should be parameterized in one dimension. \textbf{Authors have proposed a variety of different prescriptions informed by simulations \citep[e.g.~][]{traxler_etal_2011,brown_etal_2013}.} However, RGB stars have Prandtl numbers of the order $\mathrm{Pr} \sim 10^{-6}$, whereas modern fluid simulations can only probe as low as $10^{-2} - 10^{-3}$. This has generated justifiable skepticism about whether we should trust 1D formalisms that are informed by simulations only in the distinctly non-stellar $\mathrm{Pr} = 10^{-2}$ regime. \red{do we need to quote the number again?} Likewise, models of thermohaline instability that include the presence of a relatively low-amplitude magnetic field can result in much larger diffusivities \citep{harrington}. 
 
-%These 3D (magneto)-hydrodynamic models depend on the detailed plasma conditions at the location of the mean molecular weight inversion. Therefore making progress requires developing a framework to interpret the observations (e.g.~masses and surface chemical abundances) in the parameter space relevant to the theory (e.g.~background gradients and molecular diffusivities).    
-
-%Furthermore, \citet{harrington} have shown that remarkably  weak magnetic fields (e.g.~of order $100$G in RGB stars, which might plausibly exist in the majority of these stars) can dramatically enhance thermohaline mixing efficiency beyond levels predicted by hydrodynamic simulations, and produce profoundly different trends for mixing efficiency versus background density gradients. 
-%
-%Given the broad range of prescriptions used throughout the recent literature [and maybe mention issue of $\mathrm{Pr} \sim 10^{-1}$ vs $10^{-6}$], it therefore becomes necessary to compare them to observations to narrow things down. 
-%\sout{[The following transition is fine, but if we can say something like "the awesomeness of all this data from apogee makes for a unique and timely opportunity to provide insight into this issue. However, doing so requires developing a framework in which ..." that would be good right? -AF]}
-%Here, the massive amount of data provided by APOGEE becomes useful [SOS Jamie help please] because of the large number of accurate and precise measurements of M thanks to asteroseismology. 
-%However, comparing observations to theory models requires a framework 
-%We therefore need a large sample of observations with well-constrained estimates of mass and composition as well as a set of theoretical models which can provide the necessary fluid parameters for stars across this regime. 
-
-Given both these observational and theoretical questions, it is necessary to develop a framework to show whether signatures from true stellar conditions (observations, $P_r = 10.^{-6}$) are qualitatively consistent with fluid models. % is not only novel. 
-%, but opens doors to \sout{resolving this tension} alleviating this concern.
-In this paper, we put forth such a framework. 
-We demonstrate a way to connect the non-dimensional fluid parameters relevant to thermohaline mixing to the observed mixing around the RGB bump, and show that this correlation is qualitatively consistent with hydrodynamical prescriptions of thermohaline mixing. %\textbf{MC: hydro or MHD?} 
-%\sout{Therefore, in this paper we provide: a summary of} \red
+Given both these observational and theoretical questions, \textbf{the development of a framework through which we can determine} whether signatures from true stellar conditions (observations, $\mathrm{Pr} = 10^{-6}$) are qualitatively consistent with fluid models \textbf{is timely and imperative}. In this paper, we put forth such a framework. We demonstrate \textbf{a robust and model-agnostic means of relating the} non-dimensional fluid parameters relevant to thermohaline mixing to the observed mixing around the RGB bump and show that this correlation is \textbf{indeed} qualitatively consistent with \sout{hydrodynamical} \textbf{1D} prescriptions of thermohaline mixing \textbf{informed by 3D simulations}.
 
 This paper is organized as follows: we begin by summarizing the formalism and stellar structure quantities relevant to thermohaline mixing (Sec.~\ref{sec:formalism}). This is followed by a description of various 1D mixing prescriptions commonly adopted in stellar evolution calculations (Sec.~\ref{sec:parameterizations}). %\sout{[think that somewhere, maybe in the previous paragraph, we need to lay out why this deserves its own section. Maybe by placing more emphasis on the issue of there being multiple conflicting prescriptions, and our aim of being able to place constraints on the prescriptions -AF].}
-We then introduce a suite of 1D MESA simulations, and calculate the relevant fluid parameters at the location where thermohaline mixing is expected to operate, across a range of masses and metallicities ([Fe/H])  (Secs.~\ref{sec:mesa_experiment} and \ref{sec:mesa_results}). 
-Finally, we compare an observational proxy of extra mixing, the decrease in [C/N] near the RGBB, to theoretical trends expected from existing 1D thermohaline mixing prescriptions (Sec.~\ref{sec:obs} and Sec.~\ref{sec:punchline}). 
+We then introduce a suite of 1D MESA simulations and calculate the relevant fluid parameters \textbf{in the thermohaline region}
+%at the location where thermohaline mixing is expected to operate, 
+across a range of masses and metallicities \sout{([Fe/H]) } (Secs.~\ref{sec:mesa_experiment} and \ref{sec:mesa_results}). 
+Finally, we compare an observational proxy of extra mixing, the decrease in [C/N] near the RGBB, to theoretical trends predicted by existing 1D thermohaline mixing prescriptions (Sec.~\ref{sec:obs} and Sec.~\ref{sec:punchline}). \textbf{Our results and their implications are discussed in Sections \ref{sec:punchline} and \ref{sec:conclusions}.} 
 %\textbf{MC: What about Results and Conclusions ?}
