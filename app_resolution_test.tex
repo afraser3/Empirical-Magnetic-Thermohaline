@@ -11,7 +11,14 @@ Furthermore, we find that when the thermohaline front is not properly numericall
 \begin{figure*}[!tb]
 \begin{center}
 \includegraphics[width=\textwidth]{resolution_test.pdf}
-\caption{This is a template figure showing relative error in a calculation as a function of mesh and time delta coefficient. It'll look nicer. It also won't have the same data repeated 9 times once the data finish running!}
+\caption{
+    We plot the percent difference between the measured value of the reduced density ratio $r$ for a 5x5 resolution grid of MESA models with respect to the values reported in Fig.~\ref{fig:mesa_r_spread}.
+    We study values of \texttt{mesh\_delta\_coeff} and \texttt{time\_delta\_coeff} each in five log-space steps between 0.1 and 1.
+    We perform these resolution tests for a 3x3 grid of mass and metallicity with $M \in [0.9, 1.3, 1.7]$ and [Fe/H]$ \in [-1.2, -0.4, 0.4]$.
+    Each colored grid in this figure represents a 5x5 resolution test at one value of $M$ and [Fe/H] as reported in the text label above the grid.
+    The resolution of the grids of simulations presented in Fig.~\ref{fig:mesa_r_spread} are marked by black stars.
+    Points whose percent difference from the reported values are colored in green, while points with larger percent difference are colored in red.
+    }
 \label{Fig:resolution_test}
 \end{center}
 \end{figure*}
