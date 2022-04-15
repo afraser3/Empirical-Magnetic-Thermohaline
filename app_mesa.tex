@@ -3,7 +3,7 @@ The MESA EOS is a blend of the OPAL \citep{Rogers2002}, SCVH
 PC \citep{Potekhin2010}, and Skye \citep{Jermyn2021} EOSes.
 
 Radiative opacities are primarily from OPAL \citep{Iglesias1993,
-Iglesias1996}, with low-temperature data from \citet{Ferguson2005}
+IglesiasRogers1996}, with low-temperature data from \citet{Ferguson2005}
 and the high-temperature, Compton-scattering dominated regime by
 \citet{Poutanen2017}.  Electron conduction opacities are from
 \citet{Cassisi2007}.
@@ -15,14 +15,13 @@ Thermal neutrino loss rates are from \citet{Itoh1996}.
 
 
 We create 1D stellar models and evolve them from the pre-main sequence until roughly the end of hydrogen shell burning.
-We study stellar masses between 0.9 and 1.7 $M_{\odot}$ in steps of $0.2 M_{\odot}$.
-We study metallicities [Fe/H] ranging from -1.4 to 0.4 in steps of 0.2 dex.
-To convert from metallicity units to MESA input $Y$ and $Z$ units, we assume a linear helium enrichment law \citep[per e.g.,][sec 3.1]{choi2016} where we assume a big-bang $Y_p = 0.2485$ and $\Delta Y / \Delta Z = 1.3426$ according to table 1 of \citet{tayar_etal_2022}.
-The algorithm we use to calculate $X$, $Y$, and $Z$ from these values is identical to the one used in \url{https://github.com/aarondotter/initial_xa_calculator}; we use the opacity tables of \citet{GrevesseSauval1998} and [$\alpha$/Fe].
-The specific [Fe/H] to ($X$, $Y$, $Z$) conversions used here are shown in table~\ref{table:feh_to_z}.
-
+We study stellar masses between 0.9 and 1.7 $M_{\odot}$ in steps of $0.2 M_{\odot}$. We study metallicities [Fe/H] ranging from -1.4 to 0.4 in steps of 0.2 dex. To convert from metallicity units to MESA input $Y$ and $Z$ units, we assume a linear helium enrichment law \citep[per e.g.,][sec 3.1]{choi2016} in which we adopt a Big-Bang $Y_p = 0.2485$ and $\Delta Y / \Delta Z = 1.3426$ according to Table 1 of \citet{tayar_etal_2022}. The algorithm we use to calculate $X$, $Y$, and $Z$ from these values is identical to the one used in \url{https://github.com/aarondotter/initial_xa_calculator}; we use the opacity tables of \citet{GrevesseSauval1998} and [$\alpha$/Fe].
+The specific [Fe/H] to ($X$, $Y$, $Z$) conversions used here are shown in Table~\ref{table:feh_to_z}.
 
 \begin{deluxetable}{c c c c}
+\caption{
+     Mappings between $[$Fe/H$]$ values and MESA input values of $(X, Y, Z)$.}
+    \label{table:feh_to_z}
 \tablehead{
 \colhead{[Fe/H]} & \colhead{$X$} & \colhead{$Y$} & \colhead{$Z$}
 }
@@ -39,9 +38,8 @@ The specific [Fe/H] to ($X$, $Y$, $Z$) conversions used here are shown in table~
      -1.200 & 0.74896112 & 0.24995509 & 0.00108379 \\
      -1.400 & 0.74989606 & 0.24941926 & 0.00068468
 \enddata
-\begin{caption}
-     Mappings between $[$Fe/H$]$ values and MESA input values of $(X, Y, Z)$.
-    \label{table:feh_to_z}
-\end{caption}
+%\begin{caption}
+
+%\end{caption}
 \end{deluxetable}
 
