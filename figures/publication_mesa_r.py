@@ -79,8 +79,8 @@ for fname in csvfiles:
     ax.set_xlim(0.8, 1.8)
     ax.set_ylim(-1.5, 0.5)
     ax.invert_xaxis()
-ax3.set_xlabel('Mass')
-ax4.set_xlabel('Mass')
+ax3.set_xlabel(r'Mass ($M_{\odot}$)')
+ax4.set_xlabel(r'Mass ($M_{\odot}$)')
 ax1.set_ylabel('[Fe/H]')
 ax3.set_ylabel('[Fe/H]')
 

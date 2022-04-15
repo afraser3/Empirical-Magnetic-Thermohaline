@@ -100,7 +100,7 @@ for i, fname in enumerate(csvfiles):
     ax.set_ylim(-1.1, 0.1)
 
     bbox_props = dict(ec="k", alpha=1, fc="w", linewidth=0.8, pad=2)
-    ax.text(0.017, 1.055, 'M = {:.1f}, [Fe/H] = {:.1f}'.format(M, FeH), transform=ax.transAxes, ha='left', va='center', size=9, bbox=bbox_props)
+    ax.text(0.017, 1.055, r'$M = {{{:.1f}}} M_{{\odot}}$, [Fe/H] = {:.1f}'.format(M, FeH), transform=ax.transAxes, ha='left', va='center', size=9, bbox=bbox_props)
     ax.scatter(-1, np.log10(0.5), c='k', marker='*')
 
     ax.set_xticks((-1, -0.5, 0))
