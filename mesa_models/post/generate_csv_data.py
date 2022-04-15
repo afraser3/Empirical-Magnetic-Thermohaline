@@ -83,11 +83,10 @@ def read_dirs(model_name, coeff):
         for i in range(len(data)):
             print(data[i])
         header = "{:>18s}".format("M") + (5*"{:>21s}").format("Fe/H", "Z", "r", "R0", "tau")
-        np.savetxt('mesa_{}_coeff{:.1e}_values.csv'.format(model_name, coeff), data, '%20.8f', delimiter=',', header=header)
+        np.savetxt('mesa_{}_coeff{:.1e}_values.csv'.format(model_name, coeff), data, '%20.10f', delimiter=',', header=header)
 
 
-
-#read_dirs('Brown', 1)
-#read_dirs('Kipp', 0.1)
+read_dirs('Brown', 1)
+read_dirs('Kipp', 0.1)
 read_dirs('Kipp', 2)
 read_dirs('Kipp', 700)
