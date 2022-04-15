@@ -88,7 +88,7 @@ for i, fname in enumerate(csvfiles):
             cc[(mm == mesh[j])*(tt == time[j])] = 10**(vmin)
     print(cc)
     ax = axs[i]
-    ax.fill_between([-1.1, 0.1], -1.1, 0.1, color='lightgrey')
+    ax.fill_between([-1.1, 0.1], -1.1, 0.1, color='grey')
     ax.pcolormesh(np.log10(tt), np.log10(mm), np.log10(cc), norm=norm, shading='nearest', rasterized=True, cmap=err_cmap)
 
 #    ax.set_xscale('log')
