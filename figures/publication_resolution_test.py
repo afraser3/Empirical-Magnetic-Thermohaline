@@ -2,7 +2,6 @@ import pathlib
 import glob
 import re
 
-import h5py
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
