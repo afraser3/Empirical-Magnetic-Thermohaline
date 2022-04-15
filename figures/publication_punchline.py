@@ -33,8 +33,8 @@ for m in range(len(M)):
     ax2.scatter(r[m], mixing_shet[m], marker='s', color=sm.to_rgba(feh[m]), label='Shetrone', **kwargs)
     ax2.scatter(r[m], mixing_apk[m], marker='o', color=sm.to_rgba(feh[m]), label='APOKASC', **kwargs)
     if m == 0:
-        ax2.legend(loc='center right', fontsize=8)
-ax2.text(0.98, 0.98, 'Brown', ha='right', va='top', transform=ax2.transAxes, fontsize=9)
+        ax2.legend(loc='lower right', fontsize=8)
+ax2.text(0.98, 0.98, '(Brown model)', ha='right', va='top', transform=ax2.transAxes, fontsize=9)
 ax2.set_xlim(1e-5, 1)
 ax2.set_ylim(-0.05, 0.7)
 ax2.set_xscale('log')
@@ -44,7 +44,7 @@ cbar.set_label(r'[Fe/H]')
 
 ax1.set_xlabel(r'$r$')
 ax2.set_xlabel(r'$r$')
-ax2.set_ylabel(r'$\Delta$ [C/N]')
+ax2.set_ylabel(r'$\Delta$ [C/N]$_{\rm corr}$')
 
 
 fig.savefig('punchline.png', dpi=300, bbox_inches='tight')
