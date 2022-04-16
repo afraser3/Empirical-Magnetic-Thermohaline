@@ -4,11 +4,12 @@
 Equation \eqref{eq:r_condition} 
 %is \red{straightforward - too close to trivial, could we find a different less gatekeepy word? JT} to 
 can be readily evaluated at any radial location in a model star generated with a 1D stellar structure and evolution program. However, predicting the efficiency of thermohaline mixing is much more challenging. A diffusive approximation is commonly taken for the turbulent mixing of chemicals such that the total mixing of chemical species is given by the sum of the molecular diffusivity and a turbulent mixing coefficient, $\Dth$. This quantity can be converted to the compositional Nusselt number discussed in the fluid dynamics literature, $\Numu$, using the formula
+
 \begin{equation} \label{eq:Dth_from_Nu}
     \Dth = (\Numu - 1)\kappa_\mu.
 \end{equation}
 
-We refer to any model that predicts $\Dth$ as a function of stellar structure variables (e.g.~gradients and molecular diffusivities of chemicals and heat) as a parameterized mixing model or mixing prescription. 
+We call any model that predicts $\Dth$ as a function of stellar structure variables (e.g.~gradients and molecular diffusivities of chemicals and heat) a parameterized mixing model or mixing prescription. 
 Efforts to develop thermohaline mixing prescriptions for use in models of stellar interiors date back many decades, see \citet{garaud_DDC_review_2018} for a full review. 
 Such mixing prescriptions have been implemented in a variety of 1D stellar evolution programs \citep[see][and references therein]{lattanzio_etal_2015}, enabling studies of the effects of thermohaline mixing in stars across the Hertzprung-Russell diagram. % no need for separate paragraph here - MJ
 Here, we briefly summarize the most commonly used and more recently developed prescriptions.
@@ -18,6 +19,7 @@ Here, we briefly summarize the most commonly used and more recently developed pr
 The \textit{de facto} thermohaline mixing model used in MESA (first described in \citealt{CantielloLanger2010} and implemented for public use in \citealt{mesa2}) is commonly referred to as the ``Kippenhahn model'' and was originally derived by \citet{Ulrich1972} and \citet{kippenhahn_etal_1980}.
 %Thermohaline mixing is treated as a diffusion process, with a diffusion coefficient
 Using arguments based on dimensional grounds and assumptions about the shapes and motions of discrete fluid parcels, they derived a mixing efficiency of the form
+
 \begin{equation} \label{eq:Dth-kipp}
     \Dth = C_t \kappa_T R_0^{-1},
 \end{equation}
@@ -33,12 +35,12 @@ Nevertheless, Eq.~\eqref{eq:Dth-kipp} is implemented in MESA as
 Here, $\alpha_{\rm{th}}$ is a dimensionless efficiency parameter related to $C_t$ by $C_t = 3\alpha_{\rm{th}}/2$, $K$ is the radiative conductivity, $\rho$ is the density, and $C_P$ is the specific heat at constant pressure, with $\kappa_T = K/(\rho C_P)$. 
 The green curve in Fig.~\ref{fig:parameterization_compare} shows $\Dth/\kappa_\mu$ vs.~$r$ calculated according to Eq.~\eqref{eq:Dth-kipp-MESA} for $\tau = 10^{-6}$, which is a representative value for the thermohaline-unstable region of RGB stars, and the same $\alpha_{\rm{th}} = 2$ assumed in \citet{CantielloLanger2010}.
 
-In addition to tension regarding the choice of overall mixing efficiency \citep[see e.g.][for further discussion]{Ulrich1972, kippenhahn_etal_1980, charbonnel_thermohaline_2007, CantielloLanger2010}, there have also been questions about the appropriate trends in the amount of mixing versus fluid parameters (e.g.~$R_0$ and $\tau$) and therefore the stellar structure variables on which they depend \citep{garaud_DDC_review_2018}.
-Recent work has sought to refine these mixing prescriptions, including both their overall levels of mixing and their trends with fluid parameters, by performing numerical experiments with multi-dimensional simulations to estimate mixing efficiency more precisely \citep{Denissenkov2010thermohaline,traxler_etal_2011}. 
+In addition to tension regarding the choice of overall mixing efficiency \citep[see e.g.][for further discussion]{Ulrich1972, kippenhahn_etal_1980, charbonnel_thermohaline_2007, CantielloLanger2010,traxler_etal_2011}, there have also been questions about the appropriate trends in the amount of mixing as a function of fluid parameters (e.g.~$R_0$ and $\tau$) and therefore the stellar structure variables on which they depend \citep{garaud_DDC_review_2018}.
+Thus, recent work has sought to refine these mixing prescriptions by performing numerical experiments with multi-dimensional simulations to more accurately parameterize mixing efficiency \citep{Denissenkov2010thermohaline,traxler_etal_2011}. 
 %\citet{traxler_etal_2011} and \citet{brown_etal_2013} performed 3D hydrodynamic simulations across a broad range of parameters and broadly found that the mixing efficiency parameter required in \citet{charbonnel_thermohaline_2007} to find agreement with observations was orders of magnitude larger than what is found in simulations, suggesting thermohaline mixing may be unable to explain observations of extra mixing.
 %\texbtf{[I think the above commented-out paragraph is an extremely poignant example of the lengths simulationists have gone to to try to make thermohaline mixing be A Thing, and it is worth including - MJ]}
 \citet{traxler_etal_2011} and \citet{brown_etal_2013} performed 3D hydrodynamic simulations across a broad range of parameters. % and developed mixing prescriptions that fit their simulations. 
-Not only did they find orders of magnitude less mixing than what is predicted by the Kippenhahn model with the efficiency parameter required in \citet{charbonnel_thermohaline_2007} to find agreement with observations ($C_t = 1000$) \textcolor{red}{[note to self this is where I was editing a second ago]}, they also developed new mixing prescriptions that fit their simulations much more closely. 
+Not only did they find orders of magnitude less mixing than what is predicted by the Kippenhahn model with the efficiency parameter required in \citet{charbonnel_thermohaline_2007} to find agreement with observations ($C_t = 1000$), they also developed new mixing prescriptions that fit their simulations much more closely. 
 %They found that mixing efficiency is most easily discussed in terms of $r$.
 In the case of \citet{traxler_etal_2011}, the authors derived a mixing law by fitting an
 analytic function 
@@ -46,18 +48,20 @@ of the form
 %\textbf{and found that} 
 %\textbf{[is this Traxler 2011a paper supposed to be referenced twice in succession like this?]}.
 %They define the reduce density ratio, $r \equiv (R_0 - 1)/(\tau^{-1} - 1)$, where $\tau = \kappa_\mu/\kappa_T$ is the ratio of compositional to thermal diffusivity.
+
 \begin{equation} \label{eqn:trax_model}
    \Dth = \kappa_{\mu}\sqrt{\frac{\mathrm{Pr}}{\tau}}\left(a e^{-br}[1 - r]^c\right),
 \end{equation}
 to their simulation results,
 where 
+
 \begin{equation} \label{eq:Prandtl}
     \mathrm{Pr} = \frac{\nu}{\kappa_T}
 \end{equation}
 is the Prandtl number, with $\nu$ the kinematic viscosity,
 %
 and $a$, $b$, and $c$ are constants which they fit to data. 
-Importantly, they note that this model and their simulations predict significantly less mixing than the Kippenhahn model with $C_t \sim 10^2 - 10^3$ does.
+%Importantly, they note that this model and their simulations predict significantly less mixing than the Kippenhahn model with $C_t \sim 10^2 - 10^3$ does.
 
 While \citet{traxler_etal_2011} clearly showed their simulations are inconsistent with the mixing efficiency implied by the Kippenhahn model with $\alpha_{\rm{th}}, C_t \sim 10^2-10^3$, it is important to note that their simulations generally explored $\mathrm{Pr}, \tau \sim 10^{-1}$, whereas these fluid parameters are generally of the order $10^{-6}$ in the radiative interiors of RGB stars. 
 Thus, a fair question is whether mixing efficiency might increase to these larger values as $\mathrm{Pr}$ and $\tau$ approach $10^{-6}$. 
@@ -65,6 +69,7 @@ However, \citet{traxler_etal_2011} varied these parameters by an order of magnit
 
 \citet{brown_etal_2013} note that the model in Eqn.~\eqref{eqn:trax_model} performs well at high $R_0$, but underestimates mixing at low $R_0$, particularly in the stellar regime of low Pr and $\tau$.
 They develop a semi-analytical model for thermohaline mixing,
+
 \begin{equation}
     \Dth = \kappa_{\mu}C^2\frac{\lambda^2}{\tau l^2(\lambda + \tau l^2)},
     \label{eqn:brown_model}
@@ -78,11 +83,12 @@ While the general dependence of $\Dth/\kappa_\mu$ on $r$ is significantly differ
 This prescription is implemented in MESA and has since been used in \citet{bauer_bildsten_2019} and other works. %\textcolor{red}{[Meridith/Evan: do we put the MESA version where this was first implemented?]}.
 
 %\citet{harrington} build on the model of \citet{brown_etal_2013} by including the effects of initially uniform, vertical magnetic fields. 
-\citet{harrington} extended the work of \citet{brown_etal_2013} by performing 3D magnetohydrodynamic (MHD) simulations of thermohaline mixing with initially uniform, vertical magnetic fields of various strengths to approximate the effects of magnetic fields from external processes \red{including,} for instance, a global dipole field or a large-scale magnetic field left \blu{behind} by a dynamo acting in the receding convective envelope. 
+\citet{harrington} extended the work of \citet{brown_etal_2013} by performing 3D magnetohydrodynamic (MHD) simulations of thermohaline mixing with initially uniform, vertical magnetic fields of various strengths to approximate the effects of magnetic fields from external processes including, for instance, a global dipole field or a large-scale magnetic field left behind by a dynamo acting in the receding convective envelope. 
 They found that magnetism strictly increases mixing efficiency, sometimes dramatically.
 They developed a mixing prescription that accounts for this effect by building on the model of \citet{brown_etal_2013}.
 The strength of the magnetic field is introduced into their model through their parameter $H_B$, which is proportional to the square of the magnetic field strength and depends on other stellar structure variables \citep[see Eq.~19 of][]{harrington}.
 Their mixing prescription is of the form
+
 \begin{equation} \label{eq:harrington_model}
     \Dth = \kappa_{\mu}K_B\frac{w_f^2}{\tau (\lambda + \tau l^2)},
 \end{equation}
@@ -90,7 +96,7 @@ where $w_f$ is obtained by solving a quartic polynomial that includes the magnet
 
 This mixing prescription agreed remarkably well with their 3D simulations, which were limited to $r = 0.05$ but ranged in magnetic field strength over several orders of magnitude.
 The prescription, which has not yet been implemented in MESA at the time of this writing, has two asymptotic limits, one where $\hat{w}_f^2 \propto B_0^2$ when the magnetic field strength $B_0$ is large, and one which reduces to the model of \citet{brown_etal_2013} when $B_0$ is small. 
-\blu{We note that} \sout{Note} the threshold $B_0$ separating these limits depends on the same stellar structure variables that enter into $r$; thus, a given magnetic field strength might simultaneously be considered ``large" in one region of a star and ``small" in another, implying that simplifications of this model may not be simultaneously appropriate for all regions within a single star.
+We note that the threshold $B_0$ separating these limits depends on the same stellar structure variables that enter into $r$; thus, a given magnetic field strength might simultaneously be considered ``large" in one region of a star and ``small" in another, implying that simplifications of this model may not be simultaneously appropriate for all regions within a single star.
 
 The purple curve in Fig.~\ref{fig:parameterization_compare} shows $\Dth/\kappa_\mu$ vs.~$r$ calculated according to Eq.~\eqref{eq:harrington_model} for the same parameter choices as the orange curve, and with $H_B = 10^{-6}$, appropriate for the thermohaline zone of a 1.1 $M_\odot$ star at [Fe/H] = -0.2 and a magnetic field whose strength is $\mathcal{O}(100 \,\mathrm{G})$. 
 Note that this magnetic field strength dramatically increases mixing efficiency relative to the hydrodynamic values, particularly at larger values of $r$, whereas the model predicts the same mixing as the Brown model for $r \lesssim 10^{-5}$. 
@@ -100,14 +106,14 @@ For larger values of $r$, the dependence of $\Dth/\kappa_\mu$ on $r$ is profound
 %There has been other work regarding multi-D models of thermohaline mixing \citep{denissenkov_2010, denissenkov_merryfield_2011}, but 2D thermohaline behaves very differently from 3D thermohaline \citep{garaud_brummell_2015}, and so we do not consider that set of data in this work.
 
 %\citet{lattanzio_etal_2015} tested one or multiple of these models in a bunch of different codes on the RGB and found X.
-\blu{Given variance of the predictions of these models, we focus in this paper on showing how observations can be used to suggest the \textit{trends} in mixing that models should hope to explain rather than on trying to calibrate the overall mixing \textit{efficiency} for a particular model, in order to provide a framework in which we can distinguish between mixing prescriptions. } \textcolor{red}{[AF says: I like this but it would be great if we can more clearly state that ``overall efficiency" is what previous work did and therefore we're cool as heck.]}
+Given the variance of the predictions of these models, we focus in this paper on showing how observations can be used to suggest the \textit{trends} in mixing that models should hope to explain rather than on trying to calibrate the overall mixing \textit{efficiency} for a particular model, as has been done before, in order to provide a framework in which we can distinguish between mixing prescriptions.
 
 %are not.
 
 \begin{figure}
     \centering
     \includegraphics[width=\columnwidth]{Nu_models_comparison.pdf}
-    \caption{ {\bf{(Done)}}
+    \caption{ 
     Prescriptions of the compositional diffusivity due to thermohaline mixing $D_{\rm th}$ normalized by the molecular diffusivity $\kappa_{\mu}$ are plotted against the reduced density ratio $r$. For each prescription, we use $\mathrm{Pr} = \tau = 10^{-6}$, consistent with the conditions in these regions of RGB stars.
     We plot two hydrodynamic models, the \citet{brown_etal_2013} model (orange) and the \citet{kippenhahn_etal_1980} model with $\alpha_{\rm th} = 2$ (green). In both cases, the mixing efficiency decreases with $r$.
     The \citet{harrington} model (HG19) is also shown; it includes magnetic fields, which cause mixing efficiency to increase with $r$ for these parameters.

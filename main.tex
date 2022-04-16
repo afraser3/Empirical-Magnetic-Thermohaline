@@ -91,33 +91,20 @@
 \bibpunct{(}{)}{;}{a}{}{,}
 
 \begin{document}
-%\title{Empirical Constraints on Thermohaline Mixing in Low-mass Red Giant Stars from the Reduced Density Ratio}
-%\title{Empirical Constraints on the Efficiency of Magnetized Thermohaline Mixing}
-%{Comparing observations of extra mixing to the predictions of three dimensional simulations of the thermohaline instability}
-%\title{Thermohaline Mixing in Red Giants can be Directly Compared to the Reduced Density Ratio From Fluid Simulations}
-
-% \title{\sout{Observed Thermohaline Mixing in Red Giants is Strongly Correlated with Stability Ratios from Fluid Simulations} Extra Mixing in Red Giants: Observations and Thermohaline Mixing Models}
-
-% \title{Observed Extra Mixing in Red Giants Scales with the Reduced Density Ratio in Thermohaline Mixing Models}
 
 \title{Observed Extra Mixing Trends in Red Giants are Reproduced by the Reduced Density Ratio in Thermohaline Zones}
-
-%Extra Mixing in Red Giants and Thermohaline Mixing
-%MC I suggest the following title (you don't observe Thermohaline Mixing)
-%\title{Extra Mixing in Red Giants: Observations and Thermohaline Mixing Models} %A suggestion
-
-%% Is Extra Mixing in Red Giants Thermohaline Mixing? Observations consistent with stability ratios from Fluid Dynamics
 
 \author[0000-0003-4323-2082]{Adrian E. Fraser}
 \affiliation{Department of Applied Mathematics, Baskin School of Engineering, University of California, Santa Cruz, CA 95064, USA}
 \affiliation{Kavli Institute for Theoretical Physics, University of California, Santa Barbara, CA 93106, USA}
 
 \author[0000-0002-8717-127X]{Meridith Joyce}
+\altaffiliation{Lasker Fellow}
 \affiliation{Space Telescope Science Institute,
 3700 San Martin Drive,
 Baltimore, MD 21218, USA}
-\altaffiliation{Lasker Fellow}
 \affiliation{Kavli Institute for Theoretical Physics, University of California, Santa Barbara, CA 93106, USA}
+%\affiliation{\textdagger}
 
 \author[0000-0002-3433-4733]{Evan H. Anders}
 \affiliation{CIERA, Northwestern University, Evanston IL 60201, USA}
@@ -135,60 +122,70 @@ Baltimore, MD 21218, USA}
 \affiliation{Kavli Institute for Theoretical Physics, University of California, Santa Barbara, CA 93106, USA}
 
 \begin{abstract}
-%%%% MC: Attempt to clean up the abstract. Feel free to revert / take apart. Old version below
-Observations show the presence of an almost ubiquitous extra mixing in low-mass upper giant branch stars.  
-A possible origin for this extra mixing is a thermohaline instability induced by a mean molecular weight inversion in otherwise stably-stratified zones. 
-Stellar evolution models include prescriptions for thermohaline mixing that are informed by analytical calculations and three-dimensional fluid dynamics simulations, 
-but a direct comparison between these models and observations is challenging. This is because current computational resources do not allow modeling thermohaline mixing under the relevant stellar conditions, 
-and only extrapolations of lower-resolution calculations are available. Moreover stellar interiors are complex regions, with likely multiple concurrent fluid dynamics processes interacting. 
-Here we take advantage of carbon to nitrogen measurements from the SDSS-IV APOGEE survey of stars to put empirical constraints on the efficiency of mixing across a relatively large range of masses and metallicities. 
-We identify the reduced density ratio as an important parameter to compare the observed amount of extra mixing on the upper giant branch, and the predicted trends from three-dimensional fluid dynamics simulations.
-The reduced density ratio is a function of the ratio of thermal and compositional stratification, as well as of the ratio of the thermal and compositional diffusivities. 
-We show that the observed amount of extra mixing is strongly correlated with the reduced density ratio. Since this trend is also reproduced in three-dimensional models of thermohaline instability, our results 
-give support to a thermohaline mixing origin for the observed surface abundances change. 
+% %%%% MC: Attempt to clean up the abstract. Feel free to revert / take apart. Old version below
+% Observations show the presence of an almost ubiquitous extra mixing in low-mass upper giant branch stars.  
+% A possible origin for this extra mixing is a thermohaline instability induced by a mean molecular weight inversion in otherwise stably-stratified zones. 
+% Stellar evolution models include prescriptions for thermohaline mixing that are informed by analytical calculations and three-dimensional fluid dynamics simulations, 
+% but a direct comparison between these models and observations is challenging. This is because current computational resources do not allow modeling thermohaline mixing under the relevant stellar conditions, 
+% and only extrapolations of lower-resolution calculations are available. Moreover stellar interiors are complex regions, with likely multiple concurrent fluid dynamics processes interacting. 
+% Here we take advantage of carbon to nitrogen measurements from the SDSS-IV APOGEE survey of stars to put empirical constraints on the efficiency of mixing across a relatively large range of masses and metallicities. 
+% We identify the reduced density ratio as an important parameter to compare the observed amount of extra mixing on the upper giant branch, and the predicted trends from three-dimensional fluid dynamics simulations.
+% The reduced density ratio is a function of the ratio of thermal and compositional stratification, as well as of the ratio of the thermal and compositional diffusivities. 
+% We show that the observed amount of extra mixing is strongly correlated with the reduced density ratio. Since this trend is also reproduced in three-dimensional models of thermohaline instability, our results 
+% give support to a thermohaline mixing origin for the observed surface abundances change. 
 
 
 
-%\textbf{[NOT DONE JT has implemented EA. and much of MC]}
-%Enhanced extra mixing in low-mass upper giant branch stars has been well documented for decades. 
-It has been widely assumed that the extra mixing observed in low-mass giant branch stars is related to the thermohaline instability that can be induced by mean molecular weight inversions in otherwise stably stratified zones. However, direct comparison between numerical simulations and observations has been challenging. %It was suggested that their extra mixing might be due to thermohaline convection, which relies on ( mean molecular weight inversions in otherwise stably stratified zones). However, previous attempts to match the observed pattern quantitatively using one dimensional stellar evolution models have usually required some sort of ad hoc increase in the efficacy of the thermohaline mixing, and recent three dimensional simulations  have suggested contradictory results on how the amount of mixing should depend on the fluid parameters of the star in question. 
-Here we compute the relevant fluid parameters from MESA models, including the reduced density ratios, for stars at a range of masses and metallicities. Combining these modeling results with carbon-to-nitrogen measurements from the SDSS-IV APOGEE survey, \textbf{we provide a framework to qualitatively compare \red{models derived from} three dimensional fluid simulations to the amount of extra mixing on the upper giant branch.}  We show that stars with available mixing data tend on average to be at relatively low density ratios, which informs the regime which future simulations should attempt to probe. We also show that the amount of extra mixing is strongly correlated with the reduced density ratio, which \red{is consistent with the expectations of thermohaline mixing.} %suggests that this framework is valid for exploring the physics of this mixing. 
-Finally, we show that there is increased mixing at low reduced density values, which is consistent with current hydrodynamical models of the thermohaline instability.  %%\sout{inconsistent with current strongly magnetic three dimensional implementations of the thermohaline instability.} Finally, %have suggested that even moderate magnetic fields could greatly enhance the efficiency of thermhaline mixing, but questions have arisen about the reliability of those predictions given (some simulation limitations). We therefore use the data from the SDSS-IV APOGEE survey of stars covering a range of masses and metallicities to put empirical constraints on the efficiency of mixing as a function of (R0- define) in order to constrain future theoretical investigations. We find that (stuff) and show that this would suggest (cool things).  
+
+% It has been widely assumed that the extra mixing observed in low-mass giant branch stars is related to the thermohaline instability that can be induced by mean molecular weight inversions in otherwise stably stratified zones. However, direct comparison between numerical simulations and observations has been challenging. %It was suggested that their extra mixing might be due to thermohaline convection, which relies on ( mean molecular weight inversions in otherwise stably stratified zones). However, previous attempts to match the observed pattern quantitatively using one dimensional stellar evolution models have usually required some sort of ad hoc increase in the efficacy of the thermohaline mixing, and recent three dimensional simulations  have suggested contradictory results on how the amount of mixing should depend on the fluid parameters of the star in question. 
+% Here we compute the relevant fluid parameters from MESA models, including the reduced density ratios, for stars at a range of masses and metallicities. Combining these modeling results with carbon-to-nitrogen measurements from the SDSS-IV APOGEE survey, \textbf{we provide a framework to qualitatively compare \red{models derived from} three dimensional fluid simulations to the amount of extra mixing on the upper giant branch.}  We show that stars with available mixing data tend on average to be at relatively low density ratios, which informs the regime which future simulations should attempt to probe. We also show that the amount of extra mixing is strongly correlated with the reduced density ratio, which \red{is consistent with the expectations of thermohaline mixing.} %suggests that this framework is valid for exploring the physics of this mixing. 
+% Finally, we show that there is increased mixing at low reduced density values, which is consistent with current hydrodynamical models of the thermohaline instability.  
+
+Observations show an almost ubiquitous presence of extra mixing in low-mass upper giant branch stars. The most commonly invoked explanation for this is the thermohaline instability. One dimensional stellar evolution models include prescriptions for thermohaline mixing, but our ability to make direct comparisons between models and observations has thus far been limited.
+Here, we propose a new framework to facilitate direct comparison:
+Using carbon to nitrogen measurements from the SDSS-IV APOGEE survey as a probe of mixing and a fluid parameter known as the \textit{reduced density ratio} from one dimensional stellar evolution programs, we compare the observed amount of extra mixing on the upper giant branch to predicted trends from three-dimensional fluid dynamics simulations. 
+By applying this method, we are able to place empirical constraints on the efficiency of mixing across a range of masses and metallicities. 
+We find that the observed amount of extra mixing is strongly correlated with the reduced density ratio and that trends between reduced density ratio and fundamental stellar parameters are robust across choices for modeling prescription. We show that stars with available mixing data tend to have relatively low density ratios, which should inform the regimes selected for future simulation efforts. Finally, we show that there is increased mixing at low values of the reduced density ratio, which is consistent with current hydrodynamical models of the thermohaline instability. 
+The introduction of this framework sets a new standard for theoretical modeling efforts, as validation for not only the amount of extra mixing, but trends between the degree of extra mixing and fundamental stellar parameters is now possible.
+%
 \end{abstract}
+
+% s it worth including one last punchline sentence saying “this is a big fuckin deal because …” like “We hope this framework will provide a new target for theoretical modeling efforts: not only can new mixing prescriptions be compared against observations in terms of the overall amount of extra mixing, but also trends”
+
 
 \keywords{stellar evolution, stellar abundances, abundance ratios, stellar interiors, red giant branch, red giant bump, Dredge-up}
 
-\section{Introduction \textbf{(CYCLE DONE)} } 
+\section{Introduction  } 
 \label{sec:intro}
 \setcounter{footnote}{0}
 \input{sec_intro_jttest}
 
-\section{Thermohaline formalism \textbf{(CYCLE DONE)} }
+\section{Thermohaline Formalism }
 \label{sec:formalism}
 \input{sec_formalism}
 
-\section{Parameterized Thermohaline Models \textbf{(\blu{ISSUES OUTSTANDING})}}
+\section{Parameterized Thermohaline Models }
 \label{sec:parameterizations}
 \input{sec_parameterizations}
 
-\section{Stellar Evolution Models \textbf{(CYCLE DONE)}} %MC changed this from 'Mesa Configuration'
+\section{Stellar Evolution Models} %MC changed this from 'Mesa Configuration'
 %previously called ``Mixing predicted by 1D models"
 \label{sec:mesa_experiment}
 \input{sec_mesa_experiment}
 
-\section{Results from Numerical Experiments \textbf{(CYCLE DONE)} }
+\section{Results from Numerical Experiments }
 \label{sec:mesa_results}
 \input{sec_mesa_results}
 
-\section{Observed Mixing Signatures \textbf{(CYCLE DONE)} }
+\section{Observed Mixing Signatures }
 \label{sec:obs}
 \input{sec_observations}
 
-\section{Results \textbf{(CYCLE DONE)} } 
+\section{Results} 
 \label{sec:punchline}
 \input{sec_punchline}
 
-\section{Conclusions \textbf{(CYCLE DONE)} }
+\section{Conclusions }
 \label{sec:conclusions}
 \input{sec_conclusions}
 
@@ -210,34 +207,31 @@ Finally, we show that there is increased mixing at low reduced density values, w
 %\textbf{[THIS IS ALSO NOT COMPLETELY DONE]}
 The first four authors of this manuscript contributed equally to this work. 
 \begin{itemize}
-\item[] A. Fraser did X; and contributed text.
+\item[] A.~Fraser contributed the majority of text and was responsible for Secs.~2 and 3.%, and contributed other text.
 %
 \item[] M. Joyce wrote and tested the MESA modeling templates, including \texttt{inlists}, evolutionary and structural output, and \texttt{run\_star\_extras} functionality, wrote the data analysis and parameter extraction scripts in collaboration with E.H. Anders (Python), and contributed text.
 %
-\item[] E.H. Anders computed stellar structure models, created Figs.~2 and 4-6, and contributed text.
+\item[] E.H. Anders computed and analyzed stellar structure models, created Figs.~2 and 4-7, and contributed text.
 %
 \item[] J. Tayar was responsible for all analysis related to observations, constructed the initial manuscript template, and contributed text. 
 %
 \end{itemize}
 Author order within this set was decided according to height in heels, descending.
 
-The authors thank C. Hayes, A. Jermyn, and M. Pinsonneault for helpful discussions that contributed to this work.  
-We thank T. White for providing the script that translates between [Fe/H] and Z.
+The authors thank C. Hayes, A. Jermyn, and M. Pinsonneault for helpful discussions that contributed to this work and T. White for providing the script that translates between [Fe/H] and Z. The authors acknowledge the thermohaline working group at the KITP program ``Probes of transport in stars'' for fruitful discussion that led to the conception of this idea. The authors likewise thank the Space Telescope Science Institute for providing accommodation and infrastructure support during the week-long meeting during which the majority of this paper was written.
 %
-AF thanks Pascale Garaud for many discussions of thermohaline mixing which helped improve his understanding of the theory of that field.
-MJ thanks  
+AF thanks Pascale Garaud for many discussions of thermohaline mixing which helped improve his understanding of the theory of that field. 
+MJ thanks John Bourke for proofreading and helpful discussion of numerics.
 EHA thanks MJ for her mentorship in teaching him how to run and interact with MESA models.
 %
 %
-The authors collectively thank the Space Telescope Science Institute for providing infrastructure support for the week-long meeting during which the majority of this paper was written.
-%
-Support for this work was provided by NASA through the NASA Hubble Fellowship grant No.51424 awarded by the Space Telescope Science Institute, which is operated by the Association of Universities for Research in Astronomy, Inc., for NASA, under contract NAS5-26555. JT also acknowledges support from 80NSSC20K0056. 
-MJ acknowledges the Lasker Data Science Fellowship, the Kavli Institute for Theoretical Physics at UC Santa Barbara, the MESA developers team, and the Space Telescope Science Institute.
+Support for this work was provided by NASA through the NASA Hubble Fellowship grant No.51424 awarded by the Space Telescope Science Institute, which is operated by the Association of Universities for Research in Astronomy, Inc., for NASA, under contract NAS5-26555. JT also acknowledges support from 80NSSC20K0056. AF acknowledges support from NSF Grant No.~AST-1908338. 
+MJ acknowledges the Space Telescope Science Institute's Lasker Data Science Fellowship, the Kavli Institute for Theoretical Physics at UC Santa Barbara, and the MESA developers team.
 EHA acknowledges the support of a CIERA Postdoctoral fellowship.
  The Center for Computational Astrophysics at the Flatiron Institute is
 supported by the Simons Foundation.
  %
- Computations were conducted with support from the NASA High End Computing (HEC) Program through the NASA Advanced Supercomputing (NAS) Division at Ames Research Center on Pleiades with allocation GID s2276 which is provided through NASA HTMS grant 80NSSC20K1280. \textcolor{red}{[gotta acknowledge Pascale's DDC grant]}
+ Computations were conducted with support from the NASA High End Computing (HEC) Program through the NASA Advanced Supercomputing (NAS) Division at Ames Research Center on Pleiades with allocation GID s2276 which is provided through NASA HTMS grant 80NSSC20K1280. 
 This research was supported in part by the National Science Foundation under Grant No. NSF PHY-1748958.
 
 
