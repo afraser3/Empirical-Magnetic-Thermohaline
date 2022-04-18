@@ -1,14 +1,6 @@
-% \textbf{[Two sentences on what we're about to explain and why (i.e. the importance of establishing a uniform language); want to establish physically when thermohaline is going to kick in, and what parameters do we need to measure in stellar evolution codes to establish whether thermohaline mixing is happening]}
-
 The following section presents a derivation of the fluid parameter known as the ``reduced density ratio,'' which we use to characterize the amount of mixing expected in thermohaline regions.  
-%\sout{of various model stars}. 
-%\sout{This is provided for readers who may be unacquainted with this quantity and/or its relationship to more broadly known thermodynamic parameters.} 
 Section \ref{sec:parameterizations} goes into a similar level of detail regarding different prescriptions for thermohaline mixing in 1D stellar models 
 to the end of summarizing the prescriptions currently implemented in MESA, and demonstrating key differences between these prescriptions.
-%\textbf{to the end of making explicit the relationships between the conventions adopted in each \textbf{formalism} \blu{and \sout{clarifying} how \sout{they} the quantities in each can be computed \sout{for a particular star of interest}}.} 
-%\textcolor{red}{[AF wants to change the last sentence to: ``... to the end of summarizing the prescriptions currently implemented in MESA, and demonstrating key differences between these prescriptions.]}
-%Readers who are familiar with these may proceed directly to Section \ref{sec:mesa_experiment}
-%[MJ added; please ask before modification]} \textcolor{red}{[maybe sleep deprivation is just making me dumb, but: what's the ``each" in the last sentence here? -AF]
 
 
 %
@@ -19,7 +11,6 @@ The stability of the temperature gradient is given by the Schwarzschild criterio
     \gradrad - \gradad < 0,
 \end{equation}
 where the temperature gradient $\grad \equiv d \ln P / d \ln T$ (pressure $P$ and temperature $T$) has an adiabatic value $\grad = \gradad$ and saturates to $\grad = \gradrad$ in hydrostatically stable regions where the flux is carried radiatively. 
-%\sout{[We should cite Schwarzschild here but I tried to read his collected works outloud in German to Jamie and got laughed at]} \textbf{[tbh it looks to me like the overwhelming standard is to NOT cite Schwarzschild, I vote we don't worry about it. Of the 7 or so papers I have open right now, none of them cite Schwarzschild]}. 
 The Ledoux criterion for convective stability is \citep{Ledoux1947}
 
 \begin{equation} \label{eq:Ledoux}
