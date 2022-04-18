@@ -19,8 +19,11 @@
 \usepackage{enumitem}
 \usepackage{xcolor}
 \usepackage{comment}
+\usepackage{hyperref}
 %\usepackage{appendix}
 \usepackage{ulem}
+
+% hey astro-ph-leaks: when do you think overleaf will finally let us insert the :party_parrot: Slack emoji directly into overleaf projects?
 
 \newcommand{\partyparrot}{ \textcolor{green}{pa}\textcolor{red}{rty} \textcolor{blue}{pa}\textcolor{orange}{rr}\textcolor{purple}{ot} }
 
@@ -84,8 +87,7 @@
 \newcommand{\Dth}{\ensuremath{D_\mathrm{th}}}
 \newcommand{\Numu}{\ensuremath{\mathrm{Nu}_\mu}}
 
-%\newcommand{\kiauhoku}{K$\bar{\rm i}$auh$\bar{\rm o}$k$\bar{\rm u}$}
-\newcommand{\kiauhoku}{\texttt{kiauhoku}} % I've adopted DFM's practice of using \texttt for software names - zach
+\newcommand{\kiauhoku}{\texttt{kiauhoku}} 
 
 \citestyle{aa}
 \bibpunct{(}{)}{;}{a}{}{,}
@@ -135,24 +137,9 @@ Baltimore, MD 21218, USA}
 \email{jtayar@ufl.edu}
 
 \begin{abstract}
-% %%%% MC: Attempt to clean up the abstract. Feel free to revert / take apart. Old version below
-% Observations show the presence of an almost ubiquitous extra mixing in low-mass upper giant branch stars.  
-% A possible origin for this extra mixing is a thermohaline instability induced by a mean molecular weight inversion in otherwise stably-stratified zones. 
-% Stellar evolution models include prescriptions for thermohaline mixing that are informed by analytical calculations and three-dimensional fluid dynamics simulations, 
-% but a direct comparison between these models and observations is challenging. This is because current computational resources do not allow modeling thermohaline mixing under the relevant stellar conditions, 
-% and only extrapolations of lower-resolution calculations are available. Moreover stellar interiors are complex regions, with likely multiple concurrent fluid dynamics processes interacting. 
-% Here we take advantage of carbon to nitrogen measurements from the SDSS-IV APOGEE survey of stars to put empirical constraints on the efficiency of mixing across a relatively large range of masses and metallicities. 
-% We identify the reduced density ratio as an important parameter to compare the observed amount of extra mixing on the upper giant branch, and the predicted trends from three-dimensional fluid dynamics simulations.
-% The reduced density ratio is a function of the ratio of thermal and compositional stratification, as well as of the ratio of the thermal and compositional diffusivities. 
-% We show that the observed amount of extra mixing is strongly correlated with the reduced density ratio. Since this trend is also reproduced in three-dimensional models of thermohaline instability, our results 
-% give support to a thermohaline mixing origin for the observed surface abundances change. 
 
 
 
-
-% It has been widely assumed that the extra mixing observed in low-mass giant branch stars is related to the thermohaline instability that can be induced by mean molecular weight inversions in otherwise stably stratified zones. However, direct comparison between numerical simulations and observations has been challenging. %It was suggested that their extra mixing might be due to thermohaline convection, which relies on ( mean molecular weight inversions in otherwise stably stratified zones). However, previous attempts to match the observed pattern quantitatively using one dimensional stellar evolution models have usually required some sort of ad hoc increase in the efficacy of the thermohaline mixing, and recent three dimensional simulations  have suggested contradictory results on how the amount of mixing should depend on the fluid parameters of the star in question. 
-% Here we compute the relevant fluid parameters from MESA models, including the reduced density ratios, for stars at a range of masses and metallicities. Combining these modeling results with carbon-to-nitrogen measurements from the SDSS-IV APOGEE survey, \textbf{we provide a framework to qualitatively compare \red{models derived from} three dimensional fluid simulations to the amount of extra mixing on the upper giant branch.}  We show that stars with available mixing data tend on average to be at relatively low density ratios, which informs the regime which future simulations should attempt to probe. We also show that the amount of extra mixing is strongly correlated with the reduced density ratio, which \red{is consistent with the expectations of thermohaline mixing.} %suggests that this framework is valid for exploring the physics of this mixing. 
-% Finally, we show that there is increased mixing at low reduced density values, which is consistent with current hydrodynamical models of the thermohaline instability.  
 
 Observations show an almost ubiquitous presence of extra mixing in low-mass upper giant branch stars. The most commonly invoked explanation for this is the thermohaline instability. One dimensional stellar evolution models include prescriptions for thermohaline mixing, but our ability to make direct comparisons between models and observations has thus far been limited.
 Here, we propose a new framework to facilitate direct comparison:
@@ -162,8 +149,6 @@ We find that the observed amount of extra mixing is strongly correlated with the
 The introduction of this framework sets a new standard for theoretical modeling efforts, as validation for not only the amount of extra mixing, but trends between the degree of extra mixing and fundamental stellar parameters is now possible.
 %
 \end{abstract}
-
-% s it worth including one last punchline sentence saying “this is a big freaking deal because …” like “We hope this framework will provide a new target for theoretical modeling efforts: not only can new mixing prescriptions be compared against observations in terms of the overall amount of extra mixing, but also trends”
 
 
 \keywords{stellar evolution, stellar abundances, abundance ratios, stellar interiors, red giant branch, red giant bump, Dredge-up}
@@ -181,8 +166,7 @@ The introduction of this framework sets a new standard for theoretical modeling 
 \label{sec:parameterizations}
 \input{sec_parameterizations}
 
-\section{Stellar Evolution Models} %MC changed this from 'Mesa Configuration'
-%previously called ``Mixing predicted by 1D models"
+\section{Stellar Evolution Models} 
 \label{sec:mesa_experiment}
 \input{sec_mesa_experiment}
 
@@ -209,7 +193,6 @@ The introduction of this framework sets a new standard for theoretical modeling 
 \begin{center}
 \includegraphics[width=9cm,clip=true, trim=0.5in 0in 0in 0in]{./Figs/protversusloggmodelpmmPYboth.eps}%[width=9cm, clip=true, trim=1in 1in 1in 1in]{./Figs/omgcomp.eps}
 \caption{The measured core rotation rates for the stars in our sample as a function of gravity compared to the predictions of our solid body model (lue) and our moerately differentially convection zone (pink), showing that these models provide limits on the allowable amount of radial differential rotation in the surface convection zone.}
-%There seems to beevidence of core-envelope recoupling as the stars evolve on the secondary clump, although more measurements of evolved stars with slowly rotating surfaces would strengthen this conclusion.} %\textbf{mark a line for the selection effect?} }
 \label{Fig:bothmodels}
 \end{center}
 \end{figure}
@@ -219,7 +202,7 @@ The introduction of this framework sets a new standard for theoretical modeling 
 \begin{acknowledgements}
 The first four authors of this manuscript contributed equally to this work. 
 \begin{itemize}
-\item[] A.~Fraser contributed the majority of text and was responsible for Secs.~2 and 3.%, and contributed other text.
+\item[] A.~Fraser contributed the majority of text and was responsible for Secs.~2 and 3.
 %
 \item[] M. Joyce wrote and tested the MESA modeling templates, including \texttt{inlists}, evolutionary and structural output, and \texttt{run\_star\_extras} functionality, wrote the data analysis and parameter extraction scripts in collaboration with E.H. Anders (Python), and contributed text.
 %
