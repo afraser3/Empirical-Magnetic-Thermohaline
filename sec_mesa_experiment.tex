@@ -8,24 +8,16 @@ Simulations are evolved at $1.25\times$ the default mesh (structural) resolution
 
 We study four grids of stellar evolution simulations with different thermohaline mixing prescriptions. One grid employs the \citet{brown_etal_2013} prescription\footnote{Although the Brown prescription contains no free parameters in their original conception, a multiplicative factor on $D_{\text{therm}}$ has been introduced in the MESA implementation. Brown's model is reproduced by assigning the quantity \texttt{thermohaline\_coeff} = 1, as was done here}. 
 %
-while the other three employ the \citet{kippenhahn_etal_1980} prescription with coefficients $\alpha_{\rm th} \in [0.1, 2, 700]$. %\blu{(see Section \ref{sec:parameterizations} for more details of these prescriptions)}. 
+while the other three employ the \citet{kippenhahn_etal_1980} prescription with coefficients $\alpha_{\rm th} \in [0.1, 2, 700]$.
 The Kippenhahn $\alpha_{\rm th} = 0.1$ model has inefficient mixing and represents a regime where thermohaline mixing is present but weak.
-%, meaning the timescale for homogenization of the mixing zone is large.
-%provides an estimate of stellar structure with thermohaline mixing turned off.
-%
-%
 We study $\alpha_{\rm th} = 2$ because (1) it is consistent with the default implementation in MESA and discussion in the instrument paper \citep{mesa2}; (2) it is used in previous work \citep{CantielloLanger2010, TayarJoyce22}; and (3) it is consistent with findings from 2D and 3D hydrodynamical simulations in stellar regimes 
-%\sout{(see Figure \ref{fig:parameterization_compare}} \textcolor{red}{[missing close paren? -AF]} 
 \citep{Denissenkov2010, traxler_etal_2011, brown_etal_2013}. We also study a more traditional $\alpha_{\rm th} = 700$, which is of the order of literature values calibrated 
-%\sout{in simulations of the propagation of salt fingers in water} 
 using stellar observations \citep{lattanzio_etal_2015, charbonnel_thermohaline_2007}.
 
 These three choices for $\alpha_{\text{th}}$ in the Kippenhahn prescription also correspond to three different relationships between the timescale over which thermohaline mixing acts, $t_{\rm th}$, and the evolutionary timescale of the star, $t_{\rm{evol}}$. 
 We take the thermohaline timescale to be the diffusive timescale associated with thermohaline mixing, $t_{\rm th} = d^2/D_{\rm th}$, where $d$ is the radial depth of the thermohaline zone.
 In the case where $\alpha_{\text{th}} = 0.1$, 
-%the \sout{evolutionary timescale is much shorter than the thermohaline timescale} 
 $t_{\rm evol} \ll t_{\rm th}$, meaning the timescale for homogenization of the mixing zone is large. In the case where $\alpha_{\text{th}} = 700$, 
-%\sout{the thermohaline timescale is much shorter than the evolutionary timescale} 
 $t_{\rm evol} \gg t_{\rm th}$ and the homogenization timescale is short. In the intermediate case ($\alpha_{\text{th}}= 2$), the timescales are comparable; this is likewise true for the assumptions made in the Brown model, though their prescription does not involve $\alpha_{\text{th}}$. 
 %
 Given the range of mixing timescales probed, these models should confer some insight as to how (or whether) the inferred fluid parameters, including the reduced density ratio $r$, depend on both the input mixing timescale and the stellar parameters.
