@@ -25,5 +25,5 @@ The python workflow depends on the `numpy`, `scipy`, and `hdf5` packages.
 ## Creating figures
 
 To create figures 1, 2, 4-6 in the manuscript, navigate to the `figures/` directory then run `./generate_figures.sh`. 
-Figure 3 is created using elder magic (IDL) and presumably the reader could contact J. Tayar for more information regarding that.
+Figure 3 is created using elder magic (IDL) and files to create it were uploaded by J. Tayar in commit [3736ee6](https://github.com/afraser3/Empirical-Magnetic-Thermohaline/commit/3736ee64cef2af9f285e81acc35ff172217fa902).
 Figure 7 is created during the MESA post-processing pipeline described above.
