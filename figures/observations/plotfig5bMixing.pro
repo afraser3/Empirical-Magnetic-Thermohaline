@@ -31,6 +31,7 @@ c12c13='false'
 
 
   delta=0.05
+  delta2=0.09
   gs=10 ; grid size
 
 !p.font=1
@@ -40,7 +41,7 @@ c12c13='false'
 !z.thick=2
 loadct, 0
   set_plot, 'ps'
-  device, filename='Mfeh5c_mixingCRGBdr14v6.ps', /inches, /tt_font, set_font='Helvetica', xsize=8, ysize=8, font_size=10, /encapsulated 
+  device, filename='Mfeh5c_mixingCRGBdr14v7.ps', /inches, /tt_font, set_font='Helvetica', xsize=8, ysize=8, font_size=10, /encapsulated 
 
 
 ;readcol, '~/Documents/Apogee/idl/fig5notclumplogg2-1C12C13.dat', ms, allloggs, kms1, junk, nstar1 ;logg3_b17
@@ -69,6 +70,7 @@ bad=where(nstar1 lt 3 or nstar2 lt 3) ; 5 was standard
 print, ms(56), allloggs(56), kms1(56), kms2(56), nstar1(56), nstar2(56)
 kms[bad]=0.0
 massmsun='Mass (M'+TexToIDL("_{\sun}")+' )'  ;TeXtoIDL("  sin   (km s^{-1})")
+deltacnlabel=TexToIDL("\Delta [C/N]")
 kms2=reform(kms, gs, gs)
 ms2=reform(ms, gs, gs)
 allloggs2=reform(allloggs, gs,gs)
@@ -89,7 +91,7 @@ ymax=loggmax
      ystyle=1,xstyle=1,$
        xtitle=massmsun,$ 
        ytitle='[Fe/H]', $
-       xthick=10, ythick=10, charsize=2.3, charthick=5  ;xthick=5, ythick=5, charsize=2.3, charthick=5  
+       xthick=10, ythick=10, charsize=2.7, charthick=5  ;xthick=5, ythick=5, charsize=2.3, charthick=5  
 cgloadct, /brewer,18, /silent
 if c12c13 eq 'true' then loadct, 0
 
@@ -98,6 +100,7 @@ if c12c13 eq 'true' then loadct, 0
 
 
 goodcol=where( kms gt 0)
+;badcol=where(kms eq 0)
 minkms=min(kms(goodcol))
  for i=0, n_elements(kms)-1 do begin
        bxmin=ms[i]-delta
@@ -105,6 +108,7 @@ minkms=min(kms(goodcol))
        bymin=allloggs[i]-delta
        bymax=allloggs[i]+delta
        colorz=(kms[i]+max(kms))*255./(2.0*max(kms));255
+       if kms[i] eq 0 then colorz=-9999
 
 if c12c13 eq 'true' then  colorz=255-((kms[i]-minkms)*255./(max(kms)-minkms)) ;c12c13
 
@@ -112,31 +116,41 @@ if c12c13 eq 'true' then  colorz=255-((kms[i]-minkms)*255./(max(kms)-minkms)) ;c
 ;       if kms[i] gt 5.0 and kms[i] lt 10.0 then colorz=160
 ;       if kms[i] gt 10.0 then colorz=99  
 ;       print, bymin, colorz
-       if (bxmin gt xmin and bxmax lt xmax and bymin gt ymin and bymax lt ymax) then polyfill, [bxmin, bxmin, bxmax, bxmax], $
+       if (bxmin gt xmin and bxmax lt xmax and bymin gt ymin and bymax lt ymax and colorz ne -9999) then polyfill, [bxmin, bxmin, bxmax, bxmax], $
                  [bymin, bymax, bymax, bymin], color=colorz 
  
 
  end
 
-
+loadct, 0, /silent
 
  for i=0, n_elements(kms)-1 do begin
        bxmin=ms[i]-delta
        bxmax=ms[i]+delta
        bymin=allloggs[i]-delta
        bymax=allloggs[i]+delta
+       bxmin2=ms[i]-delta2
+       bxmax2=ms[i]+delta2
+       bymin2=allloggs[i]-delta2
+       bymax2=allloggs[i]+delta2
+print, bymax2, bymin2
        ; outline polyfill region
        if i ne 0 and i ne (n_elements(kms)-1) then begin
-           if( kms[i] ne 0 and kms[i-1] eq 0) then oplot, [bxmin, bxmax], [bymin,bymin], thick=2
-           if( kms[i] ne 0 and kms[i+1] eq 0) then oplot, [bxmin, bxmax], [bymax,bymax], thick=2
+           if( kms[i] ne 0 and kms[i-1] eq 0) then oplot, [bxmin2, bxmax2], [bymin2,bymin2], thick=2
+           if( kms[i] ne 0 and kms[i+1] eq 0) then oplot, [bxmin2, bxmax2], [bymax2,bymax2], thick=2
    
        endif
        if i ge gs and i le n_elements(kms)-gs-1 then begin
-           if( kms[i] ne 0 and kms[i-gs] eq 0) then oplot, [bxmin, bxmin], [bymin,bymax], thick=2
-           if( kms[i] ne 0 and kms[i+gs] eq 0) then oplot, [bxmax, bxmax], [bymin,bymax], thick=2
-   
+           if( kms[i] ne 0 and kms[i-gs] eq 0) then oplot, [bxmin2, bxmin2], [bymin,bymax2], thick=2
+           if( kms[i] ne 0 and kms[i+gs] eq 0) then oplot, [bxmax2, bxmax2], [bymin,bymax2], thick=2
+       endif
+       if i lt gs and i le n_elements(kms)-gs-1 then begin
+           if( kms[i] ne 0 and kms[i+gs] eq 0) then oplot, [bxmax2, bxmax2], [bymin,bymax2], thick=2   
        endif
    end
+xyouts, 1.7, -0.73, deltacnlabel, charsize=2.5
+
+cgloadct, /brewer,18, /silent
 ;   axis, yaxis=1, /ynozero, xrange=[mmax, mmin],$
 ;    yrange=[loggmax, loggmin], ytickformat="(A1)",$
 ;     ystyle=1,xstyle=1,xthick=10, ythick=10, charsize=0, charthick=5 
