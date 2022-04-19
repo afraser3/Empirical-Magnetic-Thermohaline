@@ -1,64 +1,43 @@
 %
 %
 %
-Thermohaline mixing has long been considered \sout{a good candidate to explain} \textbf{the most likely candidate for explaining} the evolution of the surface chemistry of low--mass upper red giant branch stars. \sout{We show here that:} \textbf{In this analysis, we have shown that:}
-\textbf{[I suggest enumerate rather than itemize here - MJ] JT: i'm worried numbers create a hierarchy that bullet points don't, but I'm not going to die on this hill. EA agrees with MJ}
+Thermohaline mixing has long been considered the most likely candidate for explaining the evolution of the surface chemistry of low--mass upper red giant branch stars. In this analysis, we have shown that:
+%
+% 
 \begin{enumerate}
-    \item three-dimensional simulations of the thermohaline instability suggest that mixing rates should strongly depend on the reduced density ratio, $r$;
+    \item prescriptions informed by three-dimensional simulations of the thermohaline instability suggest that mixing rates should strongly depend on the reduced density ratio, $r$ but the shape of the correlation varies from model to model; 
     
     \item one-dimensional stellar evolution models suggest that the average reduced density ratio, $r$, should vary as a function of mass and metallicity, with stars of lower masses and lower metallicities having smaller $r$;
     
-    \item one-dimensional stellar evolution models suggest that the average reduced density ratio, $r$, is not strongly dependent on the assumed parameterized thermohaline mixing model (e.g. Brown vs Kippenhahn, and regardless of the choice of $\alpha_{\rm th}$ in the latter case); \textcolor{red}{[I think we need to tweak this statement now given Evan's bug fixes, specifically for alpha of 700, right? Maybe just say that the trends are not strongly dependent on the parameterization?]}
+    \item one-dimensional stellar evolution models suggest that the average reduced density ratio, $r$, is not strongly dependent on the assumed parameterized thermohaline mixing model (e.g. Brown vs Kippenhahn), and regardless of the choice of $\alpha_{\rm th}$ in the case of Kippenhahn; 
     
     \item one-dimensional stellar evolution models suggest that the average reduced density ratio, $r$, occupies only a small range ($10^{-4}<r<10^{-3}$) of the parameter space formally unstable to thermohaline mixing, $0<r<1$;
-    %Note that each model samples larger $r$ at early times when the zone is developing and also the edges of the zone have $r \sim 1$, but we don't ever say this earlier in the paper.
-    %The real range covered in low-mass upper RGB stars is (a lot/ a little) compared to the range of simulations that have been done. These stellar evolution models suggest that R0 should depend strongly on composition and only weakly on stellar mass
     
-    \item observations suggest that the amount of mixing is strongly correlated with the reduced density ratio $r$ (read: \emph{there is a correlation}, it's not just a mess)\sout{. This} \textbf{in a way that} qualitatively matches predictions from three dimensional simulations. {\bf (This should probably be higher up; the lede is a bit buried here) JT right now they're in a logical flow summarizing the paper for people who skipped right to the end, but there's definitely an argument for important things first. [I'm in favor of logical order over ordered by importance -AF]} \textbf{; and}
+    \item observations suggest that the amount of mixing is strongly correlated with the reduced density ratio $r$ in a way that qualitatively agrees with predictions from three dimensional simulations;
     
-    \item observations indicate that the mixing rate and reduced density ratio $r$ are inversely correlated, which is consistent with hydrodynamic prescriptions but not \red{current implementations of the HG19 model} magnetohydrodynamic prescriptions (read: not only are they correlated, they're correlated in the way that hydro models predict!). \textcolor{red}{[we need to tone this down, because there are known flaws with the HG19 prescription but we aren't poking any holes in the results of their simulations themselves, which unambiguously show that magnetic fields enhance mixing relative to hydrodynamic levels]}
+    \item observations indicate that the mixing rate and reduced density ratio $r$ are inversely correlated, a finding that is consistent with 
+    currently available 1D prescriptions informed by 3D simulations, but not consistent with the prescription put forth by \citet{harrington}.
     
     \end{enumerate}
     %
 
-%Most generally, we are excited to see 
-\textbf{We find that our proposed} framework for connecting observations of extra mixing \textbf{in red giants} to the fluid simulations of the thermohaline instability through the medium of one dimensional stellar evolution models \textbf{is feasible and robust}
-%seems to be a feasible one.
+Most importantly, we find that our proposed framework for connecting observations of extra mixing in red giants to the fluid simulations of the thermohaline instability through the medium of one dimensional stellar evolution models is feasible and robust. 
 %
-It \sout{\textbf{lays the groundwork for}} \textbf{motivates}
-%will in general allow 
-more rigorous exploration into whether red giant branch extra mixing should be associated with the thermohaline instability, and 
-%than ever before. 
-it will \textbf{facilitate (expedite?) the translation of observational information}
-%also allow information to 
-%feed back 
-into theoretical simulations as observations become \textbf{progressively higher precision and therefore more able to constrain stellar interior mixing through abundance measurements.}
-%the efficiency of the mixing 
-\textbf{[the rest of this sentence doesn't seem to be done?], the relevant fluid parameters, and potentially even the magnetic fields of interest in this regime).}
+It motivates more rigorous exploration into whether red giant branch extra mixing should be associated with the thermohaline instability, and it will facilitate the translation of observational information into theoretical simulations. As observational data sets improve, abundance measurements will only become more capable of constraining stellar interior mixing, the relevant fluid parameters, and potentially even the magnetic fields in these regions.
 
-However, \textbf{the present study is largely a proof of concept;
-%we stress that this 
-%is mostly a proof of concept, and that 
-there is room for significant progress in
-%significant work still to be done 
-all aspects of this method.} From an observational perspective, we have so far only considered the change in [C/N] \textbf{as an observational mixing diagnostic, and only} in a fairly restricted set of stars. Looking at higher or lower masses, using a variety of mixing diagnostics, probing stars including globular clusters, binary stars, and dwarf galaxies where the base composition and mixing history may be different, would all be illuminating \textbf{expansions on this work}. There is also the potential to look at the timing of the extra mixing, as well as \textbf{mixing rate as a function of time} \sout{the rate at which it occurs over time}. Further, we can investigate  whether mixing can be connected to the sorts of (asteroseismic) diagnostics that probe the interior structure of a star its densities \citep{KjeldsenBedding1995}, chemical discontinuities \citep{Verma2017}, rotation \citep{Gehan2018}, and magnetic fields \citep{Bugnet2021}. 
+However, the present study is largely a proof of concept;
+there is room for significant development in all aspects of this method. From an observational perspective, we have so far only considered the change in [C/N] as an observational mixing diagnostic, and only in a fairly restricted set of stars. Looking at higher or lower masses, using a variety of mixing diagnostics, or probing stars including globular clusters, binary stars, and dwarf galaxies---where the base composition and mixing history may be different---could all be illuminating expansions of this work. There is also the potential to look at the timing of the extra mixing, as well as mixing rate as a function of time. Further, it may be possible to investigate whether mixing can be connected to the sorts of asteroseismic diagnostics that probe the interior structure of a star, including its density profile \citep{KjeldsenBedding1995}, chemical discontinuities \citep{Verma2017}, internal rotation \citep{Gehan2018}, and magnetic fields \citep{Bugnet2021}. 
 
-On the modeling side, we have \sout{attempted to explore} \textbf{explored a coarse but reasonable range} of \textbf{possible thermohaline conventions} that could \textbf{have impacted} our conclusions, but we do not claim \sout{to have been} \textbf{this parameter exploration was} exhaustive. It would be very interesting to test, for example, whether 
-\textbf{[MERIDITH STOPPED REVISIONS HERE; TBD]}
-(mass, metallicity, overshoot, undershoot, timestep, grid resolution, reaction network, idk whatever physics is of potential interest). We also have not explored here (idk resolving the front or something, whether the magnetic models make a difference in the inferred $r$) [I think this is a great place to say that we've developed a way to probe things at these low r values, but by studying timing and different 1D implementations we might be able to probe things at high r values].
+On the modeling side, we have explored a coarse but reasonable range of possible thermohaline conventions that could have impacted our conclusions, but this parameter exploration was certainly not exhaustive. It is worthwhile and necessary to test whether different 1D modeling assumptions impact the direction of this trend, particularly in the case of other mixing--related physical assumptions. Key variations in this regard include the choice of prescription for the Mixing Length Theory (MLT) formalism and value for the mixing length parameter, $\alpha_{\text{MLT}}$, the treatment of convective boundary mixing and convective overshoot, and the choice of atmospheric surface boundary conditions---all of which are well known to affect thermodynamic quantities in the regime we study here \citep{tayar2017, Joyce2018a, Joyce2018b, viani2018}. For similar thermodynamic reasons, it is also important to explore more extreme metallicity regimes, as the global metal content dictates the behavior of \gradmu.
+%
+Further, the need to introduce rotational mixing alongside thermohaline mixing in 1D stellar models to achieve the desired observational reproductions is likewise well established in the literature (c.f. \citealt{Charbonnel2010}), making the consideration of rotational effects an obvious candidate for future theoretical work.
 
-Finally, while previous and ongoing work has aimed to find a theoretical basis justifying why thermohaline mixing should be so efficient that it accounts for the amount of extra mixing observed after the RGB bump (e.g.~adding magnetic fields or rotation), this work adds a new target for theory efforts: in order for thermohaline mixing to be the primary source of extra mixing, not only should there ideally be a mixing prescription that agrees with 3D simulations and also reproduces the \textit{amount} of extra mixing, but such a prescription should also reproduce \textit{trends} in this extra mixing.
-For instance, while \citet{harrington} convincingly demonstrate that magnetic fields of moderate strength can dramatically enhance the efficiency of thermohaline mixing -- plausibly to levels that explain the amount of extra mixing observed after the RGB bump -- this work shows their mixing prescription does not predict trends with respect to density ratio that are consistent with observations.
+Finally, while previous and ongoing work has endeavored to find a theoretical justification for why thermohaline mixing should be so efficient that it accounts for the entire amount of extra mixing observed after the RGB bump (by adding e.g.~magnetic fields or rotation), this work sets a new target for theoretical efforts: in order for thermohaline mixing to be the primary source of extra mixing, not only should there be a mixing prescription that agrees with 3D simulations and also reproduces the \textit{amount} of extra mixing, but such a prescription should also reproduce \textit{trends} in this extra mixing as a function of fundamental stellar parameters like mass and metallicity.
+For instance, while \citet{harrington} demonstrate that magnetic fields of moderate strength can dramatically enhance the efficiency of thermohaline mixing---plausibly to levels that explain the full amount of extra mixing observed after the RGB bump---this work shows that their mixing prescription does not predict trends in mixing rate as a function of the density ratio that are consistent with observations.
 
-In short, this paper has demonstrated the possibility of comparing observed signatures of extra mixing on the red giant branch to the predictions of models informed directly by fluid simulations in the framework of the parameters defined by those simulations. We therefore look forward to future explorations which will allow better understanding of whether extra mixing should indeed be associated with the thermohaline instability, and if so, what constraints on the physics of that instability can be placed by the observations of stars, which probe a regime still outside of our ability to simulate realistically.
-%(the ability to constrain simulations with observations means that it will become exciting and important to simulate more stuff). 
-    
-%    this suggests that (things about 3D models)
-    
-%    magnetized thermohaline is/is not a good predictive theory for mixing in low-mass upper RGB stars
-
-    
-%    If this is the case, should use this theory to predict cool stuff for lithium rich star production, mass transfer systems, etc. 
-    
-    Cool suggestions for other projects that explore all the things boat boy has been worried about (\partyparrot).
+In short, this paper has demonstrated the viability of comparing observed signatures of extra mixing on the red giant branch to the predictions of models informed directly by fluid simulations, and it has done so in the framework of parameters used in those simulations. We therefore anticipate and welcome future explorations that will produce better understanding of 
+% (1)
+whether extra mixing should indeed be associated with the thermohaline instability and 
+% (2)
+how observations of real stars---which probe a fluid regime well outside the regime we are currently able simulate--- can provide constraints on the physics of that instability.
 

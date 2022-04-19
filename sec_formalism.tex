@@ -1,30 +1,32 @@
-% \textbf{[Two sentences on what we're about to explain and why (i.e. the importance of establishing a uniform language); want to establish physically when thermohaline is going to kick in, and what parameters do we need to measure in stellar evolution codes to establish whether thermohaline mixing is happening]}
+The following section presents a derivation of the fluid parameter known as the ``reduced density ratio,'' which we use to characterize the amount of mixing expected in thermohaline regions.  
+Section \ref{sec:parameterizations} goes into a similar level of detail regarding different prescriptions for thermohaline mixing in 1D stellar models 
+to the end of summarizing the prescriptions currently implemented in MESA, and demonstrating key differences between these prescriptions.
 
-The following section presents a derivation of the fluid parameter known as the ``reduced density ratio,'' which we use to characterize the amount of mixing \red{expected} in thermohaline regions  \sout{of various model stars}. \sout{This is provided for readers who may be unacquainted with this quantity and/or its relationship to more broadly known thermodynamic parameters.} Section \ref{sec:parameterizations} goes into a similar level of detail regarding the prescriptions for thermohaline mixing in 1D stellar models \textbf{to the end of making explicit the relationships between the conventions adopted in each. 
-%Readers who are familiar with these may proceed directly to Section \ref{sec:mesa_experiment}
-[MJ added; please ask before modification]}
 
 %
 The instability driving thermohaline mixing requires a Ledoux-stable inversion of the mean molecular weight $\mu$ stratification in the presence of a stable temperature gradient. 
 The stability of the temperature gradient is given by the Schwarzschild criterion:
+
 \begin{equation} \label{eq:Schwarzschild}
     \gradrad - \gradad < 0,
 \end{equation}
 where the temperature gradient $\grad \equiv d \ln P / d \ln T$ (pressure $P$ and temperature $T$) has an adiabatic value $\grad = \gradad$ and saturates to $\grad = \gradrad$ in hydrostatically stable regions where the flux is carried radiatively. 
-%\sout{[We should cite Schwarzschild here but I tried to read his collected works outloud in German to Jamie and got laughed at]} \textbf{[tbh it looks to me like the overwhelming standard is to NOT cite Schwarzschild, I vote we don't worry about it. Of the 7 or so papers I have open right now, none of them cite Schwarzschild]}. 
 The Ledoux criterion for convective stability is \citep{Ledoux1947}
+
 \begin{equation} \label{eq:Ledoux}
     \gradrad - \gradad - \frac{\phi}{\delta}\gradmu < 0,
 \end{equation}
 which must be satisfied despite the inversion of the mean molecular weight.
-The Ledoux criterion accounts for the composition gradient $\gradmu = d\ln\mu/d\ln P$, where $\delta = -(\partial \ln \rho / \partial \ln T)_{P,\mu}$ and $\phi = (\partial \ln \rho / \partial \ln\mu)_{P,T}$ (density $\rho$).
+The Ledoux criterion accounts for the composition gradient $\gradmu = d\ln\mu/d\ln P$, where $\delta = -(\partial \ln \rho / \partial \ln T)_{P,\mu}$ and $\phi = (\partial \ln \rho / \partial \ln\mu)_{P,T}$ (where $\rho$ is density).
 
 The stabilizing influence of the temperature gradient relative to the destabilizing influence of the $\mu$ gradient is measured by the density ratio,
+
 \begin{equation} \label{eq:R0}
     R_0 \equiv \frac{\grad - \gradad}{\frac{\phi}{\delta} \gradmu},
 \end{equation}
-where $R_0 < 1$ implies the $\mu$ gradient is sufficiently unstable to drive convection, and $R_0 > 1$ implies the fluid is stably-stratified (i.e.~no convection)\footnote{Note that $R_0>1$ is equivalent to the Ledoux criterion Eq.~\eqref{eq:Ledoux} only if $\grad = \gradrad$. Thermohaline mixing primarily mixes chemicals, but does produce some minimal thermal mixing \citep[see, e.g., Fig.~4 of][]{brown_etal_2013}; thus, $\grad \neq \gradrad$.}. 
+where $R_0 < 1$ implies the $\mu$ gradient is sufficiently unstable to drive convection, and $R_0 > 1$ implies the fluid is stably-stratified (i.e.~no convection)\footnote{Note that $R_0>1$ is equivalent to the Ledoux criterion Eq.~\eqref{eq:Ledoux} only if $\grad = \gradrad$. Thermohaline mixing primarily mixes chemicals, but does produce some minimal thermal mixing \citep[see, e.g., Fig.~4 of][]{brown_etal_2013}; thus, $\grad \neq \gradrad$. This thermal mixing is often ignored in mixing prescriptions in 1D stellar evolution programs, however.}. 
 As reviewed by \citet{garaud_DDC_review_2018}, fluids with $R_0 > 1$ can be prone to double-diffusive instabilities whenever the thermal diffusivity, $\kappa_T$, is greater than the compositional diffusivity, $\kappa_\mu$. Specifically, the instability driving thermohaline mixing acts whenever
+
 \begin{equation} \label{eq:R0_condition}
 1 < R_0 < 1/\tau,
 \end{equation}
@@ -32,14 +34,16 @@ As reviewed by \citet{garaud_DDC_review_2018}, fluids with $R_0 > 1$ can be pron
 \begin{equation} \label{eq:tau}
     \tau \equiv \kappa_\mu/\kappa_T.
 \end{equation}
-Note that in stellar radiation zones, typically $\tau \lesssim 10^{-6}$, meaning even very slight inversions of $\mu$ (large $R_0$) can drive thermohaline mixing, even when the temperature gradient is very stable according to the Schwarzschild criterion.
+Note that in stellar radiation zones, typically $\tau \lesssim 10^{-6}$. This means that very slight inversions of $\mu$ (large $R_0$) can drive thermohaline mixing, even when the temperature gradient is strongly stable according to the Schwarzschild criterion. 
 
 Throughout this paper, we express the density ratio $R_0$ in terms of the \textit{reduced density ratio}
+
 \begin{equation} \label{eq:r}
     r \equiv \frac{R_0 - 1}{\tau^{-1} - 1}
 \end{equation}
 per, e.g., \citet{traxler_etal_2011,brown_etal_2013}.
 In terms of $r$, the condition for thermohaline instability, Eq.~\eqref{eq:R0_condition}, is
+
 \begin{equation} \label{eq:r_condition}
     0 < r < 1,
 \end{equation}
