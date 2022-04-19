@@ -2,6 +2,7 @@ make table:
 							
 M	Fe/H	corrected DeltaCN (APOKASC)	corrected Delta CN Shetrone	r_brown_1	r_kip_.1	r_kip_2	r_kip_700
 							
+0.9	-1.4	nan	0.73	0.00006	0.00013	0.00006	0.00013
 0.9	-1.2	nan	0.67	0.00006	0.00013	0.00006	0.00013
 0.9	-1	 nan	0.48	0.00008	0.00015	0.00008	0.00017
 0.9	-0.8	0.52	0.36	0.00010	0.00016	0.00009	0.00022
