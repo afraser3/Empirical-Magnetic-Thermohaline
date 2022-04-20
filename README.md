@@ -1,6 +1,6 @@
 # Files for "Observed Extra Mixing Trends in Red Giants are Reproduced by the Reduced Density Ratio in Thermohaline Zones"
 
-This repository contains most of the files used to create the content in the paper "Observed Extra Mixing Trends in Red Giants are Reproduced by the Reduced Density Ratio in Thermohaline Zones" by A. Fraser, M. Joyce, E. Anders, J. Tayar and M. Cantiello.
+This repository contains most of the files used to create the content in the paper "Observed Extra Mixing Trends in Red Giants are Reproduced by the Reduced Density Ratio in Thermohaline Zones" by A. Fraser, M. Joyce, E. Anders, J. Tayar and M. Cantiello. Pre-print at [arXiv:2204.08487](https://arxiv.org/abs/2204.08487)
 
 
 ## Running the MESA grids
