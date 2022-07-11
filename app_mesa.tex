@@ -15,7 +15,8 @@ Thermal neutrino loss rates are from \citet{Itoh1996}.
 
 
 We create 1D stellar models and evolve them from the pre-main sequence until roughly the end of hydrogen shell burning.
-We study stellar masses between 0.9 and 1.7 $M_{\odot}$ in steps of $0.2 M_{\odot}$. We study metallicities [Fe/H] ranging from -1.4 to 0.4 in steps of 0.2 dex. To convert from metallicity units to MESA input $Y$ and $Z$ units, we assume a linear helium enrichment law \citep[per e.g.,][sec 3.1]{choi2016} in which we adopt a Big-Bang $Y_p = 0.2485$ and $\Delta Y / \Delta Z = 1.3426$ according to Table 1 of \citet{tayar_etal_2022}. The algorithm we use to calculate $X$, $Y$, and $Z$ from these values is identical to the one used in \url{https://github.com/aarondotter/initial_xa_calculator}; we use the opacity tables of \citet{GrevesseSauval1998} and [$\alpha$/Fe].
+We study stellar masses between 0.9 and 1.7 $M_{\odot}$ in steps of $0.2 M_{\odot}$. We study metallicities [Fe/H] ranging from -1.4 to 0.4 in steps of 0.2 dex. To convert from metallicity units to MESA input $Y$ and $Z$ units, we assume a linear helium enrichment law \citep[per e.g.,][sec 3.1]{choi2016} in which we adopt a Big-Bang $Y_p = 0.2485$ and $\Delta Y / \Delta Z = 1.3426$ according to Table 1 of \citet{tayar_etal_2022}. The algorithm we use to calculate $X$, $Y$, and $Z$ from these values is identical to the one used in \url{https://github.com/aarondotter/initial_xa_calculator}; we \textbf{adopt the solar heavy element mixture of} \citet{GrevesseSauval1998}.
+%and [$\alpha$/Fe].
 The specific [Fe/H] to ($X$, $Y$, $Z$) conversions used here are shown in Table~\ref{table:feh_to_z}.
 
 \begin{deluxetable}{c c c c}

@@ -1,6 +1,6 @@
 %
 Equation \eqref{eq:r_condition} 
-can be readily evaluated at any radial location in a model star generated with a 1D stellar structure and evolution program. However, predicting the efficiency of thermohaline mixing is much more challenging. A diffusive approximation is commonly taken for the turbulent mixing of chemicals such that the total mixing of chemical species is given by the sum of the molecular diffusivity and a turbulent mixing coefficient, $\Dth$. This quantity can be converted to the compositional Nusselt number discussed in the fluid dynamics literature, $\Numu$, using the formula
+can be readily evaluated at any radial location in a model star generated with a 1D stellar structure and evolution program. However, predicting the efficiency of thermohaline mixing is much more challenging. A diffusive approximation is commonly taken for the turbulent mixing of chemicals such that the total mixing of chemical species is given by the sum of the molecular diffusivity and a turbulent mixing coefficient, $\Dth$. \textbf{This diffusion coefficient, $\Dth$, relates the rate of chemical mixing to the chemical composition gradient, and is broadly what is meant when referring to ``mixing efficiency" throughout this paper.} This quantity can be converted to the compositional Nusselt number discussed in the fluid dynamics literature, $\Numu$, using the formula
 
 \begin{equation} \label{eq:Dth_from_Nu}
     \Dth = (\Numu - 1)\kappa_\mu.
@@ -29,10 +29,10 @@ Nevertheless, Eq.~\eqref{eq:Dth-kipp} is implemented in MESA as
 Here, $\alpha_{\rm{th}}$ is a dimensionless efficiency parameter related to $C_t$ by $C_t = 3\alpha_{\rm{th}}/2$, $K$ is the radiative conductivity, $\rho$ is the density, and $C_P$ is the specific heat at constant pressure, with $\kappa_T = K/(\rho C_P)$. 
 The green curve in Fig.~\ref{fig:parameterization_compare} shows $\Dth/\kappa_\mu$ vs.~$r$ calculated according to Eq.~\eqref{eq:Dth-kipp-MESA} for $\tau = 10^{-6}$, which is a representative value for the thermohaline-unstable region of RGB stars, and the same $\alpha_{\rm{th}} = 2$ assumed in \citet{CantielloLanger2010}.
 
-In addition to tension regarding the choice of overall mixing efficiency \citep[see e.g.][for further discussion]{Ulrich1972, kippenhahn_etal_1980, charbonnel_thermohaline_2007, CantielloLanger2010,traxler_etal_2011}, there have also been questions about the appropriate trends in the amount of mixing as a function of fluid parameters (e.g.~$R_0$ and $\tau$) and therefore the stellar structure variables on which they depend \citep{garaud_DDC_review_2018}.
+In addition to tension regarding the choice of \textbf{model parameters (e.g.~$\alpha_\mathrm{th}$) controlling overall mixing efficiency within a given 1D prescription} \citep[see e.g.][for further discussion]{Ulrich1972, kippenhahn_etal_1980, charbonnel_thermohaline_2007, CantielloLanger2010,traxler_etal_2011}, there have also been questions about the appropriate trends in \textbf{mixing efficiency} as a function of fluid parameters \textbf{(i.e.~how $\Dth$ should depend on quantities like $r$ and $\mathrm{Pr}$)} and therefore the stellar structure variables on which they depend \citep{garaud_DDC_review_2018}.
 Thus, recent work has sought to refine these mixing prescriptions by performing numerical experiments with multi-dimensional simulations to more accurately parameterize mixing efficiency \citep{Denissenkov2010thermohaline,traxler_etal_2011}. 
 \citet{traxler_etal_2011} and \citet{brown_etal_2013} performed 3D hydrodynamic simulations across a broad range of parameters. 
-Not only did they find orders of magnitude less mixing than what is predicted by the Kippenhahn model with the efficiency parameter required in \citet{charbonnel_thermohaline_2007} to find agreement with observations ($C_t = 1000$), they also developed new mixing prescriptions that fit their simulations much more closely. 
+Not only did they find orders of magnitude less mixing than what is predicted by the Kippenhahn model with the \textbf{model} parameter required in \citet{charbonnel_thermohaline_2007} to find agreement with observations ($C_t = 1000$), they also developed new mixing prescriptions that fit their simulations much more closely. 
 In the case of \citet{traxler_etal_2011}, the authors derived a mixing law by fitting an
 analytic function 
 of the form
@@ -50,11 +50,11 @@ is the Prandtl number, with $\nu$ the kinematic viscosity,
 %
 and $a$, $b$, and $c$ are constants which they fit to data. 
 
-While \citet{traxler_etal_2011} clearly showed their simulations are inconsistent with the mixing efficiency implied by the Kippenhahn model with $\alpha_{\rm{th}}, C_t \sim 10^2-10^3$, it is important to note that their simulations generally explored $\mathrm{Pr}, \tau \sim 10^{-1}$, whereas these fluid parameters are generally of the order $10^{-6}$ in the radiative interiors of RGB stars. 
+While \citet{traxler_etal_2011} clearly showed their simulations are inconsistent with the mixing efficiency $\Dth$ implied by the Kippenhahn model with $\alpha_{\rm{th}}, C_t \sim 10^2-10^3$, it is important to note that their simulations generally explored $\mathrm{Pr}, \tau \sim 10^{-1}$, whereas these fluid parameters are generally of the order $10^{-6}$ in the radiative interiors of RGB stars. 
 Thus, a fair question is whether mixing efficiency might increase to these larger values as $\mathrm{Pr}$ and $\tau$ approach $10^{-6}$. 
 However, \citet{traxler_etal_2011} varied these parameters by an order of magnitude in their simulations, and investigated trends in $\Dth$. They found that mixing should not increase in this fashion, as indicated by the dependence of $\Dth$ on $\mathrm{Pr}$ and $\tau$ in Eq.~\eqref{eqn:trax_model}, which makes an argument that these models can be made to fit the observational data difficult to justify. 
 
-\citet{brown_etal_2013} note that the model in Eqn.~\eqref{eqn:trax_model} performs well at high $R_0$, but underestimates mixing at low $R_0$, particularly in the stellar regime of low Pr and $\tau$.
+\citet{brown_etal_2013} note that the model in Eq.~\eqref{eqn:trax_model} performs well at high $R_0$, but underestimates mixing at low $R_0$, particularly in the stellar regime of low Pr and $\tau$.
 They develop a semi-analytical model for thermohaline mixing,
 
 \begin{equation}
@@ -81,14 +81,16 @@ Their mixing prescription is of the form
 where $w_f$ is obtained by solving a quartic polynomial that includes the magnetic field strength through $H_B$, and $K_B \simeq 1.24$ is directly related to the constant $C$ in Eq.~\eqref{eqn:brown_model}.
 
 This mixing prescription agreed remarkably well with their 3D simulations, which were limited to $r = 0.05$ but ranged in magnetic field strength over several orders of magnitude.
-The prescription, which has not yet been implemented in MESA at the time of this writing, has two asymptotic limits, one where $\hat{w}_f^2 \propto B_0^2$ when the magnetic field strength $B_0$ is large, and one which reduces to the model of \citet{brown_etal_2013} when $B_0$ is small. 
-We note that the threshold $B_0$ separating these limits depends on the same stellar structure variables that enter into $r$; thus, a given magnetic field strength might simultaneously be considered ``large" in one region of a star and ``small" in another, implying that simplifications of this model may not be simultaneously appropriate for all regions within a single star.
+The prescription, which has not yet been implemented in MESA at the time of this writing, has two asymptotic limits, one where $\hat{w}_f^2 \propto B_0^2$ when the magnetic field strength $B_0$ is large, and one which reduces to the model of \citet{brown_etal_2013} when $B_0$ is small.
 
 The purple curve in Fig.~\ref{fig:parameterization_compare} shows $\Dth/\kappa_\mu$ vs.~$r$ calculated according to Eq.~\eqref{eq:harrington_model} for the same parameter choices as the orange curve, and with $H_B = 10^{-6}$, appropriate for the thermohaline zone of a 1.1 $M_\odot$ star at [Fe/H] = -0.2 and a magnetic field whose strength is $\mathcal{O}(100 \,\mathrm{G})$. 
 Note that this magnetic field strength dramatically increases mixing efficiency relative to the hydrodynamic values, particularly at larger values of $r$, whereas the model predicts the same mixing as the Brown model for $r \lesssim 10^{-5}$. 
 For larger values of $r$, the dependence of $\Dth/\kappa_\mu$ on $r$ is profoundly different than either of the hydrodynamic models, with $\Dth/\kappa_\mu$ increasing with $r$, even as the thermohaline instability approaches marginal stability as $r \to 1$.
 
-Given the variance of the predictions of these models, we focus in this paper on showing how observations can be used to suggest the \textit{trends} in mixing that models should hope to explain rather than on trying to calibrate the overall mixing \textit{efficiency} for a particular model, as has been done before, in order to provide a framework in which we can distinguish between mixing prescriptions.
+\textbf{The dramatic enhancement in mixing efficiency predicted by this model for magnetic field strengths of even $\mathcal{O}(100\,\mathrm{G})$ presents a promising resolution to the tension discussed above, namely that 1D stellar evolution models can only reproduce observations by assuming that mixing is far more efficient than what is seen in 3D hydrodynamic simulations. 
+%the mixing efficiency needed in 1D stellar evolution models in order to agree with observations is much larger than what is consistent with 3D hydrodynamic simulations. 
+However, while their prescription may predict mixing efficiencies that are comparable in overall magnitude to that of the Kippenhahn model with $C_t \sim 10^3$, the two prescriptions yield qualitatively different trends in $\Dth$ vs $r$.} 
+Given the variance of the predictions of these models, we focus in this paper on showing how observations can be used to suggest the \textit{trends} in mixing that models should hope to explain rather than on trying to calibrate \textbf{model parameters controlling} the overall mixing \textit{efficiency} for a particular model, as has been done before, in order to provide a framework in which we can distinguish between mixing prescriptions.
 
 %are not.
 
