@@ -1,12 +1,15 @@
 %
 %
 %
-We use MESA stable release version 21.12.21 to conduct 1D numerical simulations of stars incorporating the effects of thermohaline mixing for metallicities ranging from [Fe/H] $= -1.4$ to $0.4$ ($Z = 0.00068$ to $0.038$) and masses from 0.9 to 1.7 $M_{\odot}$ at resolutions of 0.2 dex and 0.2 $M_{\odot}$, respectively. We adopt the solar abundance scale of \citet{GrevesseSauval1998} and the corresponding opacities of \citet{IglesiasRogers1996}. We use an Eddington T-$\tau$ relation for the atmospheric surface boundary conditions.
-We adopt the mixing length theory (MLT) prescription of \citet{Cox1980} with a fixed value of $\alpha_{\text{MLT}}= 1.6$ times the pressure scale height ($H_p$). We use the Ledoux criterion for convective stability and neglect the effects of convective overshoot \citep{Ledoux1947}. We use the \verb|pp_extras.net| nuclear reaction network, which contains 12 isotopes. More details are available in Appendix \ref{app:mesa}, and the exact configuration of our physical and numerical parameter choices is available on Zenodo\footnote{MESA inlists will be made available upon publication}. 
+We use MESA stable release version 21.12.21 to conduct 1D numerical simulations of stars incorporating the effects of thermohaline mixing for metallicities ranging from [Fe/H] $= -1.4$ to $0.4$ ($Z = 0.00068$ to $0.038$) and masses from 0.9 to 1.7 $M_{\odot}$ at resolutions of 0.2 dex and 0.2 $M_{\odot}$, respectively. We adopt the solar abundance scale of \citet{GrevesseSauval1998} and the corresponding opacities of \citet{IglesiasRogers1996}, \textbf{with low-temperature opacities of \citet{Ferguson2005}. Our models assume a helium abundance and helium-enrichment ratio of $Y=0.2485$ and $\frac{dY}{dZ} = 1.3426$, respectively, as in \citet{tayar_etal_2022}.} 
+%
+We use an Eddington T-$\tau$ relation for the atmospheric surface boundary conditions.
+We adopt the mixing length theory (MLT) prescription of \citet{Cox1980} with a fixed value of $\alpha_{\text{MLT}}= 1.6$ times the pressure scale height ($H_p$). We use the Ledoux criterion for convective stability and neglect the effects of convective overshoot \citep{Ledoux1947}. 
+We use the \verb|pp_extras.net| nuclear reaction network, which contains 12 isotopes. More details are available in Appendix \ref{app:mesa}, and the exact configuration of our physical and numerical parameter choices is available on Zenodo\footnote{MESA inlists will be made available upon publication}. 
 
 Simulations are evolved at $1.25\times$ the default mesh (structural) resolution and $2\times$ the default time resolution on the pre-main sequence and main sequence. Once the models ascend the red giant branch and reach a surface gravity $\log g \le 3$, resolutions are increased to $2\times$ the default spatial resolution and $10\times$ the default temporal resolution, respectively. Optimal resolution values were determined according to the convergence tests detailed in Appendix \ref{app:resolution_test}. 
 
-We study four grids of stellar evolution simulations with different thermohaline mixing prescriptions. One grid employs the \citet{brown_etal_2013} prescription\footnote{Although the Brown prescription contains no free parameters in their original conception, a multiplicative factor on $D_{\text{therm}}$ has been introduced in the MESA implementation. Brown's model is reproduced by assigning the quantity \texttt{thermohaline\_coeff} = 1, as was done here}. 
+We study four grids of stellar evolution simulations with different thermohaline mixing prescriptions. One grid employs the \citet{brown_etal_2013} prescription\footnote{Although the Brown prescription contains no free parameters in their original conception, a multiplicative factor on $\Dth$ has been introduced in the MESA implementation. Brown's model is reproduced by assigning the quantity \texttt{thermohaline\_coeff} = 1, as was done here}. 
 %
 while the other three employ the \citet{kippenhahn_etal_1980} prescription with coefficients $\alpha_{\rm th} \in [0.1, 2, 700]$.
 The Kippenhahn $\alpha_{\rm th} = 0.1$ model has inefficient mixing and represents a regime where thermohaline mixing is present but weak.
@@ -26,7 +29,7 @@ Given the range of mixing timescales probed, these models should confer some ins
 
 \subsection{Method for Extracting $r$}
 %
-We wish to extract a parameter that characterizes the instability of the mean molecular weight gradient to mixing in the thermohaline region above the burning shell. This can be measured by the reduced density ratio $r$.
+\textbf{We wish to extract the reduced density ratio $r$. As described in Sections \ref{intro:subsec:fluids} and \ref{sec:formalism}, $r$ characterizes the stability of the mean molecular weight gradient in the thermohaline region above the burning shell. It measures the region's tendency to mix, not its mixing efficiency.}
 We define a selection criterion that averages over many mass shells and many evolutionary time steps to ensure that our measured values of $r$ are representative of thermohaline mixing during the relevant evolutionary regime.
 
 To measure $r$ in our MESA simulations, we first restrict to the appropriate evolutionary phase. We exclude all models for which MESA does not detect thermohaline mixing within $m_{\rm max} \leq m_i < 1.1 m_{\rm max}$, where $m_i$ is the mass coordinate of the $i$th mass shell and $m_{\rm max}$ is the mass coordinate coinciding with the instantaneous peak of the nuclear energy generation.

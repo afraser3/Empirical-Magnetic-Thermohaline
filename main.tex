@@ -1,4 +1,4 @@
-\documentclass[linenumbers,twocolumn]{aastex62}
+\documentclass[twocolumn,linenumbers]{aastex62}
 \usepackage{enumitem}
 %\usepackage{courier}
 \graphicspath{{./}{figures/}}
@@ -29,10 +29,13 @@
 
 
 \newcommand{\blu}{\textcolor{blue} }
+
 \newcommand{\red}{\textcolor{red} }
 \newcommand{\grn}{\textcolor{green} }
 \newcommand{\cya}{\textcolor{cyan} }
 \newcommand{\pink}{\textcolor{magenta} }
+
+\newcommand{\evan}[2]{\textcolor{olive}{\sout{#1} \textbf{#2}}}
 
 
 \usepackage{ulem,xspace}
@@ -94,7 +97,10 @@
 
 \begin{document}
 
-\title{Observed Extra Mixing Trends in Red Giants are Reproduced by the Reduced Density Ratio in Thermohaline Zones}
+%\title{Observed Extra Mixing Trends in Red Giants \evan{are Reproduced}{ Can be Parameterized} by the Reduced Density Ratio in Thermohaline Zones}
+\title{Characterizing Observed Extra Mixing Trends in Red Giants using the \textit{Reduced Density Ratio} from Thermohaline Models}
+
+%The Reduced density ratio in thermohaline zones... 
 
 \author[0000-0003-4323-2082]{Adrian E. Fraser}
 \altaffiliation{These authors contributed equally to this work}
@@ -137,14 +143,11 @@ Baltimore, MD 21218, USA}
 \email{jtayar@ufl.edu}
 
 \begin{abstract}
-
-
-
-
-Observations show an almost ubiquitous presence of extra mixing in low-mass upper giant branch stars. The most commonly invoked explanation for this is the thermohaline instability. One dimensional stellar evolution models include prescriptions for thermohaline mixing, but our ability to make direct comparisons between models and observations has thus far been limited.
+Observations show an almost ubiquitous presence of extra mixing in low-mass upper giant branch stars. The most commonly invoked explanation for this is the thermohaline instability. One-dimensional stellar evolution models include \textbf{various} prescriptions for thermohaline mixing, \textbf{but the use of observational data directly to discriminate \textit{between} thermohaline prescriptions has thus far been limited.}
+%but our ability to make direct comparisons between models and observations has thus far been limited.
 Here, we propose a new framework to facilitate direct comparison:
 Using carbon to nitrogen measurements from the SDSS-IV APOGEE survey as a probe of mixing and a fluid parameter known as the \textit{reduced density ratio} from one dimensional stellar evolution programs, we compare the observed amount of extra mixing on the upper giant branch to predicted trends from three-dimensional fluid dynamics simulations. 
-By applying this method, we are able to place empirical constraints on the efficiency of mixing across a range of masses and metallicities. 
+By applying this method, we are able to \textbf{empirically constrain how mixing efficiency should vary with the reduced density ratio.} %place empirical constraints on the efficiency of mixing across a range of masses and metallicities. 
 We find that the observed amount of extra mixing is strongly correlated with the reduced density ratio and that trends between reduced density ratio and fundamental stellar parameters are robust across choices for modeling prescription. We show that stars with available mixing data tend to have relatively low density ratios, which should inform the regimes selected for future simulation efforts. Finally, we show that there is increased mixing at low values of the reduced density ratio, which is consistent with current hydrodynamical models of the thermohaline instability. 
 The introduction of this framework sets a new standard for theoretical modeling efforts, as validation for not only the amount of extra mixing, but trends between the degree of extra mixing and fundamental stellar parameters is now possible.
 %
@@ -153,20 +156,20 @@ The introduction of this framework sets a new standard for theoretical modeling 
 
 \keywords{stellar evolution, stellar abundances, abundance ratios, stellar interiors, red giant branch, red giant bump, Dredge-up}
 
-\section{Introduction  } 
+\section{Introduction} %1 
 \label{sec:intro}
 \setcounter{footnote}{0}
 \input{sec_intro_jttest}
 
-\section{Thermohaline Formalism }
+\section{Thermohaline Formalism } %2
 \label{sec:formalism}
 \input{sec_formalism}
 
-\section{Parameterized Thermohaline Models }
+\section{Parameterized Thermohaline Models } %3
 \label{sec:parameterizations}
 \input{sec_parameterizations}
 
-\section{Stellar Evolution Models} 
+\section{Stellar Evolution Models}%4
 \label{sec:mesa_experiment}
 \input{sec_mesa_experiment}
 

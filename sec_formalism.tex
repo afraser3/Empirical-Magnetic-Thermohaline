@@ -1,6 +1,6 @@
-The following section presents a derivation of the fluid parameter known as the ``reduced density ratio,'' which we use to characterize the amount of mixing expected in thermohaline regions.  
+The following section presents a derivation of the fluid parameter known as the ``reduced density ratio,'' which \textbf{is a fundamental parameter in fluid models of thermohaline mixing, and measures the stability of a given fluid configuration to the instability that drives thermohaline mixing}. 
 Section \ref{sec:parameterizations} goes into a similar level of detail regarding different prescriptions for thermohaline mixing in 1D stellar models 
-to the end of summarizing the prescriptions currently implemented in MESA, and demonstrating key differences between these prescriptions.
+to the end of summarizing the prescriptions currently implemented in MESA, and demonstrating key differences between these prescriptions. \textbf{As was noted in Sec.~\ref{intro:subsec:fluids}, while the amount of chemical mixing predicted by these prescriptions does depend on the density ratio (or, equivalently, the reduced density ratio), we stress that the density ratio characterizes stability and thus the tendency to mix, not the actual amount of mixing or mixing efficiency (which is characterized by $\Dth$, introduced in Sec.~\ref{sec:parameterizations}).}
 
 
 %
@@ -19,8 +19,7 @@ The Ledoux criterion for convective stability is \citep{Ledoux1947}
 which must be satisfied despite the inversion of the mean molecular weight.
 The Ledoux criterion accounts for the composition gradient $\gradmu = d\ln\mu/d\ln P$, where $\delta = -(\partial \ln \rho / \partial \ln T)_{P,\mu}$ and $\phi = (\partial \ln \rho / \partial \ln\mu)_{P,T}$ (where $\rho$ is density).
 
-The stabilizing influence of the temperature gradient relative to the destabilizing influence of the $\mu$ gradient is measured by the density ratio,
-
+\textbf{To be unstable, the destabilizing $\mu$ gradient (the free energy source that drives thermohaline mixing) must be sufficiently strong relative to the stabilizing influence of the temperature gradient. This is quantified by the density ratio,}
 \begin{equation} \label{eq:R0}
     R_0 \equiv \frac{\grad - \gradad}{\frac{\phi}{\delta} \gradmu},
 \end{equation}
